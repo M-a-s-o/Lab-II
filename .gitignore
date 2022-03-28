@@ -11,3 +11,5 @@ __pycache__
 *.toc
 main
 data.txt
+.vscode
+*.swp
