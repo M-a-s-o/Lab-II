@@ -1,19 +1,73 @@
 \documentclass[a4paper]{article}
 %\usepackage{siunitx}
 \input{/home/maso/uni/bachelor-2/preamble.tex}
+\input{./preamble-master.tex}
 \geometry{right=2cm,left=2cm}
 
 \begin{document}
-\title{Circuiti 1: sulla legge di Ohm}
-\maketitle
+\begin{titlepage}
+\center
+    
+% HEADING SECTIONS
+\textsc{\LARGE Corso di Laboratorio II}\\[1.5cm] % Name of your university/college
+%\textsc{\Large Scuola di Scienze}\\[0.5cm] % Major heading such as course name
+\textsc{\large Turno 2A}\\[0.5cm] % Minor heading such as course title
+\textsc{\large Gruppo 14}\\[0.5cm]
+
+% TITLE SECTION
+\HRule \\[0.6cm]
+{ \huge \bfseries Circuiti 1: sulla legge di Ohm}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+    
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+\Large \emph{Autori:} \\
+
+\vspace{8cm}
+
+% DATE SECTION
+{\large Anno Accademico 2021-2022}\\[2cm] % Anno Accademico
+
+% LOGO SECTION
+%\includegraphics[width=0.30\textwidth]{logo.png}\\[1cm] % Include a department/university logo
+
+\vfill
+\end{titlepage}
+
+% Pagina bianca
+%\newpage\null\thispagestyle{blank}\newpage
+
+% Sommario
+\pagenumbering{roman}
+
+%\begin{abstract}
+%    \addcontentsline{toc}{section}{\numberline{}Sommario}
+%    \noindent Si studia la curva risonanza di un oscillatore armonico semplice, smorzato, e forzato.
+%\end{abstract}
+
+% Indice
 \tableofcontents
 \clearpage
+
+% Elenco delle figure
+\listoffigures
+\addcontentsline{toc}{section}{\numberline{}Elenco delle figure}
+\clearpage
+
+% Corpo del testo
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+%\title{Circuiti 1: sulla legge di Ohm}
+%\maketitle
+%\tableofcontents
+%\clearpage
 \section{Parte prima: misura della caratteristica corrente-tensione di un resistore}
 \subsection{Obiettivi}
 L'obiettivo di questa prima parte dell'esperienza è quello di verificare in modo empirico la prima legge di Ohm tramite la misura della caratteristica corrente-tensione di varie configurazioni di resistori.
 
 \subsection{Metodo}
-In primo luogo si calcola quanto gli strumenti di laboratorio, in questo caso il voltmetro e l'amperometro, inficiano le misure che si eseguono. Dunque, occorre calcolare la resistenza interna dei due dispositivi.\\
+In primo luogo si calcola quanto gli strumenti di laboratorio, in questo caso il voltmetro (Fluke 115) e l'amperometro (Agilent Technologies U3401A), inficiano le misure che si eseguono. Dunque, occorre calcolare la resistenza interna dei due dispositivi.\\
 Il voltmetro è messo in parallelo con una resistenza dello stesso ordine della propria resistenza interna in modo che la corrente si divida sulle due resistenze in maniera rilevabile. Analogamente, l'amperometro va messo in serie con una resistenza piccola.\\
 Dopodiché si raccolgono nuovamente dei dati per amperaggio e tensione con configurazioni differenti di resistenze in modo tale da verificare la legge di Ohm e di valutare i risultati ottenuti con quelli aspettati.\\
 Il circuito di sinistra seguente è il circuito da preferirsi per la misura di resistenze con un valore confrontabile con la resistenza dell'amperometro. Infatti, la tensione misurata dal voltmetro è tutta la tensione che cade sulla resistenza. Però, la corrente passante per la resistenza è in larga parte la corrente misurata dall'amperometro.
@@ -109,7 +163,7 @@ Da cui si ottiene un valore di $R_A=\SI{1.45(17)}{\ohm} $.
         	width=0.45\textwidth,
         	height=0.4\textwidth,
         	xlabel={$I$/$\SI{}{\micro\A}$},
-        	ylabel={$V$/$\SI{}{V}$},
+        	ylabel={d.d.p./$\SI{}{\V}$},
         	%ylabel style={rotate=-90},
         	xmin=0, xmax=7,
         	ymin=0, ymax=6,
@@ -151,7 +205,7 @@ Da cui si ottiene un valore di $R_A=\SI{1.45(17)}{\ohm} $.
         	width=0.45\textwidth,
         	height=0.4\textwidth,
         	xlabel={$I$/$\SI{}{\milli\A}$},
-        	%ylabel={$V$/$\SI{}{V}$},
+        	%ylabel={d.d.p./$\SI{}{\V}$},
         	%ylabel style={rotate=-90},
         	xmin=5, xmax=50,
         	ymin=0, ymax=0.6,
@@ -181,7 +235,7 @@ Da cui si ottiene un valore di $R_A=\SI{1.45(17)}{\ohm} $.
         	%\legend{Data, Fit}
     	\end{groupplot}
     	\end{tikzpicture}
-	\caption{Grafici tensione-corrente per la misura delle resistenze interne del voltmetro e dell'amperometro. Le incertezze sono rappresentate da segmenti orizzontali per le ascisse e da segmenti verticali per le ordinate, tuttavia sono troppo piccole per essere apprezzabili.\\Bontà interpolazione voltmetro: $\widetilde{\chi}^2=0.07$, $p$-value $=100\%$. Bontà interpolazione amperometro: $\widetilde{\chi}^2=0.14$, $p$-value $=98\%$.}
+	\caption[Misura resistenze interne]{Grafici tensione-corrente per la misura delle resistenze interne del voltmetro e dell'amperometro. Le incertezze sono rappresentate da segmenti orizzontali per le ascisse e da segmenti verticali per le ordinate, tuttavia sono troppo piccole per essere apprezzabili.\\Bontà interpolazione voltmetro: $\widetilde{\chi}^2=0.07$, $p$-value $=100\%$. Bontà interpolazione amperometro: $\widetilde{\chi}^2=0.14$, $p$-value $=98\%$.}
 	\label{fig:res_volt_amp}
 \end{figure}
 
@@ -218,7 +272,7 @@ Tramite interpolazione si ottiene un valore di $R=\SI{1.997(2)}{\kilo\ohm}$ ($\w
         	width=0.8\textwidth,
         	height=0.4\textwidth,
         	xlabel={$I$/$\SI{}{\milli\A}$},
-        	ylabel={$V$/$\SI{}{V}$},
+        	ylabel={d.d.p./$\SI{}{\V}$},
         	%ylabel style={rotate=-90},
         	xmin=-.15, xmax=2.25,
         	ymin=-.5, ymax=5,
@@ -248,7 +302,7 @@ Tramite interpolazione si ottiene un valore di $R=\SI{1.997(2)}{\kilo\ohm}$ ($\w
         	\legend{Data, Fit}
     	\end{groupplot}
     	\end{tikzpicture}
-	\caption{Grafico delle misure di tensione-corrente per una resistenza. Tali misure sono utilizzate per verificare la legge di Ohm. $\widetilde{\chi}^2=0.04$, $p$-value $=100\%$.}
+	\caption[Caratteristica tensione-corrente per una resistenza]{Grafico delle misure di tensione-corrente per una resistenza. Tali misure sono utilizzate per verificare la legge di Ohm. $\widetilde{\chi}^2=0.04$, $p$-value $=100\%$.}
 	\label{fig:verif_ohm}
 \end{figure}
 
@@ -317,7 +371,7 @@ I dati ottenuti sono interpolati secondo la legge di Ohm ottenendo una resistenz
         	width=0.45\textwidth,
         	height=0.4\textwidth,
         	xlabel={$I$/$\SI{}{\milli\A}$},
-        	ylabel={$V$/$\SI{}{V}$},
+        	ylabel={d.d.p./$\SI{}{\V}$},
         	%ylabel style={rotate=-90},
         	xmin=-.5, xmax=7,
         	ymin=-.5, ymax=5,
@@ -350,7 +404,7 @@ I dati ottenuti sono interpolati secondo la legge di Ohm ottenendo una resistenz
         	width=0.45\textwidth,
         	height=0.4\textwidth,
         	xlabel={$I$/$\SI{}{\milli\A}$},
-        	%ylabel={$V$/$\SI{}{V}$},
+        	%ylabel={d.d.p./$\SI{}{\V}$},
         	%ylabel style={rotate=-90},
         	xmin=-.1, xmax=1.5,
         	ymin=-.5, ymax=5,
@@ -379,11 +433,11 @@ I dati ottenuti sono interpolati secondo la legge di Ohm ottenendo una resistenz
         	plot (\x, { 2.98620058400769*x) });
     	\end{groupplot}
     	\end{tikzpicture}
-	\caption{Grafici delle misure tensione-corrente per la verifica legge di Ohm di resistori in parallelo ed in serie. Parallelo: $\widetilde{\chi}^2=0.05$, $p$-value $=100\%$. Serie: $\widetilde{\chi}^2=0.0028$, $p$-value $=100\%$.}
+	\caption[Resistenze composite]{Grafici delle misure tensione-corrente per la verifica legge di Ohm di resistori in parallelo ed in serie. Parallelo: $\widetilde{\chi}^2=0.05$, $p$-value $=100\%$. Serie: $\widetilde{\chi}^2=0.0028$, $p$-value $=100\%$.}
 	\label{fig:verif_ohm_parallel_serie}
 \end{figure}
 \paragraph{Analisi degli errori.}
-Le incertezze derivate dai multimetri digitali sono ricavate dai rispettivi manuali nelle sezioni corrispondenti alle accuratezze (accuracy) relative agli intervalli di misura considerati. Ad esempio, considerata un'accuratezza $\pm[0.5\%+1]$, l'incertezza su di una misura di $\SI{100}{\V}$ risulta essere $\SI{1.5}{\V}$.\\
+Le incertezze derivate dai multimetri sono ricavate dai rispettivi manuali nelle sezioni corrispondenti alle accuratezze (accuracy) relative agli intervalli di misura considerati. Ad esempio, considerata un'accuratezza $\pm[0.5\%+1]$, l'incertezza su di una misura di $\SI{100}{\V}$ risulta essere $\SI{1.5}{\V}$.\\
 Si suppone che il valore veritiero della misura si trovi all'interno dell'intervallo dell'accuratezza con una distribuzione uniforme. Dunque, si utilizza la deviazione standard di tale distribuzione. Riprendendo l'esempio precedente, l'incertezza diventa
 \[
 \frac{2\cdot \SI{1.5}{\V}}{\sqrt{12} }=\frac{\SI{1.5}{\V}}{\sqrt{3} }\approx \SI{0.9}{\V}
@@ -392,7 +446,8 @@ Da cui la misura diventa $\SI{100.0(9)}{\V}$.
 
 \subsection{Conclusioni.}
 Come si evince dalle interpolazioni, i dati raccolti sono in accordo con il modello della legge di Ohm.\\
-Tuttavia, risulta importante notare che i valori del $\widetilde{\chi}^2$ ottenuti nelle interpolazioni sono molto distanti dal valore atteso. Ciononostante, le incertezze utilizzate sono le più piccole che si sono potute trovare, ma risultano comunque sovrastimate.
+Tuttavia, risulta importante notare che i valori del $\widetilde{\chi}^2$ ottenuti nelle interpolazioni sono molto distanti dal valore atteso. Ciononostante, le incertezze utilizzate sono le più piccole che si sono potute trovare, ma risultano comunque sovrastimate. Così avviene anche nelle parti successive dell'esperienza.
+% Visivamente, i residui non sembrano seguire una distribuzione gaussiana, dunque non si può applicare il test del chi2, sebbene il test Shapiro-Wilk non escluda la distribuzione normale dei residui.
 \clearpage
 
 \section{Parte seconda: partitore resistivo}
@@ -455,7 +510,7 @@ Come si evince dalla tabella e dal grafico, aumentando la resistenza di carico, 
         	width=0.8\textwidth,
         	height=0.4\textwidth,
 		xlabel={$R_L$/\SI{}{\kohm}},
-        	ylabel={$V$/$\SI{}{V}$},
+        	ylabel={d.d.p./$\SI{}{\V}$},
         	%ylabel style={rotate=-90},
         	xmin=-50, xmax=1199,
         	ymin=0.3, ymax=0.6,
@@ -485,7 +540,7 @@ Come si evince dalla tabella e dal grafico, aumentando la resistenza di carico, 
         	\legend{Data}
     	\end{groupplot}
     	\end{tikzpicture}
-	\caption{Grafico delle misure tensione-resistenza.}
+	\caption[Partitore resistivo]{Grafico delle misure tensione-resistenza.}
 	\label{fig:part_resist}
 \end{figure}
 
@@ -569,13 +624,11 @@ Si ricavano valori $I_0=\SI{3(4)e-15}{\A}$, $A=\SI{39.6(15)}{\per\volt}$ e $B=\S
 \[
 g=\frac{q}{Ak_BT}=\SI{1.00(4)}{}
 \] 
-dove $q=\SI{1.602176634e-19}{\coulomb}$ è la carica elementare, $k_B=\SI{1.380649e-23}{\J\per\K}$ è la costante di Boltzmann, e $T=\SI{300}{\K}$ la temperatura del diodo. Tuttavia, la legge di Shockley dipende, tra le altre cose, dalla temperatura del diodo: si è osservato che ad una particolare tensione, nel diodo scorre una corrente che poco a poco diminuisce nel tempo in quanto aumenta la sua temperatura interna per effetto Joule. Dunque, non avendo a disposizione gli strumenti necessari, i dati ottenuti non permetto un'efficace verifica d'ipotesi.\\
-
+dove $q=\SI{1.602176634e-19}{\coulomb}$ è la carica elementare, $k_B=\SI{1.380649e-23}{\J\per\K}$ è la costante di Boltzmann, e $T=\SI{300}{\K}$ la temperatura del diodo.\\
 Riguardo l'andamento lineare, si interpolano i dati tramite la relazione $I=A+BV$, così da ottenere $A=\SI{-12(5)e+3}{\mA}$ e $B=\SI{15(6)e+3}{\mA\per\V}$ ($\widetilde{\chi}^2=0.022$, $p$-value $=100\%$). Pertanto, la tensione di soglia risulta essere
 \[
 V_\text{soglia} = -\frac{A}{B}=\SI{0.793(9)}{\V}
 \] 
-Nella propagazione degli errori si sono tenute conto anche la covarianza e la correlazione.
 
 \begin{figure}[H]
 	\centering
@@ -586,7 +639,7 @@ Nella propagazione degli errori si sono tenute conto anche la covarianza e la co
         	title={Andamento esponenziale},
         	width=0.45\textwidth,
         	height=0.4\textwidth,
-        	xlabel={$V$/$\SI{}{V}$},
+        	xlabel={d.d.p./$\SI{}{\V}$},
         	ylabel={$I$/$\SI{}{\milli\A}$},
         	%ylabel style={rotate=-90},
         	xmin=.69, xmax=.83,
@@ -622,7 +675,7 @@ Nella propagazione degli errori si sono tenute conto anche la covarianza e la co
         	title={Andamento lineare},
         	width=0.45\textwidth,
         	height=0.4\textwidth,
-        	xlabel={$V$/$\SI{}{V}$},
+        	xlabel={d.d.p./$\SI{}{\V}$},
         	%ylabel={$I$/$\SI{}{\milli\A}$},
         	%ylabel style={rotate=-90},
         	xmin=.809, xmax=.821,
@@ -654,34 +707,17 @@ Nella propagazione degli errori si sono tenute conto anche la covarianza e la co
         	%\legend{Data, Fit}
     	\end{groupplot}
     	\end{tikzpicture}
-	\caption{Grafici delle misure corrente-tensione dell'andamento esponenziale del diodo e dell'approssimazione lineare. Esponenziale: $\widetilde{\chi}^2=0.47$, $p$-value $=99\%$. Lineare: $\widetilde{\chi}^2=0.022$, $p$-value $=100\%$.}
+	\caption[Diodo: andamenti esponenziale e lineare]{Grafici delle misure corrente-tensione dell'andamento esponenziale del diodo e dell'approssimazione lineare. Esponenziale: $\widetilde{\chi}^2=0.47$, $p$-value $=99\%$. Lineare: $\widetilde{\chi}^2=0.022$, $p$-value $=100\%$.}
 	\label{fig:diodo_soglia}
 \end{figure}
 
-\subsection{Conclusioni}
-
-\clearpage
-
-\section{Esperienza virtuale}
-\subsection{Parte prima}
-Si simula la risposta di un diodo e si studia il comportamento misurando la sua caratteristica corrente-tensione. Si caratterizza un diodo 1N4007. Si misura la caratteristica corrente-tensione da $\SI{100}{\mV}$ a $\SI{1}{\V}$.
-% grafico dati e grafico Shockley; più dati
-I dati sono in accordo con il modello della legge di Shockley fino ad una tensione di circa $\SI{800}{\mV}$, oltre la quale si osserva un comportamento non più esponenziale.\\
-Il parametro $\frac{\mathrm{d}V}{\mathrm{d}I}$ risulta essere la resistenza del diodo che diminuisce all'aumentare dell'amperaggio.
-
-\subsection{Parte seconda}
-Si studia il comportamento del diodo utilizzando strumenti di misura reali. Si è deciso di porre una resistenza del voltmetro pari a $R_V=\SI{5.5}{\Mohm}$ ed una dell'amperometro di $R_A=\SI{2.50}{\ohm}$.
-Si è misurata la caratteristica corrente-tensione per valori da $\SI{10}{\mV}$ a $\SI{1}{\V}$.
-% tabella dati, grafici
-Nella seconda configurazione, la pendenza della curva è più pronunciata in quanto la resistenza del diodo diminuisce e dunque diventa confrontabile con quella dell'amperometro. Di conseguenza, pure le cadute di potenziale diventano confrontabili.\\
-La presenza delle resistenze interne perturba l'idealità del circuito: l'amperometro causa una caduta di potenziale; mentre il voltmetro provoca una ripartizione della corrente.\\
-Come affermato nella prima parte dell'esperienza, il primo circuito è utile per resistenze confrontabili con quella del voltmetro; il secondo circuito per resistenze confrontabili con quella dell'amperometro.
+\paragraph{Considerazioni sull'influenza delle resistenze interne.} Nella configurazione utilizzata, il comportamento ideale del circuito è perturbato dalla resistenza interna del voltmetro. La corrente che scorre sul diodo non è tutta quella che scorre nell'amperometro. Tuttavia, nel caso peggiore, cioè a basse tensioni, con $V=\SI{0.703(3)}{\V}$ si ha una corrente sul voltmetro di
+\[
+I=\frac{V}{R_V}=\SI{66(5)}{\nano\A}
+\] 
+che è molto minore del valore di $\SI{7.68(3)}{\mA}$ riportato dall'amperometro e pertanto trascurabile.
 
 \subsection{Conclusioni}
-La legge di Shockley vale in un intervallo particolare di tensione, oltre il quale si può utilizzare un'approssimazione lineare del comportamento del diodo. Quanto simulato risulta essere in accordo con i dati sperimentali ottenuti in laboratorio.\\
-Di seguito si riportano i grafici che mostrano gli andamenti corrente-tensione del diodo nel caso simulato e nel caso reale.
-% grafico reale e virtuale
-% corrente di saturazione inversa dov'è????
-
+La legge di Shockley dipende, tra le altre cose, dalla temperatura del diodo: si è osservato che ad una particolare tensione, nel diodo scorre una corrente che poco a poco diminuisce nel tempo in quanto aumenta la sua temperatura interna per effetto Joule. Dunque, non avendo a disposizione gli strumenti necessari, i dati ottenuti non permetto un'efficace verifica d'ipotesi.
 
 \end{document}

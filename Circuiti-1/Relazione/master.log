@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.10.5)  27 MAR 2022 20:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.10.5)  28 MAR 2022 22:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -982,35 +982,35 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 286.
 )
 \Hy@SectionHShift=\skip81
-)
+) (./preamble-master.tex)
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 
 
 Package csquotes Warning: No style for language 'nil'.
-(csquotes)                Using fallback style on input line 6.
+(csquotes)                Using fallback style on input line 7.
 
 Package csquotes Info: Redefining alias 'default' -> 'fallback'.
 (./master.aux)
 \openout1 = `master.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
 \AtBeginShipoutBox=\box85
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1436,8 +1436,8 @@ Package pgfplots notification 'compat/show suggested version=true': you might be
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package scrlayer Info: Setting magic \footheight to \baselineskip while
-(scrlayer)             \begin{document} on input line 6.
-Package hyperref Info: Link coloring OFF on input line 6.
+(scrlayer)             \begin{document} on input line 7.
+Package hyperref Info: Link coloring OFF on input line 7.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1447,91 +1447,96 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count393
 )
-LaTeX Info: Redefining \ref on input line 6.
-LaTeX Info: Redefining \pageref on input line 6.
-LaTeX Info: Redefining \nameref on input line 6.
+LaTeX Info: Redefining \ref on input line 7.
+LaTeX Info: Redefining \pageref on input line 7.
+LaTeX Info: Redefining \nameref on input line 7.
  (./master.out) (./master.out)
 \@outlinefile=\write4
 \openout4 = `master.out'.
 
 LaTeX Font Info:    External font `cmex7' loaded for size
-(Font)              <7> on input line 6.
+(Font)              <7> on input line 7.
 LaTeX Font Info:    External font `cmex7' loaded for size
-(Font)              <5> on input line 6.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 6.
+(Font)              <5> on input line 7.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 7.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 6.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 7.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 6.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 7.
  (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-)
-LaTeX Font Info:    External font `cmex7' loaded for size
-(Font)              <6> on input line 9.
+) [1
 
-
-LaTeX Warning: No \author given.
-
-(./master.toc)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./master.toc)
 \tf@toc=\write5
 \openout5 = `master.toc'.
 
- [1
+ [1]
+Package marginnote Info: Using workaround for absolute page number on input line 50.
+ (./master.lof)
+\tf@lof=\write6
+\openout6 = `master.lof'.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+ [2
+
+]
 \alshift=\dimen363
 \realshift=\dimen364
 \realshift=\dimen365
 \alshift=\dimen366
 \realshift=\dimen367
 \realshift=\dimen368
- [2
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.146 \[
+         [1
 
 ]
 PGFPlots: reading {../Dati.csv}
 
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 145.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 199.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 145.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 199.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 145.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 199.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 145.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 199.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 145.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 199.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 145.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 199.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 145.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 199.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 145.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 199.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 145.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 199.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 145.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 199.
 
  [warning /pgfplots/warning/empty column name]
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
@@ -1549,43 +1554,43 @@ NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also 
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
 PGFPlots: reading {../Dati.csv}
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 178.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 232.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 178.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 232.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 178.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 232.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 178.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 232.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 178.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 232.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 178.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 232.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 178.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 232.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 178.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 232.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 178.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 232.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 178.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 232.
 
  [warning /pgfplots/warning/empty column name]
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
@@ -1603,136 +1608,136 @@ NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also 
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
-[3]
+[2]
 PGFPlots: reading {../Dati.csv}
 
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 245.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 299.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 245.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 299.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 245.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 299.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 245.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 299.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 245.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 299.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 245.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 299.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 245.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 299.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 245.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 299.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 245.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 299.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 245.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 299.
 
  [warning /pgfplots/warning/empty column name]
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
 PGFPlots: reading {../Dati.csv}
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 344.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 398.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 344.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 398.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 344.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 398.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 344.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 398.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 344.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 398.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 344.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 398.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 344.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 398.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 344.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 398.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 344.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 398.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 344.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 398.
 
  [warning /pgfplots/warning/empty column name]
 PGFPlots: reading {../Dati.csv}
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 377.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 431.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 377.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 431.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 377.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 431.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 377.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 431.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 377.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 431.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 377.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 431.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 377.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 431.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 377.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 431.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 377.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 431.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 377.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 431.
 
  [warning /pgfplots/warning/empty column name]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4] [5]
+[3] [4]
 \alshift=\dimen369
 \realshift=\dimen370
 \realshift=\dimen371
@@ -1740,43 +1745,43 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 PGFPlots: reading {../Dati.csv}
 
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 484.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 539.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 484.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 539.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 484.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 539.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 484.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 539.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 484.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 539.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 484.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 539.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 484.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 539.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 484.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 539.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 484.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 539.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 484.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 539.
 
  [warning /pgfplots/warning/empty column name]
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
@@ -1790,97 +1795,97 @@ NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also 
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
-[6
+[5
 
-] [7]
+] [6]
 \alshift=\dimen373
 \realshift=\dimen374
- [8
+ [7
 
 ]
 PGFPlots: reading {../Dati.csv}
 
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 615.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 668.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 615.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 668.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 615.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 668.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 615.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 668.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 615.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 668.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 615.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 668.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 615.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 668.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 615.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 668.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 615.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 668.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 615.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 668.
 
  [warning /pgfplots/warning/empty column name]
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
 PGFPlots: reading {../Dati.csv}
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 651.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '40'' on input line 704.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 651.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '44'' on input line 704.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 651.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '48'' on input line 704.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 651.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '52'' on input line 704.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 651.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '56'' on input line 704.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 651.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '60'' on input line 704.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 651.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '64'' on input line 704.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 651.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '68'' on input line 704.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 651.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '72'' on input line 704.
 
  [warning /pgfplots/warning/empty column name]
 
-Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 651.
+Package pgfplots Warning: Table '../Dati.csv' has an empty column name; replacing it by '75'' on input line 704.
 
  [warning /pgfplots/warning/empty column name]
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
@@ -1897,32 +1902,30 @@ NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also 
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
 NOTE: coordinate (,) has been dropped because of a coordinate filter. (see also unbounded coords=jump). 
-[9] [10
-
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 687.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 687.
+[8]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 723.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 723.
  (./master.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 687.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 687.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 723.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 723.
 Package rerunfilecheck Info: File `master.out' has not changed.
-(rerunfilecheck)             Checksum: DC7BEFAC9E6CD3FC5676588593CD99A4;1241.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 687.
+(rerunfilecheck)             Checksum: B78269A32543F6F8AD889AEE83F7105A;1057.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 723.
  )
 (\end occurred when \ifx on line 75 was incomplete) 
 Here is how much of TeX's memory you used:
- 51617 strings out of 483107
- 1256251 string characters out of 5964630
- 2144008 words of memory out of 5000000
- 65751 multiletter control sequences out of 15000+600000
- 551444 words of font info for 82 fonts, out of 8000000 for 9000
+ 51594 strings out of 483107
+ 1256035 string characters out of 5964630
+ 2142236 words of memory out of 5000000
+ 65731 multiletter control sequences out of 15000+600000
+ 547938 words of font info for 60 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  71i,21n,103p,784b,2856s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1000.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on master.pdf (10 pages, 196502 bytes).
+ </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1000.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1440.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1200.600pk> </home/maso/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on master.pdf (11 pages, 210835 bytes).
 PDF statistics:
- 437 PDF objects out of 1000 (max. 8388607)
- 213 compressed objects within 3 object streams
- 40 named destinations out of 1000 (max. 500000)
- 165 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 488 PDF objects out of 1000 (max. 8388607)
+ 218 compressed objects within 3 object streams
+ 38 named destinations out of 1000 (max. 500000)
+ 141 words of extra memory for PDF output out of 10000 (max. 10000000)
 

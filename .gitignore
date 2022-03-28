@@ -1,1 +1,13 @@
 *.png
+__pycache__
+*.o
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.lof
+*.out
+*.synctex.gz
+*.toc
+main
+data.txt
