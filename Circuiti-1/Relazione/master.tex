@@ -1,0 +1,687 @@
+\documentclass[a4paper]{article}
+%\usepackage{siunitx}
+\input{/home/maso/uni/bachelor-2/preamble.tex}
+\geometry{right=2cm,left=2cm}
+
+\begin{document}
+\title{Circuiti 1: sulla legge di Ohm}
+\maketitle
+\tableofcontents
+\clearpage
+\section{Parte prima: misura della caratteristica corrente-tensione di un resistore}
+\subsection{Obiettivi}
+L'obiettivo di questa prima parte dell'esperienza è quello di verificare in modo empirico la prima legge di Ohm tramite la misura della caratteristica corrente-tensione di varie configurazioni di resistori.
+
+\subsection{Metodo}
+In primo luogo si calcola quanto gli strumenti di laboratorio, in questo caso il voltmetro e l'amperometro, inficiano le misure che si eseguono. Dunque, occorre calcolare la resistenza interna dei due dispositivi.\\
+Il voltmetro è messo in parallelo con una resistenza dello stesso ordine della propria resistenza interna in modo che la corrente si divida sulle due resistenze in maniera rilevabile. Analogamente, l'amperometro va messo in serie con una resistenza piccola.\\
+Dopodiché si raccolgono nuovamente dei dati per amperaggio e tensione con configurazioni differenti di resistenze in modo tale da verificare la legge di Ohm e di valutare i risultati ottenuti con quelli aspettati.\\
+Il circuito di sinistra seguente è il circuito da preferirsi per la misura di resistenze con un valore confrontabile con la resistenza dell'amperometro. Infatti, la tensione misurata dal voltmetro è tutta la tensione che cade sulla resistenza. Però, la corrente passante per la resistenza è in larga parte la corrente misurata dall'amperometro.
+Il circuito di destra è da utilizzarsi per resistenze confrontabili con la resistenza del voltmetro. In questo modo, la corrente misurata dall'amperometro è tutta la corrente che passa sulla resistenza. Tuttavia, la caduta di potenziale sulla resistenza è la maggior parte della caduta di potenziale misurata dal voltmetro.
+
+\subsection{Dati ed analisi}
+Per la misura della resistenza interna del voltmetro si è utilizzata la configurazione di sinistra, mentre la misura della resistenza interna dell'amperometro ha richiesto l'altra configurazione. Nel primo caso si è utilizzata una resistenza $R=\SI{0.908(5)}{\mega\ohm}$; nel secondo caso $R=\SI{10.10(17)}{\ohm}$.
+\begin{center}
+\begin{circuitikz}
+	\draw
+	(0,0) to[V=$V_g$] (0,1.5)
+	to[R=$R_g$, resistors/scale=0.8] (0,3)
+	to[R=$R$] (4,3)
+	%to[R=$R_A$, resistors/scale=0.8] (4,1.5)
+	to[rmeter, t=A] (4,0)
+	-- (0,0)
+	;
+	\draw
+	(0.5,0) node[ground]{}
+	;
+	\draw
+	(1,3) -- (1,2)
+	to[rmeter, t=V] (3,2)
+	-- (3,3)
+	%(1,2) -- (1,1)
+	%to[R, l_=$R_V$, resistors/scale=0.8] (3,1)
+	%-- (3,2)
+	;
+\end{circuitikz}\hspace{20mm}
+\begin{circuitikz}
+	\draw
+	(0,0) to[V=$V_g$] (0,1.5)
+	to[R=$R_g$, resistors/scale=0.8] (0,3)
+	-- (1,3)
+	to[R=$R$] (4,3)
+	%to[R=$R_A$, resistors/scale=0.8] (4,1.5)
+	to[rmeter, t=A] (4,0)
+	-- (0,0)
+	(1,3) to[rmeter, t=V] (1,0)
+	%(1,2.5) -- (2,2.5)
+	%to[R=$R_V$, resistors/scale=0.8] (2,.5)
+	%-- (1,.5)
+	;
+	\draw
+	(0.5,0) node[ground]{}
+	;
+\end{circuitikz}
+\end{center}
+\paragraph{Misura resistenze interne.}
+Le misure ottenute sono:
+\begin{center}
+\begin{tabular}[t]{c|c}
+        \multicolumn{2}{c}{Voltmetro} \\
+	$I$/\SI{}{\micro\A} & d.d.p./\SI{}{\V} \\\midrule
+	\SI{0.62(3)}{} & \SI{0.510(3)}{} \\
+	\SI{1.22(3)}{} & \SI{1.014(4)}{} \\
+	\SI{1.82(3)}{} & \SI{1.519(6)}{} \\
+	\SI{2.42(3)}{} & \SI{2.033(7)}{} \\
+	\SI{3.01(3)}{} & \SI{2.521(8)}{} \\
+	\SI{3.62(3)}{} & \SI{3.019(10)}{}\\
+	\SI{4.80(3)}{} & \SI{4.015(13)}{}\\
+	\SI{5.99(3)}{} & \SI{5.015(16)}{}\\
+\end{tabular}\quad
+\begin{tabular}[t]{c|c}
+         \multicolumn{2}{c}{Amperometro}\\
+         $I$/\SI{}{\milli\A} & d.d.p./\SI{}{\V} \\\midrule
+         \SI{9.600(5)}{}   & \SI{0.1120(15)}{}\\
+         \SI{18.128(8)}{}  & \SI{0.2090(18)}{}\\
+         \SI{26.734(10)}{} & \SI{0.309(2)}{}  \\
+         \SI{35.460(13)}{} & \SI{0.409(2)}{}  \\
+         \SI{40.202(14)}{} & \SI{0.464(2)}{}  \\
+         \SI{44.350(15)}{} & \SI{0.512(3)}{}  \\
+\end{tabular}
+\end{center}
+Sempre nel primo caso, tramite un'interpolazione lineare delle misure sopra riportate secondo la relazione $V=IR_\text{eq} $, si ricava una resistenza di $R_\text{eq} =\SI{0.836(3)}{\mega\ohm}$ ($\widetilde{\chi}^2=0.07$, $p$-value $=100\%$). Tuttavia, essa è la resistenza equivalente della resistenza nota in parallelo con la resistenza interna del voltmetro:
+\[
+R_\text{eq} = \left( \frac{1}{R}+\frac{1}{R_V} \right)^{-1} \implies R_V=\left( \frac{1}{R_\text{eq} }-\frac{1}{R} \right)^{-1}
+\] 
+Si ottiene una misura della resistenza interna di $R_V=\SI{10.6(9)}{\mega\ohm}$. L'incertezza è ricavata tramite la propagazione degli errori e così per le misure indirette successivamente riportate.\\
+Similmente per l'amperometro, l'interpolazione avviene secondo la formula $V=IR_\text{eq} $ da cui si ottiene un valore $R_\text{eq} =\SI{11.55(3)}{\ohm}$ ($\widetilde{\chi}^2=0.14$, $p$-value $=98\%$). Essa è la resistenza equivalente della resistenza nota in serie con la resistenza interna dell'amperometro:
+\[
+R_\text{eq} =R+R_A \implies R_A=R_\text{eq} -R
+\] 
+Da cui si ottiene un valore di $R_A=\SI{1.45(17)}{\ohm} $.
+
+\begin{figure}[h]
+	\centering
+    	\hspace*{-0.75cm}
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=2 by 1}]
+    	\nextgroupplot[
+        	title={Voltmetro},
+        	width=0.45\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$I$/$\SI{}{\micro\A}$},
+        	ylabel={$V$/$\SI{}{V}$},
+        	%ylabel style={rotate=-90},
+        	xmin=0, xmax=7,
+        	ymin=0, ymax=6,
+        	xtick={0,1,...,6},
+        	minor x tick num=1,
+        	ytick={0,1,...,5},
+        	minor y tick num=1,
+        	legend pos=north west,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	%smooth,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+        	%table [x=x, y=y, x error=xerror, y error=yerror, col sep=comma] {
+        	%x,          y,          xerror,     yerror
+        	%2.24101,    34.58213,   ,           0.37493
+        	%3.94420,    59.67774,   ,           0.90430
+        	%6.24500,    89.71292,   ,           2.05287
+        	%9.00000,    122.10012,  ,           5.39665                     
+        	%};
+		%table [x=x 2, y=y 2, x error=, y error=yerr 2, col sep=comma] {../Dati.csv};
+		table [x=x 1, y=y 1, x error=xerr 1, y error=yerr 1, col sep=comma] {../Dati.csv};
+        	\addplot[red, samples=200, thick, domain=-1:8, restrict y to domain*=-1:7, opacity=0.5]
+        	plot (\x, { 0.836469057954811*x) });
+        	\legend{Data, Fit}
+    	\nextgroupplot[
+        	title={Amperometro},
+        	width=0.45\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$I$/$\SI{}{\milli\A}$},
+        	%ylabel={$V$/$\SI{}{V}$},
+        	%ylabel style={rotate=-90},
+        	xmin=5, xmax=50,
+        	ymin=0, ymax=0.6,
+        	xtick={5,10,20,...,50},
+        	minor x tick num=1,
+        	ytick={0,0.1,...,0.6},
+        	minor y tick num=1,
+        	legend pos=north west,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 2, y=y 2, x error=xerr 2, y error=yerr 2, col sep=comma] {../Dati.csv};
+        	\addplot[red, samples=200, thick, domain=4:51, restrict y to domain*=-1:1, opacity=0.5]
+        	plot (\x, { 0.011547043100041*x) });
+        	%\legend{Data, Fit}
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption{Grafici tensione-corrente per la misura delle resistenze interne del voltmetro e dell'amperometro. Le incertezze sono rappresentate da segmenti orizzontali per le ascisse e da segmenti verticali per le ordinate, tuttavia sono troppo piccole per essere apprezzabili.\\Bontà interpolazione voltmetro: $\widetilde{\chi}^2=0.07$, $p$-value $=100\%$. Bontà interpolazione amperometro: $\widetilde{\chi}^2=0.14$, $p$-value $=98\%$.}
+	\label{fig:res_volt_amp}
+\end{figure}
+
+\paragraph{Verifica della legge di Ohm.}
+Le misure ottenute sono:
+\begin{center}
+    \begin{tabular}{c|c||c|c}
+        \multicolumn{4}{c}{Legge di Ohm}\\
+	$I$/\SI{}{\milli\A} & d.d.p./\SI{}{\V} & $I$/\SI{}{\milli\A} & d.d.p./\SI{}{\V}  \\\midrule
+	 \SI{0.109(2)}{} & \SI{0.2190(17)}{} & \SI{1.108(3)}{} & \SI{2.213(8)}{} \\
+         \SI{0.207(2)}{} & \SI{0.415(2)}{}   & \SI{1.212(3)}{} & \SI{2.421(8)}{} \\
+         \SI{0.309(2)}{} & \SI{0.620(3)}{}   & \SI{1.312(3)}{} & \SI{2.621(9)}{} \\
+         \SI{0.410(2)}{} & \SI{0.820(4)}{}   & \SI{1.410(3)}{} & \SI{2.815(9)}{} \\
+         \SI{0.511(2)}{} & \SI{1.021(4)}{}   & \SI{1.513(3)}{} & \SI{3.019(10)}{}\\
+         \SI{0.609(2)}{} & \SI{1.216(5)}{}   & \SI{1.611(3)}{} & \SI{3.214(10)}{}\\
+         \SI{0.708(3)}{} & \SI{1.415(5)}{}   & \SI{1.712(3)}{} & \SI{3.418(11)}{}\\
+         \SI{0.809(3)}{} & \SI{1.616(6)}{}   & \SI{1.813(3)}{} & \SI{3.619(12)}{}\\
+         \SI{0.908(3)}{} & \SI{1.815(6)}{}   & \SI{1.913(3)}{} & \SI{3.819(12)}{}\\
+	 \SI{1.008(3)}{} & \SI{2.015(7)}{}   & \SI{2.112(3)}{} & \SI{4.216(13)}{}\\
+    \end{tabular}
+\end{center}
+Si verifica la legge di Ohm
+\[
+V=IR
+\] 
+Tramite interpolazione si ottiene un valore di $R=\SI{1.997(2)}{\kilo\ohm}$ ($\widetilde{\chi}^2=0.04$, $p$-value $=100\%$). %che concorda con quanto riportato dal multimetro palmare, $R=\SI{1.996(11)}{\kilo\ohm}$.
+\begin{figure}[h]
+	\centering
+    	\hspace*{-0.75cm}
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=1 by 1}]
+    	\nextgroupplot[
+        	%title={Verifica legge di Ohm},
+        	width=0.8\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$I$/$\SI{}{\milli\A}$},
+        	ylabel={$V$/$\SI{}{V}$},
+        	%ylabel style={rotate=-90},
+        	xmin=-.15, xmax=2.25,
+        	ymin=-.5, ymax=5,
+		xtick={0,.25,...,2.25},
+        	minor x tick num=1,
+        	ytick={0,1,...,5},
+        	minor y tick num=1,
+        	legend pos=north west,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 3, y=y 3, x error=xerr 3, y error=yerr 3, col sep=comma] {../Dati.csv};
+        	\addplot[red, samples=200, thick, domain=-1:2.5, restrict y to domain*=-1:6, opacity=0.5]
+        	plot (\x, { 1.99711387098316*x) });
+        	\legend{Data, Fit}
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption{Grafico delle misure di tensione-corrente per una resistenza. Tali misure sono utilizzate per verificare la legge di Ohm. $\widetilde{\chi}^2=0.04$, $p$-value $=100\%$.}
+	\label{fig:verif_ohm}
+\end{figure}
+
+\paragraph{Misura di resistenze composite.}
+Le misure ottenute sono:
+\begin{center}
+	\begin{tabular}[t]{c|c}
+	\multicolumn{2}{c}{Parallelo}\\
+         	$I$/\SI{}{\milli\A} & d.d.p./\SI{}{\V} \\\midrule
+        	\SI{0.320(2)}{} & \SI{0.2130(18)}{}\\
+         	\SI{0.628(2)}{} & \SI{0.417(2)}{}  \\
+         	\SI{0.933(3)}{} & \SI{0.619(3)}{}  \\
+         	\SI{1.230(3)}{} & \SI{0.816(4)}{}  \\
+         	\SI{1.538(3)}{} & \SI{1.020(4)}{}  \\
+         	\SI{1.835(3)}{} & \SI{1.217(5)}{}  \\
+         	\SI{2.138(3)}{} & \SI{1.417(5)}{}  \\
+         	\SI{2.442(3)}{} & \SI{1.619(6)}{}  \\
+         	\SI{2.741(3)}{} & \SI{1.817(6)}{}  \\
+         	\SI{3.032(3)}{} & \SI{2.010(7)}{}  \\
+         	\SI{3.334(3)}{} & \SI{2.214(8)}{}  \\
+         	\SI{3.644(3)}{} & \SI{2.419(8)}{}  \\
+	 	\SI{3.944(3)}{} & \SI{2.614(9)}{}  \\
+         	\SI{4.243(4)}{} & \SI{2.812(9)}{}  \\
+         	\SI{4.544(4)}{} & \SI{3.010(10)}{} \\
+         	\SI{4.840(4)}{} & \SI{3.207(10)}{} \\
+         	\SI{5.140(4)}{} & \SI{3.405(11)}{} \\
+	 	\SI{5.449(4)}{} & \SI{3.610(12)}{} \\
+         	\SI{5.744(4)}{} & \SI{3.805(12)}{} \\
+         	\SI{6.051(4)}{} & \SI{4.009(13)}{} \\
+         	\SI{6.352(4)}{} & \SI{4.208(13)}{} \\
+	\end{tabular}\quad
+	\begin{tabular}[t]{c|c}
+    	\multicolumn{2}{c}{Serie}\\
+       		$I$/\SI{}{\milli\A} & d.d.p./\SI{}{\V} \\\midrule
+         	\SI{0.06835(5)}{}  & \SI{0.2040(17)}{}\\
+         	\SI{0.13394(7)}{}  & \SI{0.400(2)}{}  \\
+         	\SI{0.20104(9)}{}  & \SI{0.600(3)}{}  \\
+         	\SI{0.26481(11)}{} & \SI{0.791(3)}{}  \\
+         	\SI{0.33115(12)}{} & \SI{0.989(4)}{}  \\
+         	\SI{0.39593(14)}{} & \SI{1.182(5)}{}  \\
+         	\SI{0.45965(16)}{} & \SI{1.373(5)}{}  \\
+         	\SI{0.5259(4)}{}   & \SI{1.570(6)}{}  \\
+         	\SI{0.5882(4)}{}   & \SI{1.757(6)}{}  \\
+         	\SI{0.6540(4)}{}   & \SI{1.953(7)}{}  \\
+         	\SI{0.7177(4)}{}   & \SI{2.143(7)}{}  \\
+         	\SI{0.7823(5)}{}   & \SI{2.336(8)}{}  \\
+         	\SI{0.8477(5)}{}   & \SI{2.531(8)}{}  \\
+         	\SI{0.9137(5)}{}   & \SI{2.728(9)}{}  \\
+         	\SI{0.9778(5)}{}   & \SI{2.920(10)}{} \\
+         	\SI{1.0424(5)}{}   & \SI{3.113(11)}{} \\
+         	\SI{1.1067(6)}{}   & \SI{3.305(11)}{} \\
+         	\SI{1.1719(6)}{}   & \SI{3.500(12)}{} \\
+         	\SI{1.2363(6)}{}   & \SI{3.692(12)}{} \\
+         	\SI{1.3032(6)}{}   & \SI{3.892(12)}{} \\
+         	\SI{1.3679(6)}{}   & \SI{4.085(13)}{} \\
+	\end{tabular}
+\end{center}
+I dati ottenuti sono interpolati secondo la legge di Ohm ottenendo una resistenza in parallelo equivalente di $R=\SI{0.6628(5)}{\kilo\ohm}$ ($\widetilde{\chi}^2=0.05$, $p$-value $=100\%$) ed una resistenza equivalente in serie di $R=\SI{2.986(2)}{\kilo\ohm}$ ($\widetilde{\chi}^2=0.0028$, $p$-value $=100\%$).
+\begin{figure}[h]
+	\centering
+    	\hspace*{-0.75cm}
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=2 by 1}]
+    	\nextgroupplot[
+        	title={Parallelo},
+        	width=0.45\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$I$/$\SI{}{\milli\A}$},
+        	ylabel={$V$/$\SI{}{V}$},
+        	%ylabel style={rotate=-90},
+        	xmin=-.5, xmax=7,
+        	ymin=-.5, ymax=5,
+		xtick={0,1,...,7},
+        	minor x tick num=1,
+        	ytick={0,1,...,5},
+        	minor y tick num=1,
+        	legend pos=north west,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 4, y=y 4, x error=xerr 4, y error=yerr 4, col sep=comma] {../Dati.csv};
+        	\addplot[red, samples=200, thick, domain=-1:8, restrict y to domain*=-1:6, opacity=0.5]
+        	plot (\x, { 0.662896866014687*x) });
+        	\legend{Data, Fit}
+    	\nextgroupplot[
+        	title={Serie},
+        	width=0.45\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$I$/$\SI{}{\milli\A}$},
+        	%ylabel={$V$/$\SI{}{V}$},
+        	%ylabel style={rotate=-90},
+        	xmin=-.1, xmax=1.5,
+        	ymin=-.5, ymax=5,
+		xtick={0,.25,...,1.5},
+        	minor x tick num=1,
+        	ytick={0,1,...,5},
+        	minor y tick num=1,
+        	legend pos=north west,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 5, y=y 5, x error=xerr 5, y error=yerr 5, col sep=comma] {../Dati.csv};
+        	\addplot[red, samples=200, thick, domain=-1:2, restrict y to domain*=-1:6, opacity=0.5]
+        	plot (\x, { 2.98620058400769*x) });
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption{Grafici delle misure tensione-corrente per la verifica legge di Ohm di resistori in parallelo ed in serie. Parallelo: $\widetilde{\chi}^2=0.05$, $p$-value $=100\%$. Serie: $\widetilde{\chi}^2=0.0028$, $p$-value $=100\%$.}
+	\label{fig:verif_ohm_parallel_serie}
+\end{figure}
+\paragraph{Analisi degli errori.}
+Le incertezze derivate dai multimetri digitali sono ricavate dai rispettivi manuali nelle sezioni corrispondenti alle accuratezze (accuracy) relative agli intervalli di misura considerati. Ad esempio, considerata un'accuratezza $\pm[0.5\%+1]$, l'incertezza su di una misura di $\SI{100}{\V}$ risulta essere $\SI{1.5}{\V}$.\\
+Si suppone che il valore veritiero della misura si trovi all'interno dell'intervallo dell'accuratezza con una distribuzione uniforme. Dunque, si utilizza la deviazione standard di tale distribuzione. Riprendendo l'esempio precedente, l'incertezza diventa
+\[
+\frac{2\cdot \SI{1.5}{\V}}{\sqrt{12} }=\frac{\SI{1.5}{\V}}{\sqrt{3} }\approx \SI{0.9}{\V}
+\] 
+Da cui la misura diventa $\SI{100.0(9)}{\V}$.
+
+\subsection{Conclusioni.}
+Come si evince dalle interpolazioni, i dati raccolti sono in accordo con il modello della legge di Ohm.\\
+Tuttavia, risulta importante notare che i valori del $\widetilde{\chi}^2$ ottenuti nelle interpolazioni sono molto distanti dal valore atteso. Ciononostante, le incertezze utilizzate sono le più piccole che si sono potute trovare, ma risultano comunque sovrastimate.
+\clearpage
+
+\section{Parte seconda: partitore resistivo}
+\subsection{Obiettivi}
+Si costruisce un circuito come in figura dimensionando le due resistenze in modo che la caduta di potenziale sui terminali $A$ e $B$ prescinda dal valore della resistenza di carico $R_L$ ivi collegata. Inoltre, le due resistenze devono essere tali per cui su ciascuna cada lo stesso valore di tensione quando non è collegato nessun carico.
+\begin{center}
+\begin{circuitikz}
+	\draw
+	(0,0) to[V=$V_g$] (0,1.5)
+	to[R=$R_g$, resistors/scale=0.8] (0,3)
+	to[R=$R$] (4,3)
+	to[R=$R$] (4,0)
+	-- (0,0)
+	(4,3) to[short, -o] (5,3) node[anchor=west]{$A$}
+	(4,0) to[short, -o] (5,0) node[anchor=west]{$B$}
+	;
+	\draw
+	(0.5,0) node[ground]{}
+	;
+	%\draw
+	%(4,2.5) -- (3,2.5)
+	%to[rmeter, t=V] (3,.5)
+	%-- (4,.5)
+	%(3,2.5) -- (2,2.5)
+	%to[R, l_=$R_V$, resistors/scale=0.8] (2,.5)
+	%-- (3,.5)
+	%;
+\end{circuitikz}
+\end{center}
+
+\subsection{Metodo}
+La tensione calcolata ai capi del generatore reale deve essere il doppio rispetto a quella misurata ai capi della resistenza in parallelo. Pertanto, le resistenze in serie devono essere uguali, $R=\SI{9.80(11)}{\kilo\ohm}$, e non eccessivamente piccole affinché la raccolta dati sia quantitativamente coerente con il risultato atteso. Si utilizzano resistenze di carico in un intervallo da $\SI{10}{\kilo\ohm}$ a $\SI{1}{\mega\ohm}$ e, per comodità, una tensione iniziale di $\SI{1.004(4)}{\V}$.
+
+\subsection{Dati ed analisi}
+I dati ottenuti sono:
+\begin{center}
+    \begin{tabular}{c|c}
+         %\multicolumn{2}{c}{Parte seconda}\\
+         $R_L$/\SI{}{\kilo\ohm} & d.d.p./\SI{}{\V} \\\midrule
+         \SI{5.00(3)}{}   & \SI{0.2520(19)}{} \\
+         \SI{10.00(6)}{}  & \SI{0.336(2)}{}   \\
+         \SI{25.00(14)}{} & \SI{0.420(2)}{}   \\
+         \SI{50.0(3)}{}   & \SI{0.458(2)}{}   \\
+         \SI{100.0(6)}{}  & \SI{0.479(3)}{}   \\
+         \SI{250.0(14)}{} & \SI{0.493(3)}{}   \\
+         \SI{500(3)}{}    & \SI{0.498(3)}{}   \\
+         \SI{750(4)}{}    & \SI{0.500(3)}{}   \\
+         \SI{1000(6)}{}   & \SI{0.501(3)}{}   \\
+         \SI{1100(6)}{}   & \SI{0.501(3)}{}   \\
+    \end{tabular}
+\end{center}
+Come si evince dalla tabella e dal grafico, aumentando la resistenza di carico, la tensione sul secondo resistore tende a $\SI{0.500}{\V}$, cioè la metà della tensione iniziale.
+\begin{figure}[H]
+	\centering
+    	\hspace*{-0.75cm}
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=1 by 1}]
+    	\nextgroupplot[
+        	%title={Partitore resistivo},
+        	width=0.8\textwidth,
+        	height=0.4\textwidth,
+		xlabel={$R_L$/\SI{}{\kohm}},
+        	ylabel={$V$/$\SI{}{V}$},
+        	%ylabel style={rotate=-90},
+        	xmin=-50, xmax=1199,
+        	ymin=0.3, ymax=0.6,
+		xtick={0,200,...,1200},
+        	minor x tick num=1,
+		x tick label style={/pgf/number format/.cd, precision=3, /tikz/.cd},
+        	ytick={0.3,.35,...,.6},
+        	minor y tick num=1,
+        	legend pos=north west,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+		error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+		/tikz/.cd
+        	]
+		table [x=x 7, y=y 7, x error=xerr 7, y error=yerr 7, col sep=comma] {../Dati.csv};
+        	\legend{Data}
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption{Grafico delle misure tensione-resistenza.}
+	\label{fig:part_resist}
+\end{figure}
+
+\subsection{Conclusioni}
+L'intervallo in cui la caduta di potenziale prescinde dalla resistenza di carico risulta essere sopra i $\SI{250}{\kilo\ohm}$. Si è deciso di utilizzare due resistenze di circa $\SI{10}{\kilo\ohm}$ per accentuare l'effetto. A supporto dell'ipotesi si sono campionati dati anche al di fuori dell'intervallo prestabilito.
+\clearpage
+
+\section{Parte terza: misura della caratteristica corrente-tensione di un diodo}
+\subsection{Obiettivi}
+Si vuole verificare la legge di Shockley
+\[
+I = I_0\left[ \exp\left( \frac{qV}{gkT} \right)-1 \right] 
+\] 
+per un diodo 1N4006. Tale relazione lega la corrente con la tensione all'interno di un diodo e vale in un certo intervallo. Successivamente, si verifica empiricamente questa affermazione e si valuta per quale tensione di soglia il diodo cominci a condurre.
+
+\subsection{Metodo}
+Si pone il diodo in parallelo con il voltmetro prestando attenzione alla direzione di polarizzazione. Entrambi sono in serie con l'amperometro come in figura. Dopodiché si fa passare una corrente all'interno del diodo mantenendosi nell'intervallo tra $\SI{0}{\milli\A}$ e $\SI{500}{\milli\A}$.
+\begin{center}
+\begin{circuitikz}
+	\draw
+	(0,0) to[V=$V_g$] (0,1.5)
+	to[R=$R_g$, resistors/scale=0.8] (0,3)
+	to[sDo] (4,3)
+	to[rmeter, t=A] (4,0)
+	-- (0,0)
+	;
+	\draw
+	(0.5,0) node[ground]{}
+	;
+	\draw
+	(1,3) -- (1,2)
+	to[rmeter, t=V] (3,2)
+	-- (3,3)
+	;
+\end{circuitikz}
+\end{center}
+
+\subsection{Dati ed analisi}
+I dati ottenuti sono:
+\begin{center}
+	\begin{tabular}[t]{c|c}
+         \multicolumn{2}{c}{Diodo: andamento esponenziale}\\
+         d.d.p./\SI{}{\V} & $I$/\SI{}{\milli\A}  \\\midrule
+         \SI{0.703(3)}{} & \SI{7.68(3)}{}\\
+         \SI{0.753(3)}{} & \SI{35.27(3)}{}\\
+         \SI{0.779(3)}{} & \SI{77.52(5)}{}\\
+         \SI{0.790(3)}{} & \SI{111.80(6)}{}\\
+         \SI{0.793(3)}{} & \SI{125.91(6)}{}\\
+         \SI{0.797(3)}{} & \SI{148.20(7)}{}\\
+         \SI{0.800(3)}{} & \SI{168.00(7)}{}\\
+         \SI{0.803(3)}{} & \SI{175.20(7)}{}\\
+         \SI{0.804(3)}{} & \SI{196.00(8)}{}\\
+         \SI{0.808(3)}{} & \SI{227.20(9)}{}\\
+         \SI{0.809(3)}{} & \SI{239.00(9)}{}\\
+         \SI{0.810(3)}{} & \SI{251.90(10)}{}\\
+         \SI{0.811(3)}{} & \SI{277.10(10)}{}\\
+         \SI{0.814(4)}{} & \SI{302.30(11)}{}\\
+         \SI{0.816(4)}{} & \SI{331.50(12)}{}\\
+         \SI{0.817(4)}{} & \SI{354.10(13)}{}\\
+         \SI{0.819(4)}{} & \SI{382.30(13)}{}\\
+         \SI{0.820(4)}{} & \SI{404.30(14)}{}\\
+         \SI{0.820(4)}{} & \SI{436.00(15)}{}\\
+    \end{tabular}\quad
+    \begin{tabular}[t]{c|c}
+         \multicolumn{2}{c}{Diodo: andamento lineare}\\
+         d.d.p./\SI{}{\V} & $I$/\SI{}{\milli\A}  \\\midrule
+         \SI{0.810(4)}{} & \SI{251.90(10)}{}\\
+         \SI{0.811(4)}{} & \SI{277.10(10)}{}\\
+         \SI{0.814(4)}{} & \SI{302.30(11)}{}\\
+         \SI{0.816(4)}{} & \SI{331.50(12)}{}\\
+         \SI{0.817(4)}{} & \SI{354.10(13)}{}\\
+         \SI{0.819(4)}{} & \SI{382.30(13)}{}\\
+         \SI{0.820(4)}{} & \SI{404.30(14)}{}\\
+    \end{tabular}
+\end{center}
+Si interpolano i dati tramite una relazione esponenziale del tipo
+\[
+I(V)=I_0 \left[ \exp\left( A V \right) -1 \right] + B
+\] 
+Si ricavano valori $I_0=\SI{3(4)e-15}{\A}$, $A=\SI{39.6(15)}{\per\volt}$ e $B=\SI{4.0(8)}{\mA}$ ($\widetilde{\chi}^2=0.47$, $p$-value $=99\%$). Da cui, supponendo una temperatura costante del diodo di $\SI{300}{\K}$, si ottiene una costante del diodo di
+\[
+g=\frac{q}{Ak_BT}=\SI{1.00(4)}{}
+\] 
+dove $q=\SI{1.602176634e-19}{\coulomb}$ è la carica elementare, $k_B=\SI{1.380649e-23}{\J\per\K}$ è la costante di Boltzmann, e $T=\SI{300}{\K}$ la temperatura del diodo. Tuttavia, la legge di Shockley dipende, tra le altre cose, dalla temperatura del diodo: si è osservato che ad una particolare tensione, nel diodo scorre una corrente che poco a poco diminuisce nel tempo in quanto aumenta la sua temperatura interna per effetto Joule. Dunque, non avendo a disposizione gli strumenti necessari, i dati ottenuti non permetto un'efficace verifica d'ipotesi.\\
+
+Riguardo l'andamento lineare, si interpolano i dati tramite la relazione $I=A+BV$, così da ottenere $A=\SI{-12(5)e+3}{\mA}$ e $B=\SI{15(6)e+3}{\mA\per\V}$ ($\widetilde{\chi}^2=0.022$, $p$-value $=100\%$). Pertanto, la tensione di soglia risulta essere
+\[
+V_\text{soglia} = -\frac{A}{B}=\SI{0.793(9)}{\V}
+\] 
+Nella propagazione degli errori si sono tenute conto anche la covarianza e la correlazione.
+
+\begin{figure}[H]
+	\centering
+    	\hspace*{-0.75cm}
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=2 by 1}]
+    	\nextgroupplot[
+        	title={Andamento esponenziale},
+        	width=0.45\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$V$/$\SI{}{V}$},
+        	ylabel={$I$/$\SI{}{\milli\A}$},
+        	%ylabel style={rotate=-90},
+        	xmin=.69, xmax=.83,
+        	ymin=-20, ymax=460,
+		xtick={.7,.725,...,.85},
+        	minor x tick num=1,
+		x tick label style={/pgf/number format/.cd, precision=3, /tikz/.cd},
+        	ytick={0,50,...,450},
+        	minor y tick num=1,
+        	legend pos=north west,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+		x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 6, y=y 6, x error=xerr 6, y error=yerr 6, col sep=comma] {../Dati.csv};
+        	\addplot[red, samples=200, thick, domain=.67:.85, restrict y to domain*=-30:470, opacity=0.5]
+        	plot (\x, { 3.09325e-12*(exp(39.5619*x)-1)+4.02113});
+        	\addplot[red, samples=200, loosely dashed, thick, domain=.67:.85, restrict y to domain*=-30:470, opacity=0.5]
+        	plot (\x, { -11616.18539+14651.62598*x) });
+        	\legend{Data, Fit Exp, Fit Lin}
+    	\nextgroupplot[
+        	title={Andamento lineare},
+        	width=0.45\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$V$/$\SI{}{V}$},
+        	%ylabel={$I$/$\SI{}{\milli\A}$},
+        	%ylabel style={rotate=-90},
+        	xmin=.809, xmax=.821,
+        	ymin=240, ymax=420,
+		xtick={.81,.815,...,.82},
+        	minor x tick num=5,
+		x tick label style={/pgf/number format/.cd, precision=3, /tikz/.cd},
+        	ytick={250,275,...,400},
+        	minor y tick num=1,
+        	legend pos=north west,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 8, y=y 8, x error=xerr 8, y error=yerr 8, col sep=comma] {../Dati.csv};
+        	\addplot[red, samples=200, loosely dashed, thick, domain=.8:.83, restrict y to domain*=230:430, opacity=0.5]
+        	plot (\x, { -11616.18539+14651.62598*x) });
+        	%\legend{Data, Fit}
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption{Grafici delle misure corrente-tensione dell'andamento esponenziale del diodo e dell'approssimazione lineare. Esponenziale: $\widetilde{\chi}^2=0.47$, $p$-value $=99\%$. Lineare: $\widetilde{\chi}^2=0.022$, $p$-value $=100\%$.}
+	\label{fig:diodo_soglia}
+\end{figure}
+
+\subsection{Conclusioni}
+
+\clearpage
+
+\section{Esperienza virtuale}
+\subsection{Parte prima}
+Si simula la risposta di un diodo e si studia il comportamento misurando la sua caratteristica corrente-tensione. Si caratterizza un diodo 1N4007. Si misura la caratteristica corrente-tensione da $\SI{100}{\mV}$ a $\SI{1}{\V}$.
+% grafico dati e grafico Shockley; più dati
+I dati sono in accordo con il modello della legge di Shockley fino ad una tensione di circa $\SI{800}{\mV}$, oltre la quale si osserva un comportamento non più esponenziale.\\
+Il parametro $\frac{\mathrm{d}V}{\mathrm{d}I}$ risulta essere la resistenza del diodo che diminuisce all'aumentare dell'amperaggio.
+
+\subsection{Parte seconda}
+Si studia il comportamento del diodo utilizzando strumenti di misura reali. Si è deciso di porre una resistenza del voltmetro pari a $R_V=\SI{5.5}{\Mohm}$ ed una dell'amperometro di $R_A=\SI{2.50}{\ohm}$.
+Si è misurata la caratteristica corrente-tensione per valori da $\SI{10}{\mV}$ a $\SI{1}{\V}$.
+% tabella dati, grafici
+Nella seconda configurazione, la pendenza della curva è più pronunciata in quanto la resistenza del diodo diminuisce e dunque diventa confrontabile con quella dell'amperometro. Di conseguenza, pure le cadute di potenziale diventano confrontabili.\\
+La presenza delle resistenze interne perturba l'idealità del circuito: l'amperometro causa una caduta di potenziale; mentre il voltmetro provoca una ripartizione della corrente.\\
+Come affermato nella prima parte dell'esperienza, il primo circuito è utile per resistenze confrontabili con quella del voltmetro; il secondo circuito per resistenze confrontabili con quella dell'amperometro.
+
+\subsection{Conclusioni}
+La legge di Shockley vale in un intervallo particolare di tensione, oltre il quale si può utilizzare un'approssimazione lineare del comportamento del diodo. Quanto simulato risulta essere in accordo con i dati sperimentali ottenuti in laboratorio.\\
+Di seguito si riportano i grafici che mostrano gli andamenti corrente-tensione del diodo nel caso simulato e nel caso reale.
+% grafico reale e virtuale
+% corrente di saturazione inversa dov'è????
+
+
+\end{document}
