@@ -1,0 +1,475 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     24249,        467]
+NotebookOptionsPosition[     23687,        447]
+NotebookOutlinePosition[     24198,        468]
+CellTagsIndexPosition[     24155,        465]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ ButtonBox[
+  StyleBox["\<\"Help\"\>",
+   StripOnInput->False,
+   FontSize->14],
+  Appearance->Automatic,
+  ButtonFunction:>MessageDialog[
+    Column[{
+      Style["Help: Oscilloscopio virtuale\n", 20, Bold], 
+      Style[
+      "Questo \"oscilloscopio virtuale\" permette di visualizzare i segnali \
+di ingresso e uscita a determinati circuiti (RL, RC e RLC in corrente \
+sinusoidale e impulsata/onda quadra) in modo analogo a come sarebbe possibile \
+osservarli con un oscilloscopio in laboratorio. Lo strumento, oltre a \
+permettere di impostare i valori dei componenti del circuito e a modificare \
+la scala orizzontale e verticale, nonch\[EGrave] gli offset nei due assi, \
+permette anche di misurare tempo e tensione sui due canali e calcole la \
+differenza dei valori ottenuti.", 14], 
+      Style["In particolare: \n", 14], 
+      Style[
+      "  1-  In alto si trovano i controlli del circuiti: tipo di circuito \
+(nel formato: \"circuito\"-\"uscita\") e i valori di R, L e C, frequenza del \
+segnale di ingresso e resistenza interna dell'induttanza. Questi valori \
+possono essere forniti inserendo un valore nel relativo campo e selezionando \
+l'eventuale prefisso del SI (p, n, u, m, M, G), es. 470 + n, 82 + m, 4.7 + k\n\
+", 14], 
+      Style[
+      "  2- Al centro a sinistra si trova lo \"schermo\" dell'oscilloscopio, \
+nel quale si vedono i due segnali (ingresso: blu, uscita: giallo)\n", 14], 
+      Style[
+      "  3- Al centro a destra si trovano i controlli dell'oscilloscopio, \
+dall'alto in basso: Selezionatore del canale a cui si riferisce il \
+\"cursore\" per la misura sul grafico (vedi punto 4), bottoni per resettare \
+le misure dei cursori, men\[UGrave] per la selezione della scala verticale \
+del canale 2, men\[UGrave] per la selezione della scala orizzontale, \
+modificatori dell'offset del canale 2 e della scala orizzontale dei tempi con \
+relativo bottone di reset a zero. \n", 14], 
+      Style[
+      "  4- In basso \[EGrave] presente la tabella che riporta le misure che \
+sono state effettuare per il canale 1 e 2 e la relativa differenza \n", 14], 
+      Style["\n", 14], 
+      Style[
+      "Misure: Per effettuare le misure si seleziona il canale con gli \
+appositi selezionatori e con il mouse si clicca nella posizione della quale \
+si vuole avere le coordinate, queste compariranno nella tabella sottostante. \
+Il punto acquisito \[EGrave] la punta della freccia del mouse.", 14], 
+      Style["\n", 14], 
+      Style[
+      "Creato da: Andrea Barresi - Per info e segnalazioni: \
+a.barresi@unimib.it", 14, Bold]}], WindowSize -> Medium],
+  Evaluator->Automatic,
+  ImageSize->{200, 40},
+  Method->"Preemptive"]], "Output",
+ CellChangeTimes->{
+  3.7936115807219405`*^9, 3.823163334130235*^9, 3.8232623070162954`*^9, {
+   3.8280903571259804`*^9, 3.8280903735577264`*^9}, 3.828090410874606*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"55da34a4-a8f4-4497-bfa4-55b9b8da6985"],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`rin$$ = 300, $CellContext`cin$$ = 
+  1, $CellContext`Lin$$ = 10, $CellContext`fin$$ = 1, $CellContext`rexp$$ = 
+  1, $CellContext`cexp$$ = Rational[1, 1000000], $CellContext`Lexp$$ = 
+  Rational[1, 1000], $CellContext`fexp$$ = 1000, $CellContext`ampCH2$$ = 
+  1, $CellContext`ampTempi$$ = 0.01, $CellContext`offCH2$$ = 
+  0, $CellContext`offTempi$$ = 0, $CellContext`CH1T$$ = 
+  0, $CellContext`CH1V$$ = 0, $CellContext`CH2T$$ = 0, $CellContext`CH2V$$ = 
+  0, $CellContext`sel$$ = 0, $CellContext`rl$$ = 0}, 
+  DynamicBox[
+   ToBoxes[$CellContext`r = $CellContext`rin$$ $CellContext`rexp$$; \
+$CellContext`c = $CellContext`cin$$ $CellContext`cexp$$; $CellContext`L = \
+$CellContext`Lin$$ $CellContext`Lexp$$; $CellContext`f = $CellContext`fin$$ \
+$CellContext`fexp$$; Grid[{{
+        Grid[{{
+           Style["Oscilloscopio virtuale RL-RLC", 22, Bold], SpanFromLeft, 
+           SpanFromLeft, SpanFromLeft, SpanFromLeft}, {}, {
+          "Funzione", "Resistenza", SpanFromLeft, "Capacit\[AGrave]", 
+           SpanFromLeft, "Induttanza", SpanFromLeft, "Frequenza", 
+           SpanFromLeft, "Resistenza induttanza"}, {
+           PopupMenu[
+            Dynamic[$CellContext`sel$$], {
+            0 -> "RLC-R Sin", 1 -> "RLC-L Sin", 2 -> "RLC-C Sin", 3 -> 
+             "RLC-R Imp", 4 -> "RL-R Sin", 5 -> "RL-L Sin", 6 -> "RL-R Imp", 
+             7 -> "RL-L Imp", 8 -> "RC-R Sin", 9 -> "RC-C Sin", 10 -> 
+             "RC-R Imp", 11 -> "RC-C Imp"}, FieldSize -> {6, 1}], 
+           InputField[
+            Dynamic[$CellContext`rin$$], Number, FieldSize -> {4, 1}], 
+           PopupMenu[
+            Dynamic[$CellContext`rexp$$], {
+            1 -> "-", 1000 -> "k", 1000000 -> "M"}, FieldSize -> {2, 1}], 
+           InputField[
+            Dynamic[$CellContext`cin$$], Number, FieldSize -> {4, 1}], 
+           PopupMenu[
+            Dynamic[$CellContext`cexp$$], {
+            Rational[1, 1000000000] -> "n", Rational[1, 1000000] -> "\[Mu]", 
+             Rational[1, 1000] -> "m"}, FieldSize -> {2, 1}], 
+           InputField[
+            Dynamic[$CellContext`Lin$$], Number, FieldSize -> {4, 1}], 
+           PopupMenu[
+            Dynamic[$CellContext`Lexp$$], {
+            Rational[1, 1000000] -> "\[Mu]", Rational[1, 1000] -> "m", 1 -> 
+             "-"}, FieldSize -> {2, 1}], 
+           InputField[
+            Dynamic[$CellContext`fin$$], Number, FieldSize -> {4, 1}], 
+           PopupMenu[
+            Dynamic[$CellContext`fexp$$], {
+            1 -> "-", 1000 -> "k", 1000000 -> "M"}, FieldSize -> {2, 1}], 
+           InputField[
+            Dynamic[$CellContext`rl$$], Number, FieldSize -> {4, 1}]}}], 
+        SpanFromLeft}, {
+       Switch[$CellContext`sel$$, 
+          0, $CellContext`funzione = (($CellContext`r + $CellContext`rl$$)/
+             Sqrt[($CellContext`r + $CellContext`rl$$)^2 + (-(1/(2 
+                  Pi $CellContext`f $CellContext`c)) + 
+                2 Pi $CellContext`f $CellContext`L)^2]) 
+            Sin[2 Pi $CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$) - 
+              ArcTan[(-(1/(2 Pi $CellContext`f $CellContext`c)) + 
+                2 Pi $CellContext`f $CellContext`L)/($CellContext`r + \
+$CellContext`rl$$)]]; $CellContext`input = 
+           Sin[2 Pi $CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; Null, 
+          1, $CellContext`funzione = ((
+              2 Pi $CellContext`f $CellContext`L + $CellContext`rl$$)/
+             Sqrt[($CellContext`r + $CellContext`rl$$)^2 + (-(1/(2 
+                  Pi $CellContext`f $CellContext`c)) + 
+                2 Pi $CellContext`f $CellContext`L)^2]) 
+            Sin[2 Pi $CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$) + Pi/2 - 
+              ArcTan[(-(1/(2 Pi $CellContext`f $CellContext`c)) + 
+                2 Pi $CellContext`f $CellContext`L)/($CellContext`r + \
+$CellContext`rl$$)]]; $CellContext`input = 
+           Sin[2 Pi $CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; Null, 
+          2, $CellContext`funzione = (
+             1 (2 Pi $CellContext`f $CellContext`c)^(-1)/
+             Sqrt[($CellContext`r + $CellContext`rl$$)^2 + (-(1/(2 
+                  Pi $CellContext`f $CellContext`c)) + 
+                2 Pi $CellContext`f $CellContext`L)^2]) 
+            Sin[2 Pi $CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$) - Pi/2 - 
+              ArcTan[(-(1/(2 Pi $CellContext`f $CellContext`c)) + 
+                2 Pi $CellContext`f $CellContext`L)/($CellContext`r + \
+$CellContext`rl$$)]]; $CellContext`input = 
+           Sin[2 Pi $CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; Null, 
+          3, $CellContext`funzione = 
+           If[$CellContext`r^2 != 
+             4 ($CellContext`L/$CellContext`c), (-((
+                E^((1/2) (-(($CellContext`r + \
+$CellContext`rl$$)/$CellContext`L) - 
+                   Sqrt[-(4/($CellContext`c $CellContext`L)) + \
+($CellContext`r + $CellContext`rl$$)^2/$CellContext`L^2]) ($CellContext`t + \
+$CellContext`offTempi$$)) - 
+                E^((1/2) (-(($CellContext`r + \
+$CellContext`rl$$)/$CellContext`L) + 
+                  Sqrt[-(4/($CellContext`c $CellContext`L)) + ($CellContext`r + \
+$CellContext`rl$$)^2/$CellContext`L^2]) ($CellContext`t + \
+$CellContext`offTempi$$))) $CellContext`r/($CellContext`L 
+               Sqrt[-(4/($CellContext`c $CellContext`L)) + ($CellContext`r + \
+$CellContext`rl$$)^2/$CellContext`L^2]))) 
+             UnitStep[$CellContext`t + $CellContext`offTempi$$], (2 
+              E^(-(Sqrt[$CellContext`L/$CellContext`c] ($CellContext`t + \
+$CellContext`offTempi$$)/$CellContext`L)) 
+              Sqrt[$CellContext`L/$CellContext`c] ($CellContext`t + \
+$CellContext`offTempi$$)/$CellContext`L) 
+             UnitStep[$CellContext`t + $CellContext`offTempi$$]]; \
+$CellContext`input = UnitStep[$CellContext`t + $CellContext`offTempi$$]; Null,
+           4, $CellContext`funzione = (($CellContext`r + $CellContext`rl$$)/
+             Sqrt[($CellContext`r + $CellContext`rl$$)^2 + (2 
+                Pi $CellContext`f $CellContext`L)^2]) 
+            Sin[2 Pi $CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$) - ArcTan[
+              2 Pi $CellContext`f ($CellContext`L/$CellContext`r)]]; \
+$CellContext`input = 
+           Sin[2 Pi $CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; Null, 
+          5, $CellContext`funzione = ((
+              2 Pi $CellContext`f $CellContext`L + $CellContext`rl$$)/
+             Sqrt[($CellContext`r + $CellContext`rl$$)^2 + (2 
+                Pi $CellContext`f $CellContext`L)^2]) 
+            Sin[2 Pi $CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$) + Pi/2 - ArcTan[
+              2 Pi $CellContext`f ($CellContext`L/$CellContext`r)]]; \
+$CellContext`input = 
+           Sin[2 Pi $CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; Null, 
+          6, $CellContext`funzione = 
+           If[SquareWave[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)] > 
+             0, $CellContext`n = 
+              Floor[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; (1 - 2 
+               E^(($CellContext`r + $CellContext`rl$$) ((-2) ($CellContext`t + \
+$CellContext`offTempi$$ - $CellContext`n (1/$CellContext`f)) + 
+                  1/$CellContext`f)/(2 $CellContext`L))/(1 + 
+               E^(($CellContext`r + $CellContext`rl$$) (1/$CellContext`f)/(
+                 2 $CellContext`L)))) ($CellContext`r/($CellContext`r + \
+$CellContext`rl$$)), $CellContext`n = 
+              Floor[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; (-(1 - 2 
+                E^(($CellContext`r + $CellContext`rl$$) ((-2) ($CellContext`t + \
+$CellContext`offTempi$$ - ($CellContext`n + 0.5) (1/$CellContext`f)) + 
+                   1/$CellContext`f)/(2 $CellContext`L))/(1 + 
+                E^(($CellContext`r + $CellContext`rl$$) (1/$CellContext`f)/(
+                  2 $CellContext`L))))) ($CellContext`r/($CellContext`r + \
+$CellContext`rl$$))]; $CellContext`input = 
+           SquareWave[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; Null, 
+          7, $CellContext`funzione = 
+           If[SquareWave[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)] > 
+             0, $CellContext`n = 
+              Floor[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; 
+             2 E^(($CellContext`r + $CellContext`rl$$) ((-2) ($CellContext`t + \
+$CellContext`offTempi$$ - $CellContext`n (1/$CellContext`f)) + 
+                  1/$CellContext`f)/(2 $CellContext`L))/(1 + 
+               E^(($CellContext`r + $CellContext`rl$$) (1/$CellContext`f)/(
+                 2 $CellContext`L))) + (1 - 2 
+                E^(($CellContext`r + $CellContext`rl$$) ((-2) ($CellContext`t + \
+$CellContext`offTempi$$ - $CellContext`n (1/$CellContext`f)) + 
+                   1/$CellContext`f)/(2 $CellContext`L))/(1 + 
+                E^(($CellContext`r + $CellContext`rl$$) (1/$CellContext`f)/(
+                  
+                  2 $CellContext`L)))) ($CellContext`rl$$/($CellContext`r + \
+$CellContext`rl$$)), $CellContext`n = 
+              Floor[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; -(2 
+                E^(($CellContext`r + $CellContext`rl$$) ((-2) ($CellContext`t + \
+$CellContext`offTempi$$ - ($CellContext`n + 0.5) (1/$CellContext`f)) + 
+                   1/$CellContext`f)/(2 $CellContext`L))/(1 + 
+                E^(($CellContext`r + $CellContext`rl$$) (1/$CellContext`f)/(
+                  2 $CellContext`L)))) - (1 - 2 
+               E^(($CellContext`r + $CellContext`rl$$) ((-2) ($CellContext`t + \
+$CellContext`offTempi$$ - ($CellContext`n + 0.5) (1/$CellContext`f)) + 
+                  1/$CellContext`f)/(2 $CellContext`L))/(1 + 
+               E^(($CellContext`r + $CellContext`rl$$) (1/$CellContext`f)/(
+                 2 $CellContext`L)))) ($CellContext`rl$$/($CellContext`r + \
+$CellContext`rl$$))]; $CellContext`input = 
+           SquareWave[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; Null, 
+          8, $CellContext`funzione = ($CellContext`r/
+             Sqrt[$CellContext`r^2 + (1/(2 
+                Pi $CellContext`f $CellContext`c))^2]) 
+            Sin[2 Pi $CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$) + Pi/2 - ArcTan[
+              2 Pi $CellContext`f $CellContext`r $CellContext`c]]; \
+$CellContext`input = 
+           Sin[2 Pi $CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; Null, 
+          9, $CellContext`funzione = (
+             1 (2 Pi $CellContext`f $CellContext`c)^(-1)/
+             Sqrt[$CellContext`r^2 + (1/(2 
+                Pi $CellContext`f $CellContext`c))^2]) 
+            Sin[2 Pi $CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$) - ArcTan[
+              2 Pi $CellContext`f $CellContext`r $CellContext`c]]; \
+$CellContext`input = 
+           Sin[2 Pi $CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; Null, 
+          10, $CellContext`funzione = 
+           If[SquareWave[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)] > 
+             0, $CellContext`n = 
+              Floor[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; 
+             2 E^(((-2) ($CellContext`t + $CellContext`offTempi$$ - \
+$CellContext`n (1/$CellContext`f)) + 1/$CellContext`f)/(
+                2 $CellContext`r $CellContext`c))/(1 + 
+              E^(1 $CellContext`f^(-1)/(
+                2 $CellContext`r $CellContext`c))), $CellContext`n = 
+              Floor[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; -(2 
+               E^(((-2) ($CellContext`t + $CellContext`offTempi$$ - \
+($CellContext`n + 0.5) (1/$CellContext`f)) + 1/$CellContext`f)/(
+                 2 $CellContext`r $CellContext`c))/(1 + 
+               E^(1 $CellContext`f^(-1)/(
+                 2 $CellContext`r $CellContext`c))))]; $CellContext`input = 
+           SquareWave[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; Null, 
+          11, $CellContext`funzione = 
+           If[SquareWave[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)] > 
+             0, $CellContext`n = 
+              Floor[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; 
+             1 - 2 E^(((-2) ($CellContext`t + $CellContext`offTempi$$ - \
+$CellContext`n (1/$CellContext`f)) + 1/$CellContext`f)/(
+                2 $CellContext`r $CellContext`c))/(1 + 
+              E^(1 $CellContext`f^(-1)/(
+                2 $CellContext`r $CellContext`c))), $CellContext`n = 
+              Floor[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; -(1 - 2 
+               E^(((-2) ($CellContext`t + $CellContext`offTempi$$ - \
+($CellContext`n + 0.5) (1/$CellContext`f)) + 1/$CellContext`f)/(
+                 2 $CellContext`r $CellContext`c))/(1 + 
+               E^(1 $CellContext`f^(-1)/(
+                 2 $CellContext`r $CellContext`c))))]; $CellContext`input = 
+           SquareWave[$CellContext`f ($CellContext`t + \
+$CellContext`offTempi$$)]; Null]; EventHandler[
+          Dynamic[
+           
+           Plot[{$CellContext`input, (
+               1/$CellContext`ampCH2$$) $CellContext`funzione + \
+$CellContext`offCH2$$/$CellContext`ampCH2$$}, {$CellContext`t, 
+             
+             If[$CellContext`sel$$ == 3, (-$CellContext`ampTempi$$)/
+              50, (-$CellContext`ampTempi$$)/2], $CellContext`ampTempi$$/2}, 
+            PlotRange -> {Automatic, {-1.2, 1.2}}, ImageSize -> Large, Frame -> 
+            True, FrameLabel -> {"Tempo (s)", "Tensione (V)"}, PlotStyle -> {
+              Thickness[0.003], 
+              Thickness[
+               Max[0.003, 0.003 ((-3) Log[10, $CellContext`ampCH2$$] + 1)]]}, 
+            Exclusions -> None]], {
+          "MouseClicked" :> 
+           If[$CellContext`cursore === 1, $CellContext`CH1T$$ = Part[
+                MousePosition["Graphics"], 1]; $CellContext`CH1V$$ = Part[
+                MousePosition["Graphics"], 2], $CellContext`CH2T$$ = Part[
+                MousePosition["Graphics"], 1]; $CellContext`CH2V$$ = Part[
+                MousePosition["Graphics"], 2]]}], 
+        Grid[{{"Cursore 1 " RadioButton[
+             Dynamic[$CellContext`cursore], 1], "Cursore 2 " RadioButton[
+             Dynamic[$CellContext`cursore], 2]}, {
+           Button[
+           "Reset 1", $CellContext`CH1V$$ = 0; $CellContext`CH1T$$ = 0; Null, 
+            ImageSize -> {80, 25}], 
+           Button[
+           "Reset 2", $CellContext`CH2V$$ = 0; $CellContext`CH2T$$ = 0; Null, 
+            ImageSize -> {80, 25}]}, {"Scala CH2", 
+           PopupMenu[
+            Dynamic[$CellContext`ampCH2$$], {
+            0.01 -> "0.01", 0.02 -> "0.02", 0.05 -> "0.05", 0.1 -> "0.1", 0.2 -> 
+             "0.2", 0.5 -> "0.5", 1 -> "1", 2 -> "2", 5 -> "5", 10 -> "10", 
+             20 -> "20", 50 -> "50"}]}, {"Scala Tempi", 
+           PopupMenu[
+            Dynamic[$CellContext`ampTempi$$], {
+            1.*^-6 -> "1u", 3.*^-6 -> "3u", 0.00001 -> "10u", 0.00003 -> 
+             "30u", 0.0001 -> "100u", 0.0003 -> "300u", 0.001 -> "1m", 0.003 -> 
+             "3m", 0.01 -> "10m", 0.03 -> "30m", 0.1 -> "100m", 0.3 -> "300m",
+              1 -> "1", 3 -> "3", 10 -> "10"}]}, {}, {
+           Column[{"Offset CH2", 
+             Button[
+             "Zero", $CellContext`offCH2$$ = 0; Null, ImageSize -> {80, 25}], 
+             Dynamic[
+              SetPrecision[$CellContext`offCH2$$, 3]]}, Center], 
+           Experimental`AngularSlider[
+            Dynamic[$CellContext`offCH2$$], {0, 1}, $CellContext`ShowWinding -> 
+            True]}, {
+           Column[{"Offset Tempi", 
+             Button[
+             "Zero", $CellContext`offTempi$$ = 0; Null, 
+              ImageSize -> {80, 25}], 
+             Dynamic[
+              SetPrecision[$CellContext`offTempi$$, 3]]}, Center], 
+           Experimental`AngularSlider[
+            Dynamic[$CellContext`offTempi$$], {
+            0, $CellContext`ampTempi$$/5}, $CellContext`ShowWinding -> 
+            True]}}]}, {
+        Grid[{{"Canale", "Tensione (V)", "Tempo (s)"}, {"Cursore 1", 
+           Dynamic[
+            SetPrecision[$CellContext`CH1V$$ $CellContext`ampCH2$$, 3]], 
+           Dynamic[
+            SetPrecision[$CellContext`CH1T$$, 3]]}, {"Cursore 2", 
+           Dynamic[
+            SetPrecision[$CellContext`CH2V$$ $CellContext`ampCH2$$, 3]], 
+           Dynamic[
+            SetPrecision[$CellContext`CH2T$$, 3]]}, {"C1 - C2", 
+           Dynamic[
+            
+            SetPrecision[$CellContext`CH1V$$ $CellContext`ampCH2$$ - \
+$CellContext`CH2V$$ $CellContext`ampCH2$$, 3]], 
+           Dynamic[
+            SetPrecision[$CellContext`CH1T$$ - $CellContext`CH2T$$, 3]]}}]}}],
+     StandardForm],
+   ImageSizeCache->{804., {258.5, 264.5}}],
+  DynamicModuleValues:>{},
+  Initialization:>{$CellContext`sel$$ = 4, $CellContext`r = 
+    10, $CellContext`c = 1/10000, $CellContext`L = 1/100, $CellContext`f = 
+    1000, $CellContext`funzione = (10 
+      Cos[2000 Pi $CellContext`t - ArcTan[2 Pi]])/Sqrt[
+     100 + 25/Pi^2], $CellContext`input = 
+    Sin[2000 Pi $CellContext`t], $CellContext`n = 0, $CellContext`cursore = 
+    2}]], "Output",
+ CellChangeTimes->{
+  3.793270405361311*^9, {3.7932704552211633`*^9, 3.793270494984438*^9}, 
+   3.793271130921811*^9, 3.7932729205261707`*^9, 3.7932729874039955`*^9, 
+   3.793283568971552*^9, 3.7932838365668573`*^9, 3.7932839040317163`*^9, 
+   3.7932839744957466`*^9, 3.793284284484477*^9, 3.793284360785841*^9, 
+   3.793284416214011*^9, 3.793284509039321*^9, 3.793284644839088*^9, 
+   3.793284703342434*^9, {3.793284749456072*^9, 3.7932847912714634`*^9}, {
+   3.79328491726467*^9, 3.793284941167037*^9}, 3.793284987605693*^9, 
+   3.7932850242547894`*^9, 3.7932851124958363`*^9, {3.793285181191766*^9, 
+   3.7932852137216263`*^9}, 3.7932853345945396`*^9, 3.7932854632018957`*^9, 
+   3.7932855189880867`*^9, 3.7932857587217984`*^9, 3.7932858200503063`*^9, 
+   3.793285858511506*^9, 3.793286086877568*^9, 3.793286245524642*^9, {
+   3.793334107571308*^9, 3.7933341325717382`*^9}, 3.7933341853407564`*^9, 
+   3.793334257630891*^9, 3.793610622712289*^9, 3.793610811350743*^9, 
+   3.7936108442044144`*^9, 3.7936108758434324`*^9, 3.79361108514551*^9, {
+   3.7936111342377443`*^9, 3.79361119177105*^9}, 3.7936112715246773`*^9, 
+   3.793611308833415*^9, {3.7936113484099407`*^9, 3.7936113897301874`*^9}, 
+   3.793611593664584*^9, 3.793627533332018*^9, 3.793629495188642*^9, 
+   3.7936296467203836`*^9, 3.7958744640749445`*^9, {3.822026391550753*^9, 
+   3.8220264075566854`*^9}, {3.8220265345607405`*^9, 
+   3.8220265524316216`*^9}, {3.8224579714647665`*^9, 3.822457980162302*^9}, 
+   3.8224580273812075`*^9, 3.8224580576975126`*^9, 3.8224582529735537`*^9, 
+   3.822458299359725*^9, 3.8224727634623184`*^9, {3.822482072239214*^9, 
+   3.822482096281171*^9}, {3.8224827147615986`*^9, 3.8224827398320904`*^9}, 
+   3.822482860804052*^9, 3.8224829490085764`*^9, 3.82248304205186*^9, 
+   3.822484288787534*^9, 3.822484368013638*^9, 3.822484429548709*^9, 
+   3.8224844651171227`*^9, 3.8224845105257635`*^9, 3.8224845669094667`*^9, 
+   3.82248463957603*^9, 3.8224846715486975`*^9, 3.8224847123109436`*^9, 
+   3.8224848082589655`*^9, 3.822484945980037*^9, {3.8224850527716455`*^9, 
+   3.8224850577561245`*^9}, 3.822485153984666*^9, 3.822485270229763*^9, {
+   3.822485431743162*^9, 3.822485440904582*^9}, 3.822485704724377*^9, 
+   3.822485815846216*^9, 3.822485901474434*^9, 3.8224860175613723`*^9, {
+   3.822486168368724*^9, 3.8224861967159843`*^9}, 3.8224863601179996`*^9, 
+   3.822486423694847*^9, 3.822486494376585*^9, 3.8224865360703325`*^9, 
+   3.8224867481142488`*^9, {3.8224868419493074`*^9, 3.822486866866683*^9}, 
+   3.822487924866423*^9, 3.8226239976631193`*^9, {3.8226240958572187`*^9, 
+   3.822624121535432*^9}, 3.8226241608351307`*^9, {3.822720990219398*^9, 
+   3.822721012865699*^9}, 3.823143753102704*^9, 3.823143783846126*^9, 
+   3.823143967460533*^9, 3.8231490134348717`*^9, 3.8231499282601194`*^9, 
+   3.823150002604307*^9, 3.8231534933988757`*^9, 3.8231535841201878`*^9, 
+   3.827798433481946*^9, 3.828089438791609*^9, 3.8280894777733736`*^9, 
+   3.828089551137765*^9, 3.82808986649419*^9, 3.82809027992982*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"71e59ee0-ec31-499e-b0e9-3a66626c470d"]
+},
+ClosingSaveDialog->False,
+Deletable->False,
+WindowSize->{934, 672},
+WindowMargins->{{336, Automatic}, {153, Automatic}},
+ShowCellBracket->False,
+Copyable->False,
+ShowCellLabel->False,
+FrontEndVersion->"12.2 for Microsoft Windows (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"99f5496d-3ba3-414c-9048-223d90b336c0"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2930, 56, 59, "Output",ExpressionUUID->"55da34a4-a8f4-4497-bfa4-55b9b8da6985"],
+Cell[3491, 78, 20192, 367, 542, "Output",ExpressionUUID->"71e59ee0-ec31-499e-b0e9-3a66626c470d"]
+}
+]
+*)
+
