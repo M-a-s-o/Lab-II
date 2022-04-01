@@ -2,6 +2,7 @@
 *   g++ main.cpp `root-config --cflags --glibs` -O3 -o main
 */
 #include <iostream>
+#include <vector>
 
 #include "TROOT.h"
 #include "TF1.h"
@@ -71,11 +72,11 @@ Double_t func_RLC_sovr (Double_t *x, Double_t *par) {
 
 int main (int argc, char *argv[]) {
     gROOT->ProcessLine("gErrorIgnoreLevel = 1001;");
-    const char *file_name;
+    const char *file_name = "./data.txt";
     int nfit = 0, npar = argc-3;
     double *init_par;
     if (argc >= 3) {
-        file_name = argv[1];
+        //file_name = argv[1];
         nfit = atoi(argv[2]);
         if (nfit < 0 || nfit > 8) {
             std::cout << "nfit: 0 - A+Bx, 1 - Bx, 2 - Exp, 3 - RC, 4 - RL, 5 - RL irl, 6 - RLC sott, 7 - RLC crit, 8 - RLC sovr" << std::endl;
@@ -95,27 +96,10 @@ int main (int argc, char *argv[]) {
     TGraphErrors grapherr (file_name);
     TF1 *fit;
     Double_t (*func_name)(Double_t *, Double_t *);
+    std::vector<Double_t (*)(Double_t *, Double_t *)> func_names = {func_lin, func_lin_B, func_expo, func_RC, func_RL, func_RL_real, func_RLC_sott, func_RLC_crit, func_RLC_sovr};
     double func_min = 0., func_max = 1.;
 
-    if (nfit == 0)
-        func_name = func_lin;
-    else if (nfit == 1)
-        func_name = func_lin_B;
-    else if (nfit == 2)
-        func_name = func_expo;
-    else if (nfit == 3)
-        func_name = func_RC;
-    else if (nfit == 4)
-        func_name = func_RL;
-    else if (nfit == 5)
-        func_name = func_RL_real;
-    else if (nfit == 6)
-        func_name = func_RLC_sott;
-    else if (nfit == 7)
-        func_name = func_RLC_crit;
-    else if (nfit == 8)
-        func_name = func_RLC_sovr;
-    fit = new TF1 ("fit", func_name, func_min, func_max, npar);
+    fit = new TF1 ("fit", func_names.at(nfit), func_min, func_max, npar);
     fit->SetParameters(init_par);
     delete[] init_par;
 

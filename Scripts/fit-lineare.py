@@ -9,6 +9,7 @@ import pandas as pd
 import sys
 from tkinter import Tk
 import statsmodels.api as sm
+import csvtotxt
 
 def fit_lineare(file_name, dati, onlyB, error, method):
     # metodi
@@ -16,7 +17,12 @@ def fit_lineare(file_name, dati, onlyB, error, method):
         "1": "leastsq",
         "2": "least_squares",
         "3": "nelder",
-        "4": "emcee",
+        "4": "lbfgsb",
+        "5": "basinhopping",
+        "6": "ampgo",
+        "7": "powell",
+        "8": "cg",
+        "9": "slsqp",
     }
 
     if method in metodi:
@@ -89,23 +95,23 @@ def fit_lineare(file_name, dati, onlyB, error, method):
     print("Matrice di covarianza:\n{}".format(result.covar))
 
     # Plot absolute residuals
-    print(result.residual)
-    plt.figure(figsize=(30,15))
-    result.plot_residuals()
-    plt.show()
-    plt.close()
+    #print(result.residual)
+    #plt.figure(figsize=(30,15))
+    #result.plot_residuals()
+    #plt.show()
+    #plt.close()
 
     # Plot normalised residuals
-    plt.figure(figsize=(30,15))
-    plt.axhline(y=0)
-    plt.plot(np.array(xdata), result.residual, 'bo')
-    plt.show()
-    plt.close()
+    #plt.figure(figsize=(30,15))
+    #plt.axhline(y=0)
+    #plt.plot(np.array(xdata), result.residual, 'bo')
+    #plt.show()
+    #plt.close()
 
     # Normality tests for residuals
-    sm.qqplot(result.residual, fit=True, line='s')
-    plt.show()
-    print(stats.shapiro(result.residual))
+    #sm.qqplot(result.residual, fit=True, line='s')
+    #plt.show()
+    #print(stats.shapiro(result.residual))
 
     #### plot ####
     xdum=np.linspace(np.amin(xdata),np.amax(xdata), 1000)
@@ -118,15 +124,17 @@ def fit_lineare(file_name, dati, onlyB, error, method):
     plt.ylabel('ydata')
     plt.legend()
 
-    #try:
-        #plt.savefig('fit_func.png', bbox_inches='tight')
-        #plt.show()
-    #except:
-        #pass
+    try:
+        plt.savefig('fit_func.png', bbox_inches='tight')
+        plt.show()
+    except:
+        pass
     plt.close()
 
     print("Degrees of freedom = {}".format(len(xdata)-len(params)))
     print("p-value = {}".format(1-stats.chi2.cdf(result.chisqr,len(xdata)-len(params))))
+
+    csvtotxt.csvtotxt(dati, file_name)
 
 if __name__ == '__main__':
     if (len(sys.argv) != 6):
@@ -134,4 +142,4 @@ if __name__ == '__main__':
         sys.exit(1)
 
     # run number, boolean for only B, boolean for error, fitting method
-    fit_lineare(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
+    fit_lineare(sys.argv[1:])
