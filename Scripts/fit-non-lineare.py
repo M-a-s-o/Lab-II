@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-# 2022 - 03 - 27
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
@@ -13,14 +12,14 @@ import csvtotxt
 
 def fit_non_lineare(file_name, dati, interpol, error, method):
     # Legge x, y e yerr da file usando numero dati
-    col_list = ["x {}".format(dati), "y {}".format(dati), "yerr {}".format(dati)] 
+    col_list = [f"x {dati}", f"y {dati}", f"yerr {dati}"]
     df = pd.read_csv(file_name, usecols=col_list, sep=",", decimal=".")
 
     # Separa il dataframe nei rispettivi array
     df = df.dropna()
-    xdata = df["x {}".format(dati)]
-    ydata = df["y {}".format(dati)]
-    yerr = df["yerr {}".format(dati)]
+    xdata = df[f'x {dati}']
+    ydata = df[f'y {dati}']
+    yerr = df[f'yerr {dati}']
 
     #### Interpolazioni ####
     if interpol=="1":
@@ -88,7 +87,7 @@ def fit_non_lineare(file_name, dati, interpol, error, method):
     else:
         print("Scegliere un metodo:")
         for keys, values in metodi.items():
-            print("{}: {}".format(keys,values))
+            print(f"{keys}: {values}")
         sys.exit(1)
 
     # Costruisce il modello
@@ -114,10 +113,11 @@ def fit_non_lineare(file_name, dati, interpol, error, method):
     best_params=np.array(list(dict.values(result.best_values)))
     try:
         clipboard = Tk()
+        clipboard.withdraw()
         clipboard.clipboard_clear()
         print("\nParametri:")
         for i, j, k in zip([item[0] for item in list(dict.items(params))], best_params, np.sqrt(np.diag(result.covar))):
-            print("{}: {} +/- {}".format(i, j, k))
+            print(f"{i}: {j} +/- {k}")
             clipboard.clipboard_append(repr(j) + " ")
     except:
         print("\nNessuna incertezza.")
@@ -125,10 +125,10 @@ def fit_non_lineare(file_name, dati, interpol, error, method):
     clipboard.update()
 
     # Stampa altri dati riguardo l'interpolazione
-    print("\nGradi di libertà = {}".format(len(xdata)-len(params)))
-    print("p-value chi2 = {}".format(1-stats.chi2.cdf(result.chisqr,len(xdata)-len(params))))
+    print(f"Degrees of freedom = {len(xdata)-len(params)}")
+    print(f"p-value = {1-stats.chi2.cdf(result.chisqr,len(xdata)-len(params))}")
 
-    print("Matrice di covarianza:\n{}".format(result.covar))
+    print(f"Matrice di covarianza:\n{result.covar}")
 
     # Plot absolute residuals
     #print(result.residual)

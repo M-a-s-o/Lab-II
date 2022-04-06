@@ -93,16 +93,14 @@ int main (int argc, char *argv[]) {
         return 1;
     }
 
-    TGraphErrors grapherr (file_name);
-    TF1 *fit;
-    Double_t (*func_name)(Double_t *, Double_t *);
     std::vector<Double_t (*)(Double_t *, Double_t *)> func_names = {func_lin, func_lin_B, func_expo, func_RC, func_RL, func_RL_real, func_RLC_sott, func_RLC_crit, func_RLC_sovr};
-    double func_min = 0., func_max = 1.;
 
-    fit = new TF1 ("fit", func_names.at(nfit), func_min, func_max, npar);
+    double func_min = 0., func_max = 1.;
+    TF1 *fit = new TF1 ("fit", func_names.at(nfit), func_min, func_max, npar);
     fit->SetParameters(init_par);
     delete[] init_par;
 
+    TGraphErrors grapherr (file_name);
     TFitResultPtr result = grapherr.Fit(fit, "S");
 
     std::cout << "Fit terminato con successo: " << result->IsValid() << std::endl;

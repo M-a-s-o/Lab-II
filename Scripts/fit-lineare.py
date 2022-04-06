@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-# 2022 - 04 - 01
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
@@ -12,6 +11,27 @@ import statsmodels.api as sm
 import csvtotxt
 
 def fit_lineare(file_name, dati, onlyB, error, method):
+    # read x, y and y error from file using run number
+    col_list = [f"x {dati}", f"y {dati}", f"yerr {dati}"]
+    df = pd.read_csv(file_name, usecols=col_list, sep=",", decimal=".")
+
+    # manipulate data into numpy array
+    df = df.dropna()
+    xdata = df[f'x {dati}']
+    ydata = df[f'y {dati}']
+    yerr = df[f'yerr {dati}']
+
+    #### fit ####
+    if onlyB == "0":
+        def func(x, A, B):
+            return A + B*x
+    elif onlyB == "1":
+        def func(x, B):
+            return B*x
+    else:
+        print("L'argomento dev'essere 0 oppure 1.")
+        sys.exit(1)
+
     # metodi
     metodi = {
         "1": "leastsq",
@@ -30,28 +50,7 @@ def fit_lineare(file_name, dati, onlyB, error, method):
     else:
         print("Scegliere un metodo:")
         for keys, values in metodi.items():
-            print("{}: {}".format(keys,values))
-        sys.exit(1)
-
-    # read x, y and y error from file using run number
-    col_list = ["x {}".format(dati), "y {}".format(dati), "yerr {}".format(dati)]
-    df = pd.read_csv(file_name, usecols=col_list, sep=",", decimal=".")
-
-    # manipulate data into numpy array
-    df = df.dropna()
-    xdata = df['x {}'.format(dati)]
-    ydata = df['y {}'.format(dati)]
-    yerr = df['yerr {}'.format(dati)]
-
-    #### fit ####
-    if onlyB == "0":
-        def func(x, A, B):
-            return A + B*x
-    elif onlyB == "1":
-        def func(x, B):
-            return B*x
-    else:
-        print("L'argomento dev'essere 0 oppure 1.")
+            print(f"{keys}: {values}")
         sys.exit(1)
 
     # set model's parameters
@@ -67,7 +66,7 @@ def fit_lineare(file_name, dati, onlyB, error, method):
 
     params = fmodel.make_params()
 
-    # do fit, with either leastsq, least_squares or nelder
+    # do fit
     if error == "0":
         result = fmodel.fit(ydata, params, x=xdata, method=method)
     elif error == "1":
@@ -83,16 +82,20 @@ def fit_lineare(file_name, dati, onlyB, error, method):
     try:
         clipboard = Tk()
         clipboard.clipboard_clear()
+        clipboard.withdraw()
         print("\nParametri:")
         for i, j, k in zip([item[0] for item in list(dict.items(params))], best_params, np.sqrt(np.diag(result.covar))):
-            print("{}: {} +/- {}".format(i, j, k))
+            print(f"{i}: {j} +/- {k}")
             clipboard.clipboard_append(repr(j) + " ")
     except:
         print("\nNo uncertainties.")
 
     clipboard.update()
 
-    print("Matrice di covarianza:\n{}".format(result.covar))
+    print(f"Degrees of freedom = {len(xdata)-len(params)}")
+    print(f"p-value = {1-stats.chi2.cdf(result.chisqr,len(xdata)-len(params))}")
+
+    print(f"Matrice di covarianza:\n{result.covar}")
 
     # Plot absolute residuals
     #print(result.residual)
@@ -131,9 +134,6 @@ def fit_lineare(file_name, dati, onlyB, error, method):
         pass
     plt.close()
 
-    print("Degrees of freedom = {}".format(len(xdata)-len(params)))
-    print("p-value = {}".format(1-stats.chi2.cdf(result.chisqr,len(xdata)-len(params))))
-
     csvtotxt.csvtotxt(dati, file_name)
 
 if __name__ == '__main__':
@@ -141,5 +141,5 @@ if __name__ == '__main__':
         print("Aspettati cinque argomenti: file name, run number, only B (0/1), incertezza y (0/1), metodo (1,2,3,...).")
         sys.exit(1)
 
-    # run number, boolean for only B, boolean for error, fitting method
-    fit_lineare(sys.argv[1:])
+    # file name, run number, boolean for only B, boolean for error, fitting method
+    fit_lineare(*sys.argv[1:])
