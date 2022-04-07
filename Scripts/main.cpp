@@ -42,7 +42,7 @@ Double_t func_RL (Double_t *x, Double_t *par) {
 
 // nfit = 5
 Double_t func_RL_real (Double_t *x, Double_t *par) {
-    double T = 1./100., R = 992;
+    double T = 1./100., R = 992+50;
     return par[0]*(2*exp(-x[0]/par[2])/(1+exp(-T/(2*par[2])))+par[1]/(par[1]+R)*(1-2*exp(-x[0]/par[2])/(1+exp(-T/(2*par[2])))))+par[3]; // V_L
     // par 0 = V_g,     par 1 = R_L,    par 2 = tau,    par 3 = A
 }
@@ -101,7 +101,7 @@ int main (int argc, char *argv[]) {
     delete[] init_par;
 
     TGraphErrors grapherr (file_name);
-    TFitResultPtr result = grapherr.Fit(fit, "S");
+    TFitResultPtr result = grapherr.Fit(fit, "SM");
 
     std::cout << "Fit terminato con successo: " << result->IsValid() << std::endl;
     std::cout << "Chi2: " << std::setprecision(15) << result->Chi2() << std::endl;

@@ -43,7 +43,7 @@ def fit_non_lineare(file_name, dati, interpol, error, method):
         ## RL reale
         def func(xval, V_g, R_L, tau, A):
             periodo = 1/100
-            R = 992
+            R = 992+50
             return V_g*(2*np.exp(-xval/tau)/(1+np.exp(-periodo/(2*tau)))+R_L/(R_L+R)*(1-2*np.exp(-xval/tau)/(1+np.exp(-periodo/(2*tau)))))+A
         pars = [('V_g', 1.0323245746163687), ('R_L', 57.769650453274096), ('tau', 7.711618152518606e-05), ('A', 0.05382326137423557)] # Nelder-Mead
     elif interpol == "6":
