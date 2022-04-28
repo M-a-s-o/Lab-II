@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from unicodedata import digit
 import pandas as pd
 import sys, decimal, re
 from tkinter import Tk
@@ -8,12 +9,21 @@ def getmeasurement(x_input, dx_input) -> str:
     """
         Get shorthand notation for a measurement with uncertainty: 1.213(3).
     """
-    decimal.getcontext().rounding = decimal.ROUND_HALF_UP
+    ctx = decimal.Context()
+    ctx.rounding = decimal.ROUND_HALF_UP
     x = decimal.Decimal(x_input)
     dx = decimal.Decimal(dx_input)
+    if dx == decimal.Decimal('0'):
+        return repr(x_input)
+
+    #dx = ctx.create_decimal(repr(dx_input)
+    #dx = ctx.create_decimal(dx_input)
+    #ctx.prec = 20
+    #std_str = format(dx, 'f')
+    #print(std_str)
 
     # obvious check
-    if dx <= decimal.Decimal('0'):
+    if dx < decimal.Decimal('0'):
         return [str(x), str(dx)]
 
     # value to add at the end for the precision
@@ -58,8 +68,14 @@ def getmeasurement(x_input, dx_input) -> str:
         if len(digits) >= 2:
             last_digit = digits[1]
             if len(digits) >= 3 and digits[2] in [f'{i}' for i in range(5,10)]:
-                last_digit = str(int(digits[1])+1)
-        dx_str += last_digit
+                if digits[1] != '9':
+                    last_digit = str(int(digits[1])+1)
+                else:
+                    dx_str = ''
+                    last_digit = '2'
+                    add -= 1
+            dx_str += last_digit
+
     
     # precision to round at
     prec = first_digit_reg.start()-2+add
@@ -77,11 +93,11 @@ def getmeasurement(x_input, dx_input) -> str:
 def csvtotables(file_name, dati):
     # read x, y and y error from file using run number
     col_list = [f"x {dati}", f"xerr {dati}", f"y {dati}", f"yerr {dati}"]
-    df = pd.read_csv(file_name, usecols=col_list, sep=",", decimal=".", dtype=str)#, converters={i: str for i in range(0,16)})
+    df = pd.read_csv(file_name, usecols=col_list, sep=",", decimal=".")#, dtype=str)#, converters={i: str for i in range(0,16)})
 
     # manipulate data into array
     df = df.dropna()
-    df = df.sort_values([df.columns[0], df.columns[1]]).reset_index()
+    df = df.sort_values([df.columns[0], df.columns[2]]).reset_index()
     xdata = df[f"x {dati}"]
     ydata = df[f"y {dati}"]
     xerr = df[f"xerr {dati}"]
@@ -101,4 +117,7 @@ def csvtotables(file_name, dati):
     clipboard.update()
 
 if __name__ == '__main__':
-    csvtotables(*sys.argv[1:])
+    if (len(sys.argv) == 4):
+        print(getmeasurement(*sys.argv[1:3]))
+    else:
+        csvtotables(*sys.argv[1:])
