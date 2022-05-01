@@ -6,7 +6,7 @@ import pandas as pd
 import statsmodels.api as sm
 import sys
 
-import csvtotxt
+from utils import csvtotxt
 
 from scipy import stats
 from lmfit import Model
@@ -76,77 +76,68 @@ def fit_non_lineare(file_name, dati, interpol, error, method):
             # R = 1
             #return R*I0*np.exp(-gamma*xval)*(B*np.exp(beta*xval)-C*np.exp(-beta*xval))+A
         #pars = [('I0', 6), ('gamma', 39), ('beta', 38), ('A', 0), ('B', 1), ('C', 1)]
-    elif interpol == "9":
-        #xdata *= 2*np.pi # se xdata è la frequenza dell'onda, bisogna propagare le incertezze
-        #xdata = 2*np.pi/xdata # se xdata è il periodo dell'onda, bisogna propagare le incertezze
-        ## Trasferimento da V_g a V_C. Modulo. Circuito RC
-        def func(xval, C): # xval = omega
-            V_g = 1 # volt
-            R = 2002 # ohm
-            return V_g/np.sqrt(1+(xval*R*C)*(xval*R*C))
-        pars = [('C', 1e-6)]
-    elif interpol == "10":
-        ## Trasferimento da V_g a V_L. Modulo. Circuito RL
-        def func(xval, L): # xval = omega
-            V_g = 1 # volt
-            R = 992 # ohm
-            return V_g*xval*L/np.sqrt(R*R+(xval*L)*(xval*L))
-        pars = [('L', 1)]
-    elif interpol == "11":
-        ## Trasferimento da V_g a V_L. Modulo. Circuito RL reale
-        def func(xval, L, R_L): # xval = omega
-            V_g = 1 # volt
-            R = 992 # ohm
-            return V_g*np.sqrt((R_L*R_L+(xval*L)*(xval*L))/((R+R_L)*(R+R_L)+(xval*L)*(xval*L)))
-        pars = [('L', 1), ('R_L', 1)]
-    elif interpol == "12":
-        ## Trasferimento da V_g a V_R. Modulo. Circuito RLC
-        def func(xval, C, L): # xval = omega
-            V_g = 1 # volt
-            R = 992 # ohm
-            return V_g*R/np.sqrt(R*R+np.square(xval*L-1/(xval*C)))
-        pars = [('C', 1), ('L', 1)]
-    elif interpol == "13":
-        ## Trasferimento da V_g a V_C. Modulo. Circuito RLC
-        def func(xval, C, L): # xval = omega
-            V_g = 1 # volt
-            R = 992 # ohm
+    elif interpol == "9": ## Trasferimento da V_g a V_C. Modulo. Circuito RC
+        def func(xval, C, A): # xval = omega
+            R = 2002+50 # ohm
+            return 1/np.sqrt(1+np.square(xval*R*C))+A
+        pars = [('C', 1e-6), ('A', 0.089)]
+    elif interpol == "10": ## Trasferimento da V_g a V_L. Modulo. Circuito RL
+        def func(xval, L, A): # xval = omega
+            R = 2002+50 # ohm
+            return xval*L/np.sqrt(R*R+np.square(xval*L))+A
+        pars = [('L', 40), ('A', 0)]
+    elif interpol == "11": ## Trasferimento da V_g a V_L. Modulo. Circuito RL reale
+        def func(xval, L, R_L, A): # xval = omega
+            R = 2002+50 # ohm
+            return np.sqrt((R_L*R_L+np.square(xval*L))/(np.square(R+R_L)+np.square(xval*L)))+A
+        pars = [('L', 85), ('R_L', 325), ('A', 0)]
+    elif interpol == "12": ## Trasferimento da V_g a V_R. Modulo. Circuito RLC
+        def func(xval, C, L, A): # xval = omega
+            R = 2002+50 # ohm
+            return R/np.sqrt(R*R+np.square(xval*L-1/(xval*C)))+A
+        pars = [('C', 1e-6), ('L', 0.04), ('A', 0)]
+    elif interpol == "13": ## Trasferimento da V_g a V_C. Modulo. Circuito RLC
+        def func(xval, C, L, A): # xval = omega
+            R = 2002+50 # ohm
             #return V_g/np.sqrt(np.square(xval*C*R)+np.square((xval*xval*C*L-1)))
-            return V_g*1/(xval*C)*1/np.sqrt(R*R+np.square(xval*L-1/(xval*C)))
-        pars = [('C', 1), ('L', 1)]
-    elif interpol == "14":
-        ## Trasferimento da V_g a V_L. Modulo. Circuito RLC
-        def func(xval, C, L): # xval = omega
-            V_g = 1 # volt
-            R = 992 # ohm
-            return V_g*xval*L/np.sqrt(R*R+np.square(xval*L-1/(xval*C)))
-        pars = [('C', 1), ('L', 1)]
-    elif interpol == "15":
-        ## Trasferimento da V_g a V_R. Come 12, R_L reale
-        def func(xval, C, L, R_L): # xval = omega
-            V_g = 1 # volt
-            R = 992 # ohm
-            return V_g*R/np.sqrt(np.square(R+R_L)+np.square(xval*L-1/(xval*C)))
-        pars = [('C', 1), ('L', 1), ('R_L', 1)]
-    elif interpol == "16":
-        ## Trasferimento da V_g a V_C. Come 13, R_L reale
-        def func(xval, C, L, R_L): # xval = omega
-            V_g = 1 # volt
-            R = 992 # ohm
+            return 1/(xval*C)*1/np.sqrt(R*R+np.square(xval*L-1/(xval*C)))+A
+        pars = [('C', 1e-6), ('L', 0.04), ('A', 0)]
+    elif interpol == "14": ## Trasferimento da V_g a V_L. Modulo. Circuito RLC
+        def func(xval, C, L, A): # xval = omega
+            R = 2002+50 # ohm
+            return xval*L/np.sqrt(R*R+np.square(xval*L-1/(xval*C)))+A
+        pars = [('C', 1e-3), ('L', 40), ('A', 0)]
+    elif interpol == "15": ## Trasferimento da V_g a V_R. Come 12, R_L reale
+        def func(xval, C, L, R_L, A): # xval = omega
+            R = 2002+50 # ohm
+            return R/np.sqrt(np.square(R+R_L)+np.square(xval*L-1/(xval*C)))+A
+        pars = [('C', 1e-6), ('L', 0.04), ('R_L', 317), ('A', 0)]
+    elif interpol == "16": ## Trasferimento da V_g a V_C. Come 13, R_L reale
+        def func(xval, C, L, R_L, A): # xval = omega
+            R = 2002+50 # ohm
             #return V_g/np.sqrt(np.square(xval*C*R)+np.square((xval*xval*C*L-1)))
-            return V_g*1/(xval*C)*1/np.sqrt((np.square(R+R_L)+np.square(xval*L-1/(xval*C))))
-        pars = [('C', 1), ('L', 1), ('R_L', 1)]
-    elif interpol == "17":
-        ## Trasferimento da V_g a V_L. Come 14, R_L reale
-        def func(xval, C, L, R_L): # xval = omega
-            V_g = 1 # volt
-            R = 992 # ohm
-            return V_g*np.sqrt((R_L*R_L+np.square(xval*L))/(np.square(R+R_L)+np.square(xval*L-1/(xval*C))))
-        pars = [('C', 1), ('L', 1), ('R_L', 1)]
-    #elif interpol == "18":
-    #    def func(xval):
-    #        return xval
-    #    pars = []
+            return 1/(xval*C)*1/np.sqrt((np.square(R+R_L)+np.square(xval*L-1/(xval*C))))+A
+        pars = [('C', 1e-6), ('L', 0.04), ('R_L', 300), ('A', 0)]
+    elif interpol == "17": ## Trasferimento da V_g a V_L. Come 14, R_L reale
+        def func(xval, C, L, R_L, A): # xval = omega
+            R = 2002+50 # ohm
+            return np.sqrt((R_L*R_L+np.square(xval*L))/(np.square(R+R_L)+np.square(xval*L-1/(xval*C))))+A
+        pars = [('C', 1e-3), ('L', 40), ('R_L', 300), ('A', 0)]
+    elif interpol == "18": ## Trasferimento da V_g a V_R. Fase. Circuito RLC
+        def func(xval, C, L, A): # xval = omega
+            R = 2002+50 # ohm
+            return -np.arctan2((xval*L-1/(xval*C)), R)+A
+        pars = [('C', 1e-6), ('L', 0.04), ('A', 0)]
+    elif interpol == "19": ## Trasferimento da V_g a V_C. Fase. Circuito RLC
+        def func(xval, C, L, A): # xval = omega
+            R = 2002+50 # ohm
+            return -np.pi/2-np.arctan2((xval*L-1/(xval*C)), R)+A
+        pars = [('C', 1e-6), ('L', 0.04), ('A', 0)]
+    elif interpol == "20": ## Trasferimento da V_g a V_L. Fase. Circuito RLC
+        def func(xval, C, L, A): # xval = omega
+            R = 2002+50 # ohm
+            return np.pi/2-np.arctan2((xval*L-1/(xval*C)), R)+A
+        pars = [('C', 1e-3), ('L', 40), ('A', 0)]
     else:
         print("Scegliere una interpolazione.")
         sys.exit(1)
@@ -224,7 +215,7 @@ def fit_non_lineare(file_name, dati, interpol, error, method):
     plt.show()
     plt.close()
 
-    ## Normality tests for residuals
+    # Normality tests for residuals
     sm.qqplot(result.residual, fit=True, line='s')
     plt.show()
     print(stats.shapiro(result.residual))

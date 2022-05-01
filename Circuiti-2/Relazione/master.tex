@@ -1,0 +1,650 @@
+\documentclass[a4paper]{article}
+%\usepackage{siunitx}
+\input{/home/maso/uni/bachelor-2/preamble.tex}
+\input{./preamble-master.tex}
+\geometry{right=2cm,left=2cm}
+
+\begin{document}
+\begin{titlepage}
+\center
+    
+% HEADING SECTIONS
+\textsc{\LARGE Corso di Laboratorio II}\\[1.5cm] % Name of your university/college
+%\textsc{\Large Scuola di Scienze}\\[0.5cm] % Major heading such as course name
+\textsc{\large Turno 2A}\\[0.5cm] % Minor heading such as course title
+\textsc{\large Gruppo 14}\\[0.5cm]
+
+% TITLE SECTION
+\HRule \\[0.6cm]
+{ \huge \bfseries Circuiti 2: sui circuiti in corrente impulsata}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+    
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+\Large \emph{Autori:} \\
+\textsc{} \\
+\textsc{} \\
+\textsc{} \\ [4cm]
+
+\vspace{8cm}
+
+% DATE SECTION
+{\large Anno Accademico 2021-2022}\\[2cm] % Anno Accademico
+
+% LOGO SECTION
+%\includegraphics[width=0.30\textwidth]{logo.png}\\[1cm] % Include a department/university logo
+
+\vfill
+\end{titlepage}
+
+% Pagina bianca
+%\newpage\null\thispagestyle{blank}\newpage
+
+% Sommario
+\pagenumbering{roman}
+
+%\begin{abstract}
+%    \addcontentsline{toc}{section}{\numberline{}Sommario}
+%    \noindent Si studia la curva risonanza di un oscillatore armonico semplice, smorzato, e forzato.
+%\end{abstract}
+
+% Indice
+\tableofcontents
+\clearpage
+
+% Elenco delle figure
+\listoffigures
+\addcontentsline{toc}{section}{\numberline{}Elenco delle figure}
+\clearpage
+
+% Corpo del testo
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+%\title{Circuiti 1: sulla legge di Ohm}
+%\maketitle
+%\tableofcontents
+%\clearpage
+\section{Parte prima: circuiti resistore-condensatore e resistore-induttore}
+\subsection{Obiettivi}
+Si studia l'andamento della differenza di potenziale ai capi di un condensatore, e poi di un induttore, in serie con un resistore, entrambi sollecitati da un segnale ad onda quadra (Tektronix AFG1022). Si ricavano i valori delle grandezze fisiche che caratterizzano i due circuiti.
+
+\subsection{Metodo}
+Dopo aver calibrato le sonde dell'oscilloscopio, si misura la differenza di potenziale ai capi del condensatore (poi induttore) durante la fase di carica. Tramite i cursori dell'oscilloscopio (Tektronix TDS 1001C-EDU) si campiona la differenza di potenziale e la differenza dei tempi associata. Dai dati ottenuti si ricavano le grandezze fisiche caratteristiche del condensatore e dell'induttore tramite la costante di tempo, $\tau$. Si utilizza una resistenza molto minore di quella interna dell'oscilloscopio di circa $\SI{1}{\Mohm}$, ma la quale risulta comunque confrontabile a quella interna del generatore ed a quella intrinseca dell'induttore.
+
+\begin{figure}[ht]
+\begin{center}
+\begin{circuitikz}
+	\draw
+	(0,0) to[sqV=$V_g$] (0,1.5)
+	to[R=$R_g$, resistors/scale=0.8] (0,3)
+	to[R=$R$] (4,3)
+	to[C=$C$] (4,0)
+	-- (0,0)
+	;
+	\draw
+	(0.5,0) node[ground]{}
+	;
+	\draw
+	(3,3) to[oscope, bipoles/oscope/waveform=square] (3,0)
+	;
+\end{circuitikz}\hspace{20mm}
+\begin{circuitikz}
+	\draw
+	(0,0) to[sqV=$V_g$] (0,1.5)
+	to[R=$R_g$, resistors/scale=0.8] (0,3)
+	to[R=$R$] (4,3)
+	to[L=$L$] (4,0)
+	-- (0,0)
+	;
+	\draw
+	(0.5,0) node[ground]{}
+	;
+	\draw
+	(3,3) to[oscope, bipoles/oscope/waveform=square] (3,0)
+	;
+\end{circuitikz}
+\end{center}
+\caption[Circuiti RC ed RL]{Schemi dei circuiti RC ed RL utilizzati per l'esperimento.}
+\end{figure}
+
+\subsection{Dati ed analisi}
+Le misure ottenute sono:
+\begin{center}
+\begin{tabular}[t]{c|c}
+        \multicolumn{2}{c}{RC} \\
+	$t$/\SI{}{\milli\s} & d.d.p./\SI{}{\V} \\\midrule
+	\SI{12.0000(7)}{} & \SI{2.00(18)}{} \\
+	\SI{24.0000(14)}{} & \SI{3.8(2)}{} \\
+	\SI{34.000(2)}{} & \SI{5.2(2)}{} \\
+	\SI{52.000(3)}{} & \SI{7.5(3)}{} \\
+	\SI{66.000(4)}{} & \SI{8.8(3)}{} \\
+	\SI{84.000(5)}{} & \SI{10.5(3)}{} \\
+	\SI{104.000(6)}{} & \SI{11.9(4)}{} \\
+	\SI{120.000(7)}{} & \SI{13.0(4)}{} \\
+	\SI{136.000(8)}{} & \SI{13.8(4)}{} \\
+	\SI{160.000(9)}{} & \SI{14.9(4)}{} \\
+	\SI{184.000(11)}{} & \SI{15.9(4)}{} \\
+	\SI{212.000(12)}{} & \SI{16.9(4)}{} \\
+	\SI{236.000(14)}{} & \SI{17.4(4)}{} \\
+	\SI{290.000(17)}{} & \SI{18.2(5)}{} \\
+	\SI{336.000(19)}{} & \SI{18.8(5)}{} \\
+	\SI{400.00(2)}{} & \SI{19.1(5)}{} \\
+	\SI{438.00(3)}{} & \SI{19.3(5)}{} \\
+	\SI{462.00(3)}{} & \SI{19.4(5)}{} \\
+\end{tabular}\qquad
+\begin{tabular}[t]{c|c}
+	\multicolumn{2}{c}{RL}\\
+        $t$/\SI{}{\micro\s} & d.d.p./\SI{}{\V} \\\midrule
+	\SI{12.000(2)}{} & \SI{1.78(4)}{} \\
+	\SI{24.000(3)}{} & \SI{1.54(3)}{} \\
+	\SI{40.000(4)}{} & \SI{1.28(3)}{} \\
+	\SI{52.000(4)}{} & \SI{1.10(2)}{} \\
+	\SI{60.000(5)}{} & \SI{1.00(2)}{} \\
+	\SI{80.000(6)}{} & \SI{0.80(2)}{} \\
+	\SI{108.000(8)}{} & \SI{0.600(16)}{} \\
+	\SI{136.000(9)}{} & \SI{0.440(13)}{} \\
+	\SI{176.000(12)}{} & \SI{0.320(11)}{} \\
+	\SI{220.000(14)}{} & \SI{0.220(10)}{} \\
+	\SI{252.000(16)}{} & \SI{0.180(9)}{} \\
+	\SI{288.000(18)}{} & \SI{0.160(9)}{} \\
+	\SI{316.00(2)}{} & \SI{0.140(8)}{} \\
+	\SI{356.00(2)}{} & \SI{0.120(8)}{} \\
+	\SI{412.00(3)}{} & \SI{0.120(8)}{} \\
+	\SI{468.00(3)}{} & \SI{0.120(8)}{} \\
+	\SI{484.00(3)}{} & \SI{0.120(8)}{} \\
+\end{tabular}
+\end{center}
+
+\begin{figure}[ht]
+	\centering
+    	\hspace*{-0.75cm}
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=2 by 1}]
+    	\nextgroupplot[
+        	title={RC},
+        	width=0.45\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$t$/\SI{}{\s}},
+        	ylabel={d.d.p./$\SI{}{\V}$},
+        	%ylabel style={rotate=-90},
+        	xmin=0, xmax=0.5,
+        	ymin=0, ymax=21,
+        	xtick={0,0.1,...,0.5},
+        	minor x tick num=1,
+        	ytick={0,3,...,21},
+        	minor y tick num=1,
+        	legend pos=south east,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	%smooth,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 2, y=y 2, x error=xerr 2, y error=yerr 2, col sep=comma] {../Dati.csv};
+        	\addplot[red, samples=200, thick, domain=-1:1, restrict y to domain*=-1:21, opacity=0.5]
+        	plot (\x, { 9.87851856244373*(1.0-exp(-x/0.110970220619361)*2/(1+exp(-1/(2*0.8*0.110970220619361))))+ 9.80405290231027 });
+        	%\legend{Data, Fit}
+    	\nextgroupplot[
+        	title={RL},
+        	width=0.45\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$t$/\SI{}{\milli\s}},
+        	%ylabel={d.d.p./$\SI{}{\V}$},
+        	%ylabel style={rotate=-90},
+        	xmin=0, xmax=0.5,
+        	ymin=0, ymax=2,
+        	xtick={0,0.1,...,0.5},
+        	minor x tick num=1,
+        	ytick={0,0.5,...,2},
+        	minor y tick num=1,
+        	legend pos=north east,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 1, y=y 1, x error=xerr 1, y error=yerr 1, col sep=comma] {../Dati.csv};
+        	\addplot[red, samples=200, thick, domain=-1:1, restrict y to domain*=-1:3, opacity=0.5]
+        	plot (\x, { 1.03215733712524*(2*exp(-x/0.0770411899367807)/(1+exp(-10/(2*0.0770411899367807)))+59.5173303163154/(59.5173303163154+50+992)*(1-2*exp(-x/0.0770411899367807)/(1+exp(-10/(2*0.0770411899367807)))))+0.0547706142068078 });
+        	%\plot (\x, { 1.03215733712524*(2*exp(-x/0.0000770411899367807)/(1+exp(-1/(100*2*0.0000770411899367807)))+59.5173303163154/(59.5173303163154+50+992)*(1-2*exp(-x/0.0000770411899367807)/(1+exp(-1/(100*2*0.0000770411899367807)))))+0.0547706142068078 });
+        	%\legend{Data, Fit}
+        	\legend{Data, Fit}
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption[Grafici RC ed RL]{Grafici tensione-tempo dei dati raccolti nella fase di carica per un condensatore e per un induttore. RC: $\chi^2=0.68$, DoF $=18$, $p$-value $=100\%$, RL: $\chi^2=4.6$, DoF $=17$, $p$-value $=98\%$.}
+	\label{fig:RC_RL}
+\end{figure}
+Si è utilizzata una resistenza $R=\SI{992(6)}{\ohm}$. Si è considerato anche l'effetto della resistenza interna del generatore $R_g=\SI{50}{\ohm}$ e si è misurata una resistenza intrinseca dell'induttore di $R_L=\SI{60 \pm 40}{\ohm}$.
+I dati sono stati interpolati con le funzioni
+\begin{align*}
+	V_C&=V_g \left( 1- \frac{2}{1+e^{-\frac{T}{2\tau}}}e^{-\frac{t}{\tau}} \right) +A,\quad \tau_C=(R+R_g)C,\quad T=\SI{1.25}{\s}\\
+	V_L&=V_g \left[ \frac{2e^{-\frac{t}{\tau}}}{1+e^{-\frac{T}{2\tau}}}+\frac{R_L}{R_L+R_g+R}\left( 1-\frac{2e^{-\frac{t}{\tau}}}{1+e^{-\frac{T}{2\tau}}} \right)  \right]+A,\quad \tau_L=\frac{L}{R_L+R_g+R},\quad T=\SI{10}{\ms}
+\end{align*}
+ottenendo due valori di $\tau_C=\SI{110(4)}{\milli\s}$ ($\chi^2=0.68$, DoF $=18$, $p$-value $=100\%$) e di $\tau_L=\SI{77.0(15)}{\micro\s}$ ($\chi^2=4.6$, DoF $=17$, $p$-value $=98\%$). Da essi si misurano
+\[
+C=\SI{106(4)}{\micro\F},\quad L=\SI{85(3)}{\milli\henry}
+\]
+Per ricavare le incertezze sulle misure si è consultato il manuale dell'oscilloscopio (tabelle 3-4). Si assume che il vero valore della misura si trovi all'interno dell'intervallo dell'incertezza ottenuta, distribuito secondo una funzione di densità di probabilità uniforme.
+
+\subsection{Conclusioni}
+La resistenza interna del generatore e la resistenza intrinseca dell'induttore perturbano in modo apprezzabile e rilevabile l'idealità del circuito. Risulta necessario tenere in considerazione i loro effetti.\\
+Gli andamenti delle cadute di potenziale sul condensatore e sull'induttore sono in accordo con i modelli teorici ricavati. La misura della capacità del condensatore è compatibile con quanto dichiarato sul componente stesso.\\
+%I valori di chi quadro e $p$-value non consentono una verifica di ipotesi in quanto le incertezze non sono distribuite in modo gaussiano.
+I valori di chi quadro e $p$-value suggeriscono una sovrastima delle incertezze dovuta all'utilizzo dell'accuratezza degli strumenti al posto della deviazione standard di misure ripetute. L'accuratezza così calcolata è il più grande errore sistematico degli strumenti, ma non è necessariamente l'incertezza statistica.
+\clearpage
+
+\section{Parte seconda: circuiti resistore-induttore-condensatore}
+\subsection{Obiettivi}
+Si studia l'andamento della differenza di potenziale ai capi di un resistore in un circuito RLC sollecitato da un'onda quadra.
+
+\subsection{Metodo}
+Si cambia il condensatore con uno da $\SI{1}{\micro\F}$ in quanto quello precedente non permette uno studio di tutti i regimi di risonanza di un circuito RLC.\\
+Analogamente alla prima parte, si misura la caduta di potenziale sul resistore del circuito al fine di studiare i tre regimi di risonanza: sotto-smorzato, criticamente smorzato e sovra-smorzato. L'equazione differenziale che descrive il sistema è
+\[
+\ddot{I}(t)+2\gamma\dot{I}(t)+\omega_0^2I(t)=0,\quad \gamma\equiv\frac{R}{2L},\quad \omega_0^2\equiv\frac{1}{LC}
+\] 
+Da cui i tre regimi si ottengono rispettivamente per $\gamma<\omega_0$, $\gamma=\omega_0$ e $\gamma>\omega_0$.
+
+\begin{figure}[ht]
+\begin{center}
+\begin{circuitikz}
+	\draw
+	(0,0) to[sqV=$V_g$] (0,1.5)
+	to[R=$R_g$, resistors/scale=0.8] (0,3)
+	to[C=$C$] (4,3)
+	to[R=$R_L$, resistors/scale=0.8] (4,1.5)
+	to[L=$L$] (4,0)
+	to[R=$R$] (0,0)
+	;
+	\draw
+	(0.5,0) node[ground]{}
+	;
+	\draw
+	(3,0) -- (3,1)
+	to[oscope, bipoles/oscope/waveform=square] (1,1)
+	-- (1,0)
+	;
+\end{circuitikz}
+\end{center}
+\caption[Circuito RLC]{Schema del circuito RLC utilizzato.}
+\end{figure}
+
+\subsection{Dati ed analisi}
+% fai fit per ricavare Capacità
+I valori delle resistenze utilizzate nei tre casi sono $R=\SI{10.0(3)}{\ohm}$, $R=\SI{470(2)}{\ohm}$ e $R=\SI{3000(17)}{\ohm}$ rispettivamente. Il generatore ha tensione picco-picco $V_g=\SI{1}{\V}$ e resistenza $R_g=\SI{50}{\ohm}$. La resistenza intrinseca dell'induttore è $R_L=\SI{60(40)}{\ohm}$. I dati raccolti sono riportati in appendice A.
+
+\paragraph{Regime sotto-smorzato.}
+Si interpolano le misure con l'equazione
+\[
+V(t)=V_0 e^{-\gamma t}\sin(\omega t+\phi)+A,\quad \omega^2=\omega_0^2-\gamma^2
+\] 
+I valori dei parametri sono ($\chi^2=46.3$, DoF $=33$, $p$-value $=6\%$): % considerazioni p-value
+\begin{center}
+\begin{tabular}[t]{c|c|c}
+        %\multicolumn{3}{c}{Sovra-smorzato} \\
+	Parametro & Valore & Unità \\\midrule
+	$V_0$ & $\SI{99.8(6)}{}$ & $\SI{}{\mV}$\\
+	$\gamma$ & $\SI{1.216(5)e+3}{}$ & $\SI{}{\s^{-1}}$\\
+	$\omega$ & $\SI{5.186(4)e+3}{}$ & $\SI{}{\Hz}$\\
+	$\phi$ & $\SI{0.026(4)}{}$ &\\
+	$A$ & $\SI{-2.88(4)}{}$ & $\SI{}{\mV}$
+\end{tabular}
+\end{center}
+Da ciò si ottiene la frequenza di risonanza propria del sistema
+\[
+\omega_0=\sqrt{\omega^2+\gamma^2} = \SI{5.327(4)}{\kHz}
+\] 
+
+\paragraph{Regime criticamente smorzato.}
+Tramite un'interpolazione secondo la formula
+\[
+V(t)=V_0 t e^{-\gamma t}+A,\quad \gamma=\omega_0
+\] 
+Si ricavano i valori ($\chi^2=46.6$, DoF $=25$, $p$-value $=0.5\%$):
+\begin{center}
+\begin{tabular}[t]{c|c|c}
+        %\multicolumn{3}{c}{Sovra-smorzato} \\
+	Parametro & Valore & Unità \\\midrule
+	$V_0$ & $\SI{17.5(3)}{}$ & $\SI{}{\V}$\\
+	$\gamma$ & $\SI{5.07(5)e+3}{}$ & $\SI{}{\s^{-1}}$\\
+	$A$ & $\SI{0.045(7)}{}$ & $\SI{}{\V}$
+\end{tabular}
+\end{center}
+\begin{figure}[ht]
+	\centering
+    	\hspace*{-0.75cm}
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=2 by 1}]
+    	\nextgroupplot[
+        	title={Sotto-smorzato},
+        	width=0.45\textwidth,
+        	height=0.35\textwidth,
+        	xlabel={$t$/\SI{}{\milli\s}},
+        	ylabel={d.d.p./$\SI{}{\mV}$},
+        	%ylabel style={rotate=-90},
+        	xmin=-.1, xmax=2.5,
+        	ymin=-50, ymax=80,
+        	%xtick={0,0.1,...,0.5},
+        	minor x tick num=1,
+        	%ytick={0,3,...,21},
+        	minor y tick num=1,
+        	legend pos=nord east,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	%smooth,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 8, x error=xerr 8, y=y 8, y error=yerr 8, col sep=comma] {../Dati.csv};
+        	\addplot[red, samples=800, thick, domain=-1:3, restrict y to domain*=-50:80, opacity=0.5]
+        	plot (\x, {99.8180544028876*exp(-1.21584801851064*x)*sin(deg(5.18603365036058*x-0.0263883052359904))-2.87792247412676});
+        	\legend{Data, Fit}
+    	\nextgroupplot[
+        	title={Criticamente smorzato},
+        	width=0.45\textwidth,
+        	height=0.35\textwidth,
+		xshift=1cm,
+        	xlabel={$t$/\SI{}{\milli\s}},
+        	ylabel={d.d.p./$\SI{}{\V}$},
+        	%ylabel style={rotate=-90},
+        	xmin=-.1, xmax=1.7,
+        	ymin=-.1, ymax=1.5,
+        	%xtick={0,0.1,...,0.5},
+        	minor x tick num=1,
+        	%ytick={0,0.5,...,2},
+        	minor y tick num=1,
+        	legend pos=north east,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 9, x error=xerr 9, y=y 9, y error=yerr 9, col sep=comma] {../Dati.csv};
+        	\addplot[red, samples=200, thick, domain=-1:2, restrict y to domain*=-1:2, opacity=0.5]
+        	plot (\x, {17.5498799791736*x*exp(-5.07419980526346*x)+0.0448579491100164});
+        	\addplot[blue, samples=200, thick, domain=-1:2, restrict y to domain*=-1:2, opacity=0.5]
+        	plot (\x, {2.78536350929999*exp(-2.59181324521919*x)-2.8769797913339*exp(-11.0786647123382*x)-0.0342920077210746});
+        	\legend{Data, Fit, Fit svrsmrzt}
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption[Grafici RLC sotto-smorzato e criticamente smorzato]{Grafici tensione-tempo dei regimi sotto-smorzato e criticamente smorzato.}
+	\label{fig:RLC_graph_sovr}
+\end{figure}
+
+\paragraph{Regime sovra-smorzato.}
+L'interpolazione è avvenuta tramite
+\[
+V(t)=Ae^{B t}-Ce^{D t}+E,\quad \omega^2=\gamma^2-\omega_0^2,\quad B=-\gamma+\omega,\quad D=-\gamma-\omega
+\] 
+Così da ottenere ($\chi^2= 1.27$, DoF $=24$, $p$-value $=100\%$):
+\begin{center}
+\begin{tabular}[t]{c|c|c}
+        %\multicolumn{3}{c}{Sovra-smorzato} \\
+	Parametro & Valore & Unità \\\midrule
+	$A$ & $\SI{2.13(2)}{}$ & $\SI{}{\V}$\\
+	$B$ & $\SI{-0.373(14)e+3}{}$ & $\SI{}{\s^{-1}}$\\
+	$C$ & $\SI{3.6(4)}{}$ & $\SI{}{\V}$\\
+	$D$ & $\SI{-79(7)e+3}{}$ & $\SI{}{\s^{-1}}$\\
+	$E$ & $\SI{-0.16(3)}{}$ & $\SI{}{\V}$\\
+\end{tabular}
+\end{center}
+Da cui
+\[
+\omega_0=\sqrt{\gamma^2-\omega^2} = \SI{5(36)}{\kHz}
+\] 
+
+Inoltre, si nota che, interpolando i dati precedenti tramite la soluzione sovra-smorzata, si ottiene un migliore risultato ($\chi^2=1$, DoF $=23$, $p$-value $=100\%$):
+\begin{center}
+\begin{tabular}[t]{c|c|c}
+        %\multicolumn{3}{c}{Sovra-smorzato} \\
+	Parametro & Valore & Unità \\\midrule
+	$A$ & $\SI{2.79(17)}{}$ & $\SI{}{\V}$\\
+	$B$ & $\SI{-2.59(14)e+3}{}$ & $\SI{}{\s^{-1}}$\\
+	$C$ & $\SI{2.88(16)}{}$ & $\SI{}{\V}$\\
+	$D$ & $\SI{-11.1(8)e+3}{}$ & $\SI{}{\s^{-1}}$\\
+	$E$ & $\SI{-0.034(17)}{}$ & $\SI{}{\V}$\\
+\end{tabular}
+\end{center}
+Pertanto
+\[
+\omega_0=\sqrt{\gamma^2-\omega^2} =\SI{5.36(14)}{\kHz}
+\] 
+
+\begin{figure}[ht]
+	\centering
+    	\hspace*{-0.75cm}
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=1 by 1}]
+    	\nextgroupplot[
+        	title={Sovra-smorzato},
+        	width=0.8\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$t$/\SI{}{\milli\s}},
+        	ylabel={d.d.p./$\SI{}{\V}$},
+        	%ylabel style={rotate=-90},
+        	xmin=-.1, xmax=6.5,
+        	ymin=-.05, ymax=2,
+        	%xtick={0,0.1,...,0.5},
+        	minor x tick num=1,
+        	%ytick={0,3,...,21},
+        	minor y tick num=1,
+        	legend pos=north east,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	%smooth,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 10, x error=xerr 10, y=y 10, y error=yerr 10, col sep=comma] {../Dati.csv};
+        	\addplot[red, samples=200, thick, domain=-1:7, restrict y to domain*=-1:2, opacity=0.5]
+        	plot (\x, {2.12742131982595*exp(-0.373378852463461*x)-3.57620298078419*exp(-79.3158896204497*x)-0.167022308699682});
+        	\legend{Data, Fit}
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption[Grafico RLC sovra-smorzato]{Grafico tensione-tempo del regime sovra-smorzato.}
+	\label{fig:RLC_graph_sovr}
+\end{figure}
+
+\subsection{Conclusioni}
+Come si evince dai dati raccolti per il regime di smorzamento critico, si è incorrettamente sopravvalutata la resistenza di soglia. Infatti, tali dati sono in buon accordo con il regime sovra-smorzato.\\
+Per quanto riguarda il regime sotto-smorzato, osservando il valore del $p$-value non si può trarre una conclusione certa sull'accordo dei dati con il modello teorico. Gli errori sono sottostimati: si è considerata solo l'accuratezza dello strumento, quando, invece, l'errore statistico non è trascurabile.\\
+Nel caso di sovra-smorzamento, dai valori di $\chi^2$ e $p$-value si nota che le incertezze sono sovrastimate. Questo perché, come nella prima parte dell'esperienza, si utilizza l'accuratezza dello strumento che domina sulle fluttuazioni statistiche, ed essa, essendo il più grande errore sistematico dovuto allo strumento, porta ad una naturale sovrastima.
+\clearpage
+
+\section{Approfondimento: ponte di Graetz}
+Si è riprodotto il ponte di Graetz. Esso permette di convertire segnali da corrente alternata a corrente continua. La differenza di potenziale tra i terminali in figura risulta essere approssimativamente costante in quanto il ponte è costruito in modo tale da mantenere sempre in collegamento il polo positivo della corrente alternata con il polo positivo della corrente continua e medesimo per i poli negativi.
+\begin{figure}[ht]
+\begin{center}
+\begin{circuitikz}
+	\draw
+	(0,0) to[sV=$V_g$] (0,1.5)
+	to[R=$R_g$, resistors/scale=0.8] (0,3)
+	-- (4,3)
+	(4,1.5) to[D, diodes/scale=0.8] (4,3)
+	(4,1.5) to[D, diodes/scale=0.8] (4,0)
+	-- (0,0)
+	(2,3) to[D, diodes/scale=0.8] (2,1.5)
+	(2,0) to[D, diodes/scale=0.8] (2,1.5)
+	(2,1.5) to[C=$C$] (4,1.5)
+	;
+	\draw
+	(0.5,0) node[ground]{}
+	(2,1.5) to[short, -o] (1.7,1.5) node[anchor=east]{$A$}
+	(4,1.5) to[short, -o] (4.3,1.5) node[anchor=west]{$B$}
+	;
+\end{circuitikz}
+\end{center}
+\caption[Schema ponte di Graetz]{Schema del circuito utilizzato per riprodurre il ponte di Graetz.}
+\end{figure}
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./figures/graetz.jpg}
+	\caption[Ponte di Graetz reale]{Ponte di Graetz. Il segnale giallo è il terminale $A$, il segnale azzurro è il terminale $B$, il segnale rosso è la differenza tra i due.}
+	\label{fig:graetz-jpg}
+\end{figure}
+
+\clearpage
+\appendix
+\section{Dati circuito RLC}
+\begin{center}
+\begin{tabular}[t]{c|c}
+        \multicolumn{2}{c}{Sotto-smorzato} \\
+	$t$/\SI{}{\milli\s} & d.d.p./\SI{}{\mV} \\\midrule
+	\SI{0.0400(12)}{} & \SI{20.0(3)}{} \\
+	\SI{0.0600(12)}{} & \SI{28.0(5)}{} \\
+	\SI{0.1000(12)}{} & \SI{43.2(7)}{} \\
+	\SI{0.1400(12)}{} & \SI{54.4(9)}{} \\
+	\SI{0.1800(12)}{} & \SI{62.4(11)}{} \\
+	\SI{0.2600(12)}{} & \SI{68.0(12)}{} \\
+	\SI{0.3000(12)}{} & \SI{66.4(12)}{} \\
+	\SI{0.3600(12)}{} & \SI{58.4(10)}{} \\
+	\SI{0.4000(12)}{} & \SI{49.6(9)}{} \\
+	\SI{0.4400(12)}{} & \SI{40.0(7)}{} \\
+	\SI{0.4800(12)}{} & \SI{29.6(5)}{} \\
+	\SI{0.5000(12)}{} & \SI{24.0(4)}{} \\
+	\SI{0.5200(12)}{} & \SI{18.4(3)}{} \\
+	\SI{0.5600(12)}{} & \SI{8.00(14)}{} \\
+	\SI{0.6600(12)}{} & \SI{-16.0(3)}{} \\
+	\SI{0.7000(12)}{} & \SI{-24.0(4)}{} \\
+	\SI{0.7600(12)}{} & \SI{-32.0(6)}{} \\
+	\SI{0.8000(12)}{} & \SI{-35.2(6)}{} \\
+	\SI{0.8600(12)}{} & \SI{-37.6(7)}{} \\
+	\SI{0.9400(12)}{} & \SI{-34.4(6)}{} \\
+	\SI{1.0400(12)}{} & \SI{-24.8(4)}{} \\
+	\SI{1.0800(12)}{} & \SI{-19.2(3)}{} \\
+	\SI{1.1400(12)}{} & \SI{-12.0(2)}{} \\
+	\SI{1.2600(12)}{} & \SI{3.20(6)}{} \\
+	\SI{1.3000(12)}{} & \SI{6.40(11)}{} \\
+	\SI{1.3400(12)}{} & \SI{9.40(16)}{} \\
+	\SI{1.4000(12)}{} & \SI{12.8(2)}{} \\
+	\SI{1.4800(12)}{} & \SI{13.6(2)}{} \\
+	\SI{1.5400(12)}{} & \SI{12.0(2)}{} \\
+	\SI{1.6200(12)}{} & \SI{8.80(15)}{} \\
+	\SI{1.7000(13)}{} & \SI{4.00(7)}{} \\
+	\SI{1.7400(13)}{} & \SI{1.60(3)}{} \\
+	\SI{2.0000(13)}{} & \SI{-10.40(18)}{} \\
+	\SI{2.0600(13)}{} & \SI{-11.20(19)}{} \\
+	\SI{2.1200(13)}{} & \SI{-10.40(18)}{} \\
+	\SI{2.1800(13)}{} & \SI{-9.60(17)}{} \\
+	\SI{2.2600(13)}{} & \SI{-7.20(12)}{} \\
+	\SI{2.3200(13)}{} & \SI{-5.60(10)}{} \\
+\end{tabular}\quad
+\begin{tabular}[t]{c|c}
+        \multicolumn{2}{c}{Criticamente smorzato} \\
+	$t$/\SI{}{\milli\s} & d.d.p./\SI{}{\V} \\\midrule
+	\SI{0.0200(12)}{} & \SI{0.30(2)}{} \\
+	\SI{0.0400(12)}{} & \SI{0.64(3)}{} \\
+	\SI{0.0500(12)}{} & \SI{0.76(3)}{} \\
+	\SI{0.0700(12)}{} & \SI{0.96(3)}{} \\
+	\SI{0.1100(12)}{} & \SI{1.20(4)}{} \\
+	\SI{0.1300(12)}{} & \SI{1.28(4)}{} \\
+	\SI{0.1800(12)}{} & \SI{1.32(4)}{} \\
+	\SI{0.2300(12)}{} & \SI{1.28(4)}{} \\
+	\SI{0.2600(12)}{} & \SI{1.22(4)}{} \\
+	\SI{0.3000(12)}{} & \SI{1.14(3)}{} \\
+	\SI{0.3800(12)}{} & \SI{0.96(3)}{} \\
+	\SI{0.4100(12)}{} & \SI{0.90(3)}{} \\
+	\SI{0.4700(12)}{} & \SI{0.78(3)}{} \\
+	\SI{0.5300(12)}{} & \SI{0.66(3)}{} \\
+	\SI{0.5700(12)}{} & \SI{0.60(2)}{} \\
+	\SI{0.6200(12)}{} & \SI{0.52(2)}{} \\
+	\SI{0.6700(12)}{} & \SI{0.46(2)}{} \\
+	\SI{0.7100(12)}{} & \SI{0.40(2)}{} \\
+	\SI{0.7700(12)}{} & \SI{0.34(2)}{} \\
+	\SI{0.8500(12)}{} & \SI{0.280(19)}{} \\
+	\SI{0.8900(12)}{} & \SI{0.240(19)}{} \\
+	\SI{0.9500(12)}{} & \SI{0.200(18)}{} \\
+	\SI{1.0200(12)}{} & \SI{0.160(17)}{} \\
+	\SI{1.0800(12)}{} & \SI{0.140(17)}{} \\
+	\SI{1.1700(12)}{} & \SI{0.100(16)}{} \\
+	\SI{1.3200(12)}{} & \SI{0.060(15)}{} \\
+	\SI{1.4100(12)}{} & \SI{0.040(15)}{} \\
+	\SI{1.4900(12)}{} & \SI{0.020(15)}{} \\
+\end{tabular}\quad
+\begin{tabular}[t]{c|c}
+        \multicolumn{2}{c}{Sovra-smorzato} \\
+	$t$/\SI{}{\milli\s} & d.d.p./\SI{}{\V} \\\midrule
+	\SI{0.0080(12)}{} & \SI{0.080(16)}{} \\
+	\SI{0.0120(12)}{} & \SI{0.56(2)}{} \\
+	\SI{0.0160(12)}{} & \SI{0.94(3)}{} \\
+	\SI{0.0240(12)}{} & \SI{1.40(4)}{} \\
+	\SI{0.0320(12)}{} & \SI{1.66(4)}{} \\
+	\SI{0.0440(12)}{} & \SI{1.82(5)}{} \\
+	\SI{0.0600(12)}{} & \SI{1.88(5)}{} \\
+	\SI{0.1320(12)}{} & \SI{1.84(5)}{} \\
+	\SI{0.3200(12)}{} & \SI{1.72(4)}{} \\
+	\SI{0.4800(12)}{} & \SI{1.62(4)}{} \\
+	\SI{0.5600(12)}{} & \SI{1.56(4)}{} \\
+	\SI{0.6800(12)}{} & \SI{1.48(4)}{} \\
+	\SI{0.8400(12)}{} & \SI{1.40(4)}{} \\
+	\SI{0.9600(12)}{} & \SI{1.32(4)}{} \\
+	\SI{1.2800(12)}{} & \SI{1.14(3)}{} \\
+	\SI{1.4800(12)}{} & \SI{1.06(3)}{} \\
+	\SI{1.7200(13)}{} & \SI{0.96(3)}{} \\
+	\SI{1.8400(13)}{} & \SI{0.90(3)}{} \\
+	\SI{2.0800(13)}{} & \SI{0.82(3)}{} \\
+	\SI{2.3600(13)}{} & \SI{0.72(3)}{} \\
+	\SI{2.6000(13)}{} & \SI{0.64(3)}{} \\
+	\SI{3.0000(13)}{} & \SI{0.52(2)}{} \\
+	\SI{3.4400(14)}{} & \SI{0.42(2)}{} \\
+	\SI{3.8000(14)}{} & \SI{0.34(2)}{} \\
+	\SI{4.1600(14)}{} & \SI{0.280(19)}{} \\
+	\SI{4.5600(14)}{} & \SI{0.220(18)}{} \\
+	\SI{5.0800(14)}{} & \SI{0.160(17)}{} \\
+	\SI{5.8000(15)}{} & \SI{0.080(16)}{} \\
+	\SI{6.2000(15)}{} & \SI{0.040(15)}{} \\
+\end{tabular}
+\end{center}
+
+\end{document}

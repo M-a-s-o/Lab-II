@@ -74,74 +74,86 @@ Double_t func_RLC_sovr (Double_t *x, Double_t *par) {
 
 // nfit = 9
 Double_t func_trasf_RC (Double_t *x, Double_t *par) {
-    const double Vg = 1;
-    const double R = 2002;
-    return Vg/sqrt(1+(x[0]*R*par[0])*(x[0]*R*par[0]));
-    // par 0 = C
+    const double R = 2002+50;
+    return 1/sqrt(1+(x[0]*R*par[0])*(x[0]*R*par[0]))+par[1];
+    // par 0 = C,   par 1 = A
 }
 
 // nfit = 10
 Double_t func_trasf_RL (Double_t *x, Double_t *par) {
-    const double Vg = 1;
-    const double R = 992;
-    return Vg*x[0]*par[0]/sqrt(R*R+(x[0]*par[0])*(x[0]*par[0]));
-    // par 0 = L
+    const double R = 2002+50;
+    return 1*x[0]*par[0]/sqrt(R*R+(x[0]*par[0])*(x[0]*par[0]))+par[1];
+    // par 0 = L,   par 1 = A
 }
 
 // nfit = 11
 Double_t func_trasf_RL_real (Double_t *x, Double_t *par) {
-    const double Vg = 1;
-    const double R = 992;
-    return Vg*sqrt((par[1]*par[1]+(x[0]*par[0])*(x[0]*par[0]))/((R+par[1])*(R+par[1])+(x[0]*par[0])*(x[0]*par[0])));
-    // par 0 = L,   par 1 = R_L
+    const double R = 2002+50;
+    return 1*sqrt((par[1]*par[1]+(x[0]*par[0])*(x[0]*par[0]))/((R+par[1])*(R+par[1])+(x[0]*par[0])*(x[0]*par[0])))+par[2];
+    // par 0 = L,   par 1 = R_L,    par 2 = A
 }
 
 // nfit = 12
 Double_t func_trasf_RLC_to_VR (Double_t *x, Double_t *par) {
-    const double Vg = 1;
-    const double R = 992;
-    return Vg*R/sqrt(R*R+(x[0]*par[1]-1/(x[0]*par[0]))*(x[0]*par[1]-1/(x[0]*par[0])));
-    // par 0 = C,   par 1 = L
+    const double R = 2002+50;
+    return 1*R/sqrt(R*R+(x[0]*par[1]-1/(x[0]*par[0]))*(x[0]*par[1]-1/(x[0]*par[0])))+par[2];
+    // par 0 = C,   par 1 = L,  par 2 = A
 }
 
 // nfit = 13
 Double_t func_trasf_RLC_to_VC (Double_t *x, Double_t *par) {
-    const double Vg = 1;
-    const double R = 992;
-    return Vg/(x[0]*par[0])/sqrt(R*R+(x[0]*par[1]-1/(x[0]*par[0]))*(x[0]*par[1]-1/(x[0]*par[0])));
-    // par 0 = C,   par 1 = L
+    const double R = 2002+50;
+    return 1/(x[0]*par[0])/sqrt(R*R+(x[0]*par[1]-1/(x[0]*par[0]))*(x[0]*par[1]-1/(x[0]*par[0])))+par[2];
+    // par 0 = C,   par 1 = L,  par 2 = A
 }
 
 // nfit = 14
 Double_t func_trasf_RLC_to_VL (Double_t *x, Double_t *par) {
-    const double Vg = 1;
-    const double R = 992;
-    return Vg*x[0]*par[1]/sqrt(R*R+(x[0]*par[1]-1/(x[0]*par[0]))*(x[0]*par[1]-1/(x[0]*par[0])));
-    // par 0 = C,   par 1 = L
+    const double R = 2002+50;
+    return 1*x[0]*par[1]/sqrt(R*R+(x[0]*par[1]-1/(x[0]*par[0]))*(x[0]*par[1]-1/(x[0]*par[0])))+par[2];
+    // par 0 = C,   par 1 = L,  par 2 = A
 }
 
 // nfit = 15
 Double_t func_trasf_RLC_to_VR_real (Double_t *x, Double_t *par) {
-    const double Vg = 1;
-    const double R = 992;
-    return Vg*R/sqrt((R*par[2])*(R+par[2])+(x[0]*par[1]-1/(x[0]*par[0]))*(x[0]*par[1]-1/(x[0]*par[0])));
-    // par 0 = C,   par 1 = L,  par 2 = R_L
+    const double R = 2002+50;
+    return 1*R/sqrt((R*par[2])*(R+par[2])+(x[0]*par[1]-1/(x[0]*par[0]))*(x[0]*par[1]-1/(x[0]*par[0])))+par[3];
+    // par 0 = C,   par 1 = L,  par 2 = R_L,    par 3 = A
 }
 
 // nfit = 16
 Double_t func_trasf_RLC_to_VC_real (Double_t *x, Double_t *par) {
-    const double Vg = 1;
-    const double R = 992;
-    return Vg/(x[0]*par[0])/sqrt((R+par[2])*(R+par[2])+(x[0]*par[1]-1/(x[0]*par[0]))*(x[0]*par[1]-1/(x[0]*par[0])));
-    // par 0 = C,   par 1 = L,  par 2 = R_L
+    const double R = 2002+50;
+    return 1/(x[0]*par[0])/sqrt((R+par[2])*(R+par[2])+(x[0]*par[1]-1/(x[0]*par[0]))*(x[0]*par[1]-1/(x[0]*par[0])))+par[3];
+    // par 0 = C,   par 1 = L,  par 2 = R_L,    par 3 =A
 }
 
 // nfit = 17
 Double_t func_trasf_RLC_to_VL_real (Double_t *x, Double_t *par) {
-    const double Vg = 1;
-    const double R = 992;
-    return Vg/sqrt((par[2]*par[2]+(x[0]*par[1])*(x[0]*par[1]))/((R+par[2])*(R+par[2])+(x[0]*par[1]-1/(x[0]*par[0]))*(x[0]*par[1]-1/(x[0]*par[0]))));
-    // par 0 = C,   par 1 = L,  par 2 = R_L
+    const double R = 2002+50;
+    return 1/sqrt((par[2]*par[2]+(x[0]*par[1])*(x[0]*par[1]))/((R+par[2])*(R+par[2])+(x[0]*par[1]-1/(x[0]*par[0]))*(x[0]*par[1]-1/(x[0]*par[0]))))+par[3];
+    // par 0 = C,   par 1 = L,  par 2 = R_L,    par 3 = A
+}
+
+// nfit = 18
+Double_t func_trasf_RLC_to_VR_fase (Double_t *x, Double_t *par) {
+    const double R = 2002+50;
+    return -atan2((x[0]*par[1]-1/(x[0]*par[0])), R)+par[2];
+    // par 0 = C,   par 1 = L,  par 2 = A
+}
+
+// nfit = 19
+Double_t func_trasf_RLC_to_VC_fase (Double_t *x, Double_t *par) {
+    const double R = 2002+50;
+    return -M_PI/2.-atan2((x[0]*par[1]-1/(x[0]*par[0])), R)+par[2];
+    // par 0 = C,   par 1 = L,  par 2 = A
+}
+
+// nfit = 20
+Double_t func_trasf_RLC_to_VL_fase (Double_t *x, Double_t *par) {
+    const double R = 2002+50;
+    return M_PI/2.-atan2((x[0]*par[1]-1/(x[0]*par[0])), R)+par[2];
+    // par 0 = C,   par 1 = L,  par 2 = A
 }
 
 int main (int argc, char *argv[]) {
@@ -149,10 +161,12 @@ int main (int argc, char *argv[]) {
     const char *file_name;
     int nfit = 0, nskipargs = 3, npar = argc-nskipargs;
     double *init_par;
+    std::vector<Double_t (*)(Double_t *, Double_t *)> func_names = {func_lin, func_lin_B, func_expo, func_RC, func_RL, func_RL_real, func_RLC_sott, func_RLC_crit, func_RLC_sovr, func_trasf_RC, func_trasf_RL, func_trasf_RL_real, func_trasf_RLC_to_VR, func_trasf_RLC_to_VC, func_trasf_RLC_to_VL, func_trasf_RLC_to_VR_real, func_trasf_RLC_to_VC_real, func_trasf_RLC_to_VL_real, func_trasf_RLC_to_VR_fase, func_trasf_RLC_to_VC_fase, func_trasf_RLC_to_VL_fase};
+
     if (argc >= nskipargs) {
         file_name = argv[1];// = "./data.txt";
         nfit = atoi(argv[2]);
-        if (nfit < 0 || nfit > 17) {
+        if (nfit < 0 || nfit > 20) {
             std::cout << "nfit: 0 - A+Bx, 1 - Bx, 2 - Exp, 3 - RC, 4 - RL, 5 - RL irl, 6 - RLC sott, 7 - RLC crit, 8 - RLC sovr" << std::endl;
             return 1;
         }
@@ -168,8 +182,6 @@ int main (int argc, char *argv[]) {
         std::cout << "Passare: nome file, numero nfit, valori iniziali parametri" << std::endl;
         return 1;
     }
-
-    std::vector<Double_t (*)(Double_t *, Double_t *)> func_names = {func_lin, func_lin_B, func_expo, func_RC, func_RL, func_RL_real, func_RLC_sott, func_RLC_crit, func_RLC_sovr, func_trasf_RC, func_trasf_RL, func_trasf_RL_real, func_trasf_RLC_to_VR, func_trasf_RLC_to_VC, func_trasf_RLC_to_VL, func_trasf_RLC_to_VR_real, func_trasf_RLC_to_VC_real, func_trasf_RLC_to_VL_real};
 
     double func_min = 0., func_max = 1.; // !
     TF1 *fit = new TF1 ("fit", func_names.at(nfit), func_min, func_max, npar); // min e max non cambiano il range del fit
