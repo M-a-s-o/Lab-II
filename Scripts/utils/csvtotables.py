@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import pandas as pd
+import numpy as np
 import sys, decimal, re
 from tkinter import Tk
 
@@ -10,10 +11,13 @@ def getmeasurement(x_input, dx_input) -> str:
     """
     ctx = decimal.Context()
     ctx.rounding = decimal.ROUND_HALF_UP
-    x = decimal.Decimal(x_input)
-    dx = decimal.Decimal(dx_input)
-    if dx == decimal.Decimal('0'):
+    if isinstance(x_input, np.int64):
+        x = decimal.Decimal(x_input.item())
+    else:
+        x = decimal.Decimal(x_input)
+    if dx_input == 0:
         return repr(x_input)
+    dx = decimal.Decimal(dx_input)
 
     #dx = ctx.create_decimal(repr(dx_input)
     #dx = ctx.create_decimal(dx_input)

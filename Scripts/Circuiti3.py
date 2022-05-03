@@ -18,12 +18,28 @@ class RepeatDataCircuiti3(ScatterPointsRepeat):
         super().__init__(file, dati, variables)
         self.dati = dati
 
+        thrshld = 1.58e-16
+        std_volt = self.stdevs.T[0:3]
+        # check for mean > 1
+        std_volt = np.where((self.means.T[0:3] >= 1) & (std_volt <= thrshld), 0.01/np.sqrt(3), std_volt)
+        # check for zero std dev
+        std_volt = np.where(std_volt <= thrshld, 0.001/np.sqrt(3), std_volt)
+
+        std_ang = self.stdevs.T[3:5]
+        # check for mean > 10
+        std_ang = np.where((np.abs(self.means.T[3:5]) < 10) & (std_ang <= thrshld), 0.01/np.sqrt(3), std_ang)
+        # check for zero std dev
+        std_ang = np.where(std_ang <= thrshld, 0.1/np.sqrt(3), std_ang)
+        self.stdevs = np.concatenate((std_volt.T, std_ang.T), axis=1)
+
     def propagate(self, dati, *var):
         x = pr.GenerateXs(2)
         func = x[1]/x[0]
-        return pr.Propagate([self.means[dati-self.dati[0], i-1] for i in var],
-        self.columns[dati-self.dati[0]].get_covar_mat_part([i-1 for i in var]),
-        2, func, x)
+        means = [self.means[dati-self.dati[0], i-1] for i in var]
+        covar = self.columns[dati-self.dati[0]].get_covar_mat_part([i-1 for i in var])
+        variance = np.square(np.array([self.stdevs[dati-self.dati[0], i-1] for i in var]))
+        np.fill_diagonal(covar, variance)
+        return pr.Propagate(means, covar, 2, func, x)
 
     def get_VAB_on_VA(self):
         return np.array([self.propagate(i, 1, 3) for i in range(*tuple([self.dati[0], self.dati[1]+1]))])

@@ -1,5 +1,5 @@
 import numpy as np
-import propagate as pr
+from . import propagate as pr
 
 class RepeatData():
     r"""

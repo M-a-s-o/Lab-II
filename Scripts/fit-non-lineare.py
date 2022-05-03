@@ -78,64 +78,64 @@ def fit_non_lineare(file_name, dati, interpol, error, method):
         #pars = [('I0', 6), ('gamma', 39), ('beta', 38), ('A', 0), ('B', 1), ('C', 1)]
     elif interpol == "9": ## Trasferimento da V_g a V_C. Modulo. Circuito RC
         def func(xval, C, A): # xval = omega
-            R = 2002+50 # ohm
+            R = 2002 # ohm
             return 1/np.sqrt(1+np.square(xval*R*C))+A
         pars = [('C', 1e-6), ('A', 0.089)]
     elif interpol == "10": ## Trasferimento da V_g a V_L. Modulo. Circuito RL
         def func(xval, L, A): # xval = omega
-            R = 2002+50 # ohm
+            R = 2002 # ohm
             return xval*L/np.sqrt(R*R+np.square(xval*L))+A
         pars = [('L', 40), ('A', 0)]
-    elif interpol == "11": ## Trasferimento da V_g a V_L. Modulo. Circuito RL reale
+    elif interpol == "11": ## Trasferimento da V_g a V_L. Modulo. Circuito RL reale # Inutilizzabile
         def func(xval, L, R_L, A): # xval = omega
-            R = 2002+50 # ohm
+            R = 2002 # ohm
             return np.sqrt((R_L*R_L+np.square(xval*L))/(np.square(R+R_L)+np.square(xval*L)))+A
-        pars = [('L', 85), ('R_L', 325), ('A', 0)]
+        pars = [('L', 85), ('R_L', 35), ('A', 0)]
     elif interpol == "12": ## Trasferimento da V_g a V_R. Modulo. Circuito RLC
         def func(xval, C, L, A): # xval = omega
-            R = 2002+50 # ohm
-            return R/np.sqrt(R*R+np.square(xval*L-1/(xval*C)))+A
+            R = 2002 # ohm
+            return R/np.sqrt(np.square(R)+np.square(xval*L-1/(xval*C)))+A
         pars = [('C', 1e-6), ('L', 0.04), ('A', 0)]
     elif interpol == "13": ## Trasferimento da V_g a V_C. Modulo. Circuito RLC
         def func(xval, C, L, A): # xval = omega
-            R = 2002+50 # ohm
+            R = 2002 # ohm
             #return V_g/np.sqrt(np.square(xval*C*R)+np.square((xval*xval*C*L-1)))
             return 1/(xval*C)*1/np.sqrt(R*R+np.square(xval*L-1/(xval*C)))+A
-        pars = [('C', 1e-6), ('L', 0.04), ('A', 0)]
+        pars = [('C', 1e-6), ('L', 0.1), ('A', 0)]
     elif interpol == "14": ## Trasferimento da V_g a V_L. Modulo. Circuito RLC
         def func(xval, C, L, A): # xval = omega
-            R = 2002+50 # ohm
+            R = 2002 # ohm
             return xval*L/np.sqrt(R*R+np.square(xval*L-1/(xval*C)))+A
         pars = [('C', 1e-3), ('L', 40), ('A', 0)]
     elif interpol == "15": ## Trasferimento da V_g a V_R. Come 12, R_L reale
         def func(xval, C, L, R_L, A): # xval = omega
-            R = 2002+50 # ohm
+            R = 2002 # ohm
             return R/np.sqrt(np.square(R+R_L)+np.square(xval*L-1/(xval*C)))+A
-        pars = [('C', 1e-6), ('L', 0.04), ('R_L', 317), ('A', 0)]
-    elif interpol == "16": ## Trasferimento da V_g a V_C. Come 13, R_L reale
+        pars = [('C', 1e-6), ('L', 0.04), ('R_L', 37), ('A', 0)]
+    elif interpol == "16": ## Trasferimento da V_g a V_C. Come 13, R_L reale # Inutilizzabile
         def func(xval, C, L, R_L, A): # xval = omega
-            R = 2002+50 # ohm
+            R = 2002 # ohm
             #return V_g/np.sqrt(np.square(xval*C*R)+np.square((xval*xval*C*L-1)))
             return 1/(xval*C)*1/np.sqrt((np.square(R+R_L)+np.square(xval*L-1/(xval*C))))+A
-        pars = [('C', 1e-6), ('L', 0.04), ('R_L', 300), ('A', 0)]
-    elif interpol == "17": ## Trasferimento da V_g a V_L. Come 14, R_L reale
+        pars = [('C', 1e-6), ('L', 0.1), ('R_L', 80), ('A', 0)]
+    elif interpol == "17": ## Trasferimento da V_g a V_L. Come 14, R_L reale # Inutilizzabile
         def func(xval, C, L, R_L, A): # xval = omega
-            R = 2002+50 # ohm
+            R = 2002 # ohm
             return np.sqrt((R_L*R_L+np.square(xval*L))/(np.square(R+R_L)+np.square(xval*L-1/(xval*C))))+A
-        pars = [('C', 1e-3), ('L', 40), ('R_L', 300), ('A', 0)]
+        pars = [('C', 1e-3), ('L', 40), ('R_L', 30), ('A', 0)]
     elif interpol == "18": ## Trasferimento da V_g a V_R. Fase. Circuito RLC
         def func(xval, C, L, A): # xval = omega
-            R = 2002+50 # ohm
-            return -np.arctan2((xval*L-1/(xval*C)), R)+A
+            R = 2002 # ohm
+            return -np.arctan((xval*L-1/(xval*C))/R)+A
         pars = [('C', 1e-6), ('L', 0.04), ('A', 0)]
     elif interpol == "19": ## Trasferimento da V_g a V_C. Fase. Circuito RLC
         def func(xval, C, L, A): # xval = omega
-            R = 2002+50 # ohm
+            R = 2002 # ohm
             return -np.pi/2-np.arctan2((xval*L-1/(xval*C)), R)+A
         pars = [('C', 1e-6), ('L', 0.04), ('A', 0)]
     elif interpol == "20": ## Trasferimento da V_g a V_L. Fase. Circuito RLC
         def func(xval, C, L, A): # xval = omega
-            R = 2002+50 # ohm
+            R = 2002 # ohm
             return np.pi/2-np.arctan2((xval*L-1/(xval*C)), R)+A
         pars = [('C', 1e-3), ('L', 40), ('A', 0)]
     else:
