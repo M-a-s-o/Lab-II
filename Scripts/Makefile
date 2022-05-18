@@ -1,16 +1,16 @@
 # -*- MakeFile -*-
 CPPC = g++
 ROOTFLAGS = `root-config --cflags --glibs`
-CPPDEPS = functions.hpp
-CPPOBJ = main.o
+CPPDEPS = main.cpp functions.cpp
+CPPOBJ = main.o functions.o
 OBJFLAGS = -c -o
 
-all: main $(CPPOBJ)
+all: main
 
-main: $(CPPOBJ) $(CPPDEPS)
+main: $(CPPOBJ)
 	$(CPPC) $^ $(ROOTFLAGS) -o $@
 
-main.o: main.cpp
+%.o: %.cpp
 	$(CPPC) $(OBJFLAGS) $@ $< $(ROOTFLAGS) -O3
 
 .PHONY: all clean

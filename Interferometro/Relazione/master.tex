@@ -1,0 +1,499 @@
+\documentclass[a4paper]{article}
+\input{/home/maso/uni/bachelor-2/preamble.tex}
+\input{./preamble-master.tex}
+\geometry{right=2cm,left=2cm}
+
+\begin{document}
+\begin{titlepage}
+\center
+    
+% HEADING SECTIONS
+\textsc{\LARGE Corso di Laboratorio II}\\[1.5cm] % Name of your university/college
+%\textsc{\Large Scuola di Scienze}\\[0.5cm] % Major heading such as course name
+\textsc{\large Turno 2A}\\[0.5cm] % Minor heading such as course title
+\textsc{\large Gruppo 14}\\[0.5cm]
+
+% TITLE SECTION
+\HRule \\[0.6cm]
+{ \huge \bfseries Interferometro}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+    
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+\Large \emph{Autori:} \\
+\textsc{} \\
+\textsc{} \\
+\textsc{} \\ [4cm]
+
+\vspace{8cm}
+
+% DATE SECTION
+{\large Anno Accademico 2021-2022}\\[2cm] % Anno Accademico
+
+% LOGO SECTION
+%\includegraphics[width=0.30\textwidth]{logo.png}\\[1cm] % Include a department/university logo
+
+\vfill
+\end{titlepage}
+
+% Pagina bianca
+%\newpage\null\thispagestyle{blank}\newpage
+
+% Sommario
+\pagenumbering{roman}
+
+%\begin{abstract}
+%    \addcontentsline{toc}{section}{\numberline{}Sommario}
+%    \noindent Si studia la curva risonanza di un oscillatore armonico semplice, smorzato, e forzato.
+%\end{abstract}
+
+% Indice
+\tableofcontents
+\clearpage
+
+% Elenco delle figure
+\listoffigures
+\addcontentsline{toc}{section}{\numberline{}Elenco delle figure}
+\clearpage
+
+% Corpo del testo
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+%\title{}
+%\maketitle
+%\tableofcontents
+%\clearpage
+\section{Parte prima: legge di interferenza}
+\subsection{Obiettivi}
+Verificare la legge che descrive i massimi di interferenza con la configurazione di Fabry-Pérot. 
+
+\subsection{Metodo}
+Si imposta il banco di lavoro dell'interferometro Pasco con la configurazione di Fabry-Pérot come mostrato in figura.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.5]{./Immagini/Fabry.jpg}
+    \caption[Configurazione Fabry-Pérot]{Configurazione Fabry-Pérot.}
+    \label{fig:1}
+\end{figure}
+Occorre assicurarsi che il laser sia allineato al banco e in modo tale che il fascio passi per il centro dello specchio e ritorni nel laser stesso. Dopo aver montano la lente da $\SI{18}{\mm}$, si pone il banco ad una distanza sufficiente per poter visualizzare al meglio i fronti su di una superficie perpendicolare al fascio del laser.\\
+La figura di interferenza è descritta dalla legge:
+\[
+N\lambda = 2d\cos\theta + \delta_r\frac{\lambda}{2\pi}
+\]
+dove $\lambda=\SI{632.8}{\nm}$ è la lunghezza d'onda del laser, $d$ è la distanza tra i due specchi e $\theta$ è l'angolo che individua i massimi di intensità luminosa. Per poter calcolare il coseno dell'angolo viene misurata la distanza $L$ tra il punto di fuoco della lente e lo schermo su cui vengono visualizzati i fronti d'onda, e viene misurato il diametro di ogni fronte d'onda considerato.
+
+\subsection{Dati ed analisi}
+La distanza tra il fuoco della lente e lo schermo è $L=\SI{207.40(6)}{\cm}$. Le misure dei diametri sono:
+\begin{center}
+\begin{tabular}[h]{c|c|c}
+        \multicolumn{3}{c}{Diametri} \\
+	& Interno & Esterno \\
+	$N$ & \multicolumn{2}{c}{D/$\SI{}{\cm}$} \\\midrule
+	\SI{5}{} & \multicolumn{2}{c}{$\SI{10.10(6)}{}$} \\
+	\SI{6}{} & \multicolumn{2}{c}{$\SI{9.20(6)}{}$} \\
+	\SI{7}{} & \SI{8.00(6)}{} & \SI{8.40(6)}{}\\
+	\SI{8}{} & \SI{6.80(6)}{} & \SI{7.30(6)}{}\\
+	\SI{9}{} & \SI{5.50(6)}{} & \SI{5.80(6)}{}\\
+	\SI{10}{} & \SI{3.50(6)}{} & \SI{4.00(6)}{}\\
+\end{tabular}
+\end{center}
+Tramite la definizione informale di coseno
+\[
+\cos \theta = \frac{L}{\sqrt{L^2+\frac{D^2}{4}} }
+\] 
+si ricavano i valori associati a ciascun fronte:
+\begin{center}
+\begin{tabular}[h]{c|c}
+        %\multicolumn{2}{c}{Diametri} \\
+	$N$ & $\cos \theta$ \\\midrule
+	\SI{5}{} & \SI{0.999704(3)}{} \\ 
+	\SI{6}{} & \SI{0.999754(3)}{} \\ 
+	\SI{7}{} & \SI{0.9998047(19)}{} \\ 
+	\SI{8}{} & \SI{0.9998556(16)}{}\\ 
+	\SI{9}{} & \SI{0.9999072(13)}{}\\ 
+	\SI{10}{} &\SI{0.9999591(9)}{}\\ 
+\end{tabular}
+\end{center}
+Dalla relazione descritta in precedenza si esplicita il coseno dell'angolo del fronte considerato:
+\[
+\cos\theta = \frac{\lambda}{2d}N + A
+\]
+Tramite tale relazione si interpolano i dati per ottenere $d=\SI{6.16(5)}{\mm}$ e $A=\SI{0.999446(4)}{}$ ($\chi^2=0.5$, DoF $=4$, $p$-value $= 97\%$).
+\begin{figure}[ht]
+	\centering
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=1 by 1}]
+    	\nextgroupplot[
+        	title={Misura distanza specchi},
+        	width=0.8\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$N$},
+		ylabel={$\cos{\theta}$},
+        	%ylabel style={rotate=-90},
+        	xmin=4, xmax=11,
+        	ymin=0.99965, ymax=1,
+        	%xtick={0,0.1,...,0.5},
+        	minor x tick num=1,
+        	%ytick={0,0.5,...,2},
+		y tick label style={/pgf/number format/.cd, fixed, fixed zerofill, precision=4, /tikz/.cd},
+        	minor y tick num=1,
+        	legend pos=north west,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 1, y=y 1, y error=yerr 1, col sep=comma] {../Dati.csv};
+	\addplot[red, samples=200, thick, domain=3:11, restrict y to domain*=-1:3, opacity=0.5]
+        	plot (\x, { (0.999445625578515+632.8e-9*x/(2*0.00616434504718471)) });
+        	\legend{Data, Fit}
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption[Distanza specchi]{Grafico coseno angolo-numero frangia per la misura della distanza tra gli specchi in configurazione di Fabry-Pérot.}
+	\label{fig:specch_FP}
+\end{figure}
+
+\subsection{Conclusioni}
+La relazione utilizzata descrive con soddisfazione la figura di interferenza.
+
+\clearpage
+\section{Parte seconda: calibrazione}
+
+\subsection{Obiettivi}
+
+Calibrare il micrometro nella configurazione di Fabry-Pérot.
+
+\subsection{Metodo}
+Si mantiene la configurazione del banco di lavoro della sezione precedente. Si procede alla calibrazione del micrometro tramite la relazione
+\[
+2\,\Delta d\cos\theta = \Delta N\,\lambda
+\]
+Si considera un fronte d'onda diverso dal primo e se ne misura il diametro ponendo un riferimento sullo schermo. Modificando la posizione dello specchio semi-riflettente, i fronti d'onda si spostano e si conta quanti ne passano per il riferimento. Quindi si misura ripetutamente quante frange si osservano passare a causa di uno spostamento $\Delta d=\SI{10}{\micro\m}$ dichiarato dal micrometro e, tramite la formula precedente, si ottiene il valore di $\Delta d $ reale.
+
+\subsection{Dati ed analisi}
+Le misure ripetute sono:
+\begin{center}
+\begin{tabular}[h]{c|c}
+	\multicolumn{2}{c}{$N$} \\\midrule
+	\SI{30}{} & \SI{31}{} \\
+	\SI{28}{} & \SI{31}{} \\
+    	\SI{31}{} & \SI{30}{} \\
+    	\SI{27}{} & \SI{29}{} \\
+    	\SI{28}{} & \SI{30}{} \\
+\end{tabular}
+\end{center}
+La cui media è $N=\SI{29.5(5)}{}$. La distanza del fuoco della lente dallo schermo è $L=\SI{207.40(6)}{\cm}$. Il diametro della frangia considerata vale $D=\SI{4.60(6)}{\cm}$.\\
+Pertanto, tramite la definizione informale di coseno si ottiene
+\[
+\cos \theta= \frac{L}{\sqrt{L^2+\frac{D^2}{4}} }=\SI{0.9999385(15)}{}
+\] 
+da cui segue
+\[
+\Delta d = \frac{\Delta N\,\lambda}{2 \cos \theta}=\SI{9.33(14)}{\micro\m}
+\] 
+
+\subsection{Conclusioni}
+I fattori che concorrono a determinare la precisione di $ \Delta d $ sono: 
+\begin{itemize}
+    \item in maggior parte, l'incertezza di $\Delta N$;
+    \item in minor parte --- nella pratica trascurabile ---, l'incertezza di $\cos \theta$, cioè del diametro delle frange e della distanza lente-schermo;
+    \item il gioco delle componenti meccaniche del banco di lavoro dovuto alle loro tolleranze.
+\end{itemize}
+
+\clearpage
+\section{Parte terza: calibrazione con configurazione Michelson}
+
+\subsection{Obiettivi}
+
+Calibrare il banco di lavoro con configurazione Michelson --- configurazione mantenuta anche per le parti quarta e quinta --- e paragonare la precisione delle misure ottenute nella configurazione di Fabry-Pérot.
+
+\subsection{Metodo}
+Si sistema il banco di lavoro con la configurazione di Michelson.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.4]{./Immagini/Michelson.jpg}
+    \caption[Configurazione Michelson]{Configurazione Michelson.}\label{fig:2}
+\end{figure}
+Per la presa dei dati si ripete la procedura della configurazione di Fabry-Pérot. L'equazione con cui si verifica la precisione rimane:
+\[
+	\Delta d = \frac{\Delta N\,\lambda}{2\cos\theta}
+\]
+
+\subsection{Dati ed analisi}
+I dati raccolti sono:
+\begin{center}
+\begin{tabular}[h]{c|c}
+        %\multicolumn{2}{c}{Calibrazione Michelson} \\
+	\multicolumn{2}{c}{$N$} \\\midrule
+	\SI{29}{} & \SI{30}{} \\
+    	\SI{30}{} & \SI{29}{} \\
+    	\SI{30}{} & \SI{29}{} \\
+    	\SI{29}{} & \SI{29}{} \\
+    	\SI{30}{} & \SI{29}{} \\
+\end{tabular}
+\end{center}
+La cui media è $N=\SI{29.40(16)}{}$. La distanza dallo schermo è $L=\SI{196.70(6)}{\cm}$. Il diametro della frangia scelta risulta essere $D=\SI{5.00(6)}{\cm}$.\\
+Dunque si ha
+\[
+\cos \theta= \frac{L}{\sqrt{L^2+\frac{D^2}{4}} }=\SI{0.9999192(13)}{}
+\] 
+da cui segue
+\[
+\Delta d = \frac{\Delta N\,\lambda}{2 \cos \theta}=\SI{9.30(5)}{\micro\m}
+\] 
+
+\subsection{Conclusioni}
+La misura ottenuta di $\Delta d $ è compatibile con una bontà del $42\%$ a quella ottenuta nella configurazione Fabry-Pérot. Tale percentuale è calcolata come
+\[
+	\operatorname{erfc}(x)\equiv \frac{2}{\sqrt{\pi} }\int_x^{\infty} e^{-t^2}\,\mathrm{d}t,\quad x\equiv \frac{\abs{\Delta d_\text{FB} -\Delta d_\text{M} }}{\sqrt{2(\sigma_\text{FB}^2+\sigma_\text{M} ^2) } }
+\] 
+Le due configurazioni hanno precisioni confrontabili. Si sottolinea quanto detto nelle conclusioni della parte precedente: l'incertezza sul numero di frange influenza considerevolmente la precisione di $\Delta d $.
+
+\clearpage
+\section{Parte quarta: indice di rifrazione dell'aria}
+\subsection{Obiettivi}
+Misura dell'indice di rifrazione dell'aria con la configurazione di Michelson.
+
+\subsection{Metodo}
+Si utilizza la cella a vuoto. Si rimuove una certa quantità di pressione e si contano quante frange d'onda passano per uno stesso punto quando viene lentamente ristabilita la pressione atmosferica. Si considerano differenti variazioni di pressione. Per ognuna di esse si ripetono più volte le misure.\\
+Il numero di frange segue la relazione:
+\[
+	2dm\left( P_f - P_i \right) = \Delta N\,\lambda
+\]
+Dove $P_f\equiv P = \SI{101325}{\Pa}$ è la pressione atmosferica e, come suggerito, si considera $d=\SI{2.54}{\cm}$ lo spessore della cella a vuoto. Per ottenere l'indice di rifrazione dell'aria si utilizza l'equazione
+\[
+n=mP+1
+\] 
+
+\subsection{Dati ed analisi}
+Il numero di frange per ogni differenza di pressione è:
+\begin{center}
+\begin{tabular}[h]{c|c|c}
+	%\multicolumn{3}{c}{Frange per ogni differenza di pressione} \\
+	$\SI{48}{\kPa}$  &  $\SI{62}{\kPa}$ & $\SI{70}{\kPa}$ \\\midrule
+	\SI{9}{} & \SI{12}{} & \SI{14}{} \\
+    	\SI{10}{} & \SI{12}{} & \SI{14}{} \\
+    	\SI{10}{} & \SI{10}{} & \SI{15}{} \\
+    	\SI{10}{} & \SI{13}{} & \SI{14}{} \\
+    	\SI{10}{} & \SI{13}{} & \SI{14}{} \\
+    	\SI{10}{} & \SI{13}{} & \SI{13}{} \\
+    	\SI{10}{} & \SI{13}{} & \SI{15}{} \\
+    	\SI{9}{} & \SI{13}{} & \SI{14}{} \\\midrule
+    	\SI{9.75(16)}{} & \SI{12.4(4)}{} & \SI{14.1(2)}{} \\
+\end{tabular}
+\end{center}
+Dunque, si interpolano i seguenti dati
+\begin{center}
+\begin{tabular}[h]{c|c}
+        %\multicolumn{2}{c}{Rifrazione dell'aria} \\
+	$\Delta P$/$\SI{}{\kPa}$  &  $\Delta N$ \\\midrule
+	\SI{48.0(12)}{} & \SI{9.75(16)}{} \\
+    	\SI{62.0(12)}{} & \SI{12.4(4)}{} \\
+    	\SI{70.0(12)}{} & \SI{14.1(2)}{} \\
+\end{tabular}
+\end{center}
+tramite l'equazione
+\[
+	\Delta N = \frac{2dm}{\lambda}\Delta P
+\]
+Si ottiene un valore di $m = \SI{2.51(4)e-6}{\per\kPa}$ ($\chi^2=0.15$, DoF $=2$, $p$-value $=93\%$). Pertanto, la misura dell'indice di rifrazione dell'aria risulta essere
+\[
+n=mP+1=\SI{1.000255(4)}{}
+\] 
+\begin{figure}[ht]
+	\centering
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=1 by 1}]
+    	\nextgroupplot[
+        	title={Indice di rifrazione dell'aria},
+        	width=0.8\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$\Delta P$/$\SI{}{\kPa}$},
+		ylabel={$\Delta N$},
+        	%ylabel style={rotate=-90},
+        	xmin=40, xmax=80,
+        	ymin=8, ymax=16,
+        	%xtick={0,0.1,...,0.5},
+        	minor x tick num=4,
+        	%ytick={0,0.5,...,2},
+        	minor y tick num=1,
+        	legend pos=north west,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 2, x error=xerr 2, y=y 2, y error=yerr 2, col sep=comma] {../Dati.csv};
+	\addplot[red, samples=200, thick, domain=19:81, restrict y to domain*=4:17, opacity=0.5]
+        	plot (\x, { (2*2.54e-2*2.51294152573703e-6*x/(632.8e-9) });
+        	\legend{Data, Fit}
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption[Indice di rifrazione dell'aria]{Grafico frange-variazione di pressione per la misura dell'indice di rifrazione dell'aria.}
+	\label{fig:indic_aria}
+\end{figure}
+
+\subsection{Conclusioni}
+La misura pare essere ragionevole e confrontabile con il valore di $\SI{1.000263}{}$ riportato sulla scheda Pasco. I due valori non sono strettamente compatibili ($4\%$): potrebbe essere il caso che i due esperimenti non siano stati svolti nelle medesime condizioni di temperatura, pressione ed umidità.\\
+Da quanto ottenuto si può affermare che nella pratica pare giustificato approssimare l'indice di rifrazione dell'aria $n$ all'unità.
+
+\clearpage
+\section{Parte quinta: indice di rifrazione del vetro}
+\subsection{Obiettivi}
+Calcolare l'indice di rifrazione del vetro nella configurazione di Michelson.
+
+\subsection{Metodo}
+Si sostituisce la cella a vuoto con un vetro di spessore $d=\SI{6}{\mm}$. Il vetro è poggiato su di un'asta con cui si può modificare l'angolo di incidenza del laser rispetto al vetro. Questo causa una variazione della posizione delle frange. Si verifica che l'angolo per il quale le frange invertono direzione sia $ \theta_i = \SI{0.00(6)}{\degree}$.\\
+L'indice di rifrazione del vetro segue la relazione:
+\[
+	n_\text{vetro} = \frac{\left( 2d - \Delta N\lambda \right)\left( 1 - \cos\theta_f \right)}{2d\left( 1 - \cos\theta_f \right) - \Delta N\lambda}
+\]
+Si è scelto $\theta_f=\SI{10.00(6)}{\degree}$. Si ripete più volte la misura del numero di frange.
+
+\subsection{Dati ed analisi}
+I dati raccolti sono:
+\begin{center}
+    \begin{tabular}[h]{c}
+        %\multicolumn{1}{c}{Rifrazione del vetro} \\
+        $\Delta N$ \\\midrule
+        \SI{109}{} \\
+        \SI{107}{} \\
+        \SI{110}{} \\
+        \SI{113}{} \\
+        \SI{108}{} \\\midrule
+        \SI{109.0(10)}{}
+    \end{tabular}\qquad
+\end{center}
+Dall'equazione precedente si ricava il valore dell'indice di rifrazione del vetro $n_\text{vetro} =\SI{1.603(15)}{}$.
+
+\subsection{Conclusioni}
+Il valore dell'indice di rifrazione del vetro risulta essere compatibile con quanto riportato in letteratura.
+
+\clearpage
+\section{Parte sesta: interferenza con un righello}
+\subsection{Obiettivi}
+Misura della lunghezza d'onda del laser He-Ne usando un righello come reticolo di riflessione.
+
+\subsection{Metodo}
+Si sporge un righello dal tavolo di lavoro. Si posiziona il laser di modo che il fascio di luce sia radente il righello ed una parte ne sia riflessa. Sullo schermo su cui giungono i raggi del laser si presentano diversi punti. I due più luminosi corrispondono al fronte d'onda di ordine $0$ ed alla parte non riflessa del fascio.\\
+Si misura la distanza $L$ tra un estremo del righello e lo schermo. Inoltre, si misura la distanza $H_N$ di ciascun punto da quello più basso, cioè quello corrispondente al raggio non riflesso del laser. In questo modo si può ricavare il coseno dell'angolo incidente ed il coseno di ciascun massimo luminoso.
+La relazione che lega il massimo $N$ e l'angolo di incidenza $\theta_\text{inc}$ del laser è
+\[
+	d\left( \cos\theta_\text{inc} - \cos\theta_N \right) = N\lambda
+\]
+dove $d=\SI{1}{\mm}$ è il passo del righello.
+
+\subsection{Dati ed analisi}
+Le distanze dei punti rispetto il più basso sono:
+\begin{center}
+\begin{tabular}[h]{c|c}
+        %\multicolumn{2}{c}{Rifrazione del righello} \\
+	$N$ & $H_N$/$\SI{}{\cm}$ \\\midrule
+	\SI{-3}{} & \SI{35.60(12)}{} \\
+	\SI{-2}{} & \SI{40.00(12)}{} \\
+	\SI{-1}{} & \SI{43.50(12)}{} \\
+	\SI{0}{}  & \SI{46.50(12)}{} \\
+	\SI{1}{}  & \SI{49.00(12)}{} \\
+	\SI{2}{}  & \SI{51.60(12)}{} \\
+	\SI{3}{}  & \SI{53.80(12)}{} \\
+\end{tabular}
+\end{center}
+La distanza tra il righello e lo schermo è $L=\SI{317.0(3)}{\cm}$. Il valore del coseno dell'angolo incidente è
+\[
+\cos \theta_0\equiv\cos \theta_\text{inc} = \frac{L}{\sqrt{L^2+\frac{H_0^2}{4}} }=\SI{0.997321(14)}{}
+\] 
+Si ottiene il valore del coseno associato a ciascun massimo tramite
+\[
+	\cos \theta_N = \frac{L}{\sqrt{L^2+\left( H_N-\frac{1}{2}H_0 \right)^2} }
+\] 
+Da cui risultano:
+\begin{center}
+\begin{tabular}[h]{c|c}
+        %\multicolumn{2}{c}{Rifrazione del righello} \\
+	$N$ & $\cos\theta_N$ \\\midrule
+	\SI{-3}{} & \SI{0.999242(7)}{} \\
+	\SI{-2}{} & \SI{0.998607(10)}{} \\
+	\SI{-1}{} & \SI{0.997966(12)}{} \\
+	\SI{0}{} & \SI{0.997321(14)}{} \\
+	\SI{1}{} & \SI{0.996717(16)}{} \\
+	\SI{2}{} & \SI{0.996025(18)}{} \\
+	\SI{3}{} & \SI{0.99539(2)}{} \\
+\end{tabular}
+\end{center}
+Si interpolano questi dati secondo
+\[
+\cos \theta_N=\cos\theta_\text{inc} - \frac{\lambda}{d} N
+\] 
+ottenendo una lunghezza d'onda del laser di $\lambda=\SI{641(2)}{\nm}$ ($\chi^2=6.4$, DoF $=6$, $p$-value $=38\%$).
+
+\begin{figure}[ht]
+	\centering
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=1 by 1}]
+    	\nextgroupplot[
+        	title={Interferenza con un righello},
+        	width=0.8\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$N$},
+		ylabel={$\cos{\theta_N}$},
+        	%ylabel style={rotate=-90},
+        	xmin=-4, xmax=4,
+        	ymin=0.995, ymax=1,
+        	%xtick={0,0.1,...,0.5},
+        	minor x tick num=4,
+        	%ytick={0,0.5,...,2},
+		y tick label style={/pgf/number format/.cd, fixed, fixed zerofill, precision=3, /tikz/.cd},
+        	minor y tick num=1,
+        	legend pos=north east,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 3, x error=xerr 3, y=y 3, y error=yerr 3, col sep=comma] {../Dati.csv};
+	\addplot[red, samples=200, thick, domain=-5:5, restrict y to domain*=0.99:1, opacity=0.5]
+        	plot (\x, { 0.997321142928116-x*641.008174368753e-9/1e-3 });
+        	\legend{Data, Fit}
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption[Interferenza con un righello]{Grafico coseno picco-numero picco per le misure della figura di interferenza con un righello.}
+	\label{fig:interf_righ}
+\end{figure}
+
+\subsection{Conclusioni}
+La misura della lunghezza d'onda del laser He-Ne non risulta essere compatibile con il valore atteso di $\SI{632.8}{\nm}$. Questo potrebbe essere indice della presenza di un errore sistematico che non è stato individuato durante la presa dati.
+
+
+
+\end{document}

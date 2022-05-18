@@ -126,7 +126,7 @@ def fit_non_lineare(file_name, dati, interpol, error, method):
     elif interpol == "18": ## Trasferimento da V_g a V_R. Fase. Circuito RLC
         def func(xval, C, L, A): # xval = omega
             R = 2002 # ohm
-            return -np.arctan((xval*L-1/(xval*C))/R)+A
+            return -np.arctan2((xval*L-1/(xval*C)), R)+A
         pars = [('C', 1e-6), ('L', 0.04), ('A', 0)]
     elif interpol == "19": ## Trasferimento da V_g a V_C. Fase. Circuito RLC
         def func(xval, C, L, A): # xval = omega
@@ -138,6 +138,23 @@ def fit_non_lineare(file_name, dati, interpol, error, method):
             R = 2002 # ohm
             return np.pi/2-np.arctan2((xval*L-1/(xval*C)), R)+A
         pars = [('C', 1e-3), ('L', 40), ('A', 0)]
+    elif interpol == "21": ## Interferometro, distanza specchi
+        def func(xval, d, A): # xval = N
+            lamb = 632.8e-9
+            return lamb*xval/(2*d)+A
+        pars = [('d', 6e-3), ('A', 1)]
+    elif interpol == "22": ## Interferometro, indice aria
+        def func(xval, m): # xval = Delta P, in kPa
+            lamb = 632.8e-9
+            d = 2.54e-2
+            return 2*d*m*xval/lamb
+        pars = [('m', 2.1e-6)]
+    elif interpol == "23": ## Interferometro, righello
+        def func(xval, lamb): # xval = N
+            d = 1e-3
+            costhinc = 0.997321142928116
+            return costhinc-xval*lamb/d
+        pars = [('lamb', 632.8e-9)]
     else:
         print("Scegliere una interpolazione.")
         sys.exit(1)
@@ -167,6 +184,8 @@ def fit_non_lineare(file_name, dati, interpol, error, method):
     fmodel = Model(func)
     for i, j in pars:
         fmodel.set_param_hint(i, value=j)
+    #fmodel.set_param_hint("L", min=0)
+    #fmodel.set_param_hint("R_L", min=0)
     params=fmodel.make_params()
 
     # Interpolazione
