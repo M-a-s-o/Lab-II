@@ -27,13 +27,14 @@ int main (int argc, char *argv[]) {
     func_trasf_RLC_to_VR, func_trasf_RLC_to_VC, func_trasf_RLC_to_VL, \
     func_trasf_RLC_to_VR_real, func_trasf_RLC_to_VC_real, func_trasf_RLC_to_VL_real, \
     func_trasf_RLC_to_VR_fase, func_trasf_RLC_to_VC_fase, func_trasf_RLC_to_VL_fase, \
-    func_dist_spec, func_indice_aria, func_righello};
+    func_dist_spec, func_indice_aria, func_righello, \
+    func_Fraunhofer, func_Cauchy};
 
     if (argc >= nskipargs) {
         file_name = argv[1];// = "./data.txt";
         nfit = atoi(argv[2]);
-        if (nfit < 0 || nfit > 23) {
-            std::cout << "Fit permessi: da 0 a 23." << std::endl;
+        if (nfit < 0 || nfit > func_names->size()-1) {
+            std::cout << "Fit permessi: da 0 a " << func_names->size()-1 << "." << std::endl;
             return 1;
         }
         if (npar == 0) {

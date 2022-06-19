@@ -27,7 +27,17 @@ def fit_non_lineare(file_name, dati, interpol, error, method):
     yerr = np.array(yerr, dtype=np.float128)
 
     #### Interpolazioni ####
-    if interpol=="1":
+    if interpol=="0":
+        ## lineare
+        def func(xval, A, B):
+            return A+xval*B/2
+        pars = [('A', 30), ('B', 1)]
+    elif interpol=="1":
+        ## lineare solo B
+        def func(xval, B):
+            return B*xval
+        pars = [('B', 0)]
+    elif interpol=="2":
         ## prima interpolazione ## 
         def func(xval, I0, fattore, A):
             return I0*(np.exp(fattore*xval)-1)+A
@@ -155,6 +165,19 @@ def fit_non_lineare(file_name, dati, interpol, error, method):
             costhinc = 0.997321142928116
             return costhinc-xval*lamb/d
         pars = [('lamb', 632.8e-9)]
+    elif interpol == "24": ## Microonde, Fraunhofer diffraction
+        def func(xval, lamb, A, B, C, D, E, F): # xval = theta
+            S = 7.6 # cm
+            W = 1.5 # cm
+            xval = C*xval+D
+            #return A*np.square(np.cos(np.pi*S*np.sin(xval)/lamb)*np.sin(np.pi*W*np.sin(xval)/lamb)/(np.pi*W*np.sin(xval)/lamb))+B
+            return A*np.square(np.cos(np.pi*S*np.sin(xval)/lamb+E)*np.sin(np.pi*W*np.sin(xval)/lamb+F)/(np.pi*W*np.sin(xval)/lamb+F))+B
+        #pars = [('lamb', 2.85), ('A', 6), ('B', 0), ('C', 1), ('D', 0)]
+        pars = [('lamb', 2.85), ('A', 6), ('B', 0), ('C', 1), ('D', 0), ('E', 0), ('F', 0)]
+    elif interpol == "25": ## Legge di Cauchy spettrometro
+        def func(xval, A, B): # xval = lambda
+            return A+B/xval**2
+        pars = [('A', 1), ('B', 1)]
     else:
         print("Scegliere una interpolazione.")
         sys.exit(1)

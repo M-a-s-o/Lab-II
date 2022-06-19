@@ -1,0 +1,625 @@
+\documentclass[a4paper]{article}
+\input{/home/maso/uni/bachelor-2/preamble.tex}
+\input{./preamble-master.tex}
+\geometry{right=2cm,left=2cm}
+
+\begin{document}
+\begin{titlepage}
+\center
+    
+% HEADING SECTIONS
+\textsc{\LARGE Corso di Laboratorio II}\\[1.5cm] % Name of your university/college
+%\textsc{\Large Scuola di Scienze}\\[0.5cm] % Major heading such as course name
+\textsc{\large Turno 2A}\\[0.5cm] % Minor heading such as course title
+\textsc{\large Gruppo 14}\\[0.5cm]
+
+% TITLE SECTION
+\HRule \\[0.6cm]
+{ \huge \bfseries Microonde}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+    
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+\Large \emph{Autori:} \\
+\textsc{} \\
+\textsc{} \\
+\textsc{} \\ [4cm]
+
+\vspace{8cm}
+
+% DATE SECTION
+{\large Anno Accademico 2021-2022}\\[2cm] % Anno Accademico
+
+% LOGO SECTION
+%\includegraphics[width=0.30\textwidth]{logo.png}\\[1cm] % Include a department/university logo
+
+\vfill
+\end{titlepage}
+
+% Pagina bianca
+%\newpage\null\thispagestyle{blank}\newpage
+
+% Sommario
+\pagenumbering{roman}
+
+%\begin{abstract}
+%    \addcontentsline{toc}{section}{\numberline{}Sommario}
+%    \noindent Si studia la curva risonanza di un oscillatore armonico semplice, smorzato, e forzato.
+%\end{abstract}
+
+% Indice
+\tableofcontents
+\clearpage
+
+% Elenco delle figure
+\listoffigures
+\addcontentsline{toc}{section}{\numberline{}Elenco delle figure}
+\clearpage
+
+% Corpo del testo
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+%\title{}
+%\maketitle
+%\tableofcontents
+%\clearpage
+\section{Parte prima: onde stazionarie}
+\subsection{Obiettivi}
+Misurare la lunghezza d'onda di una radiazione microonde con metodo stazionario.
+
+\subsection{Metodo}
+L'apparecchiatura utilizzata per questa esperienza è costituita da un emettitore di microonde polarizzate linearmente e da un ricevitore. Entrambi sono composti da un diodo che risponde solo ad onde polarizzate in una particolare direzione. I due componenti permettono di regolare l'angolazione del diodo tramite una scala graduata. Inoltre, è possibile modificare la distanza tra trasmettitore e ricevitore grazie ad un metro. Un goniometro regola l'angolo tra i due componenti.\\
+L'emettitore è una cavità risonante con diodo di Gunn che emette onde elettromagnetiche polarizzate.
+Il ricevitore, invece, è composto da un misuratore di intensità di corrente analogico con cui è possibile scegliere diversi tipi di scale (30x, 10x, 3x, 1x). Viene collegato un multimetro per poter misurare il voltaggio.\\
+
+Si pongono i due componenti a distanza relativa iniziale di almeno $\SI{30}{\cm}$. Si procede con la ricerca dei massimi di intensità spostando l'emettitore fino ad una distanza relativa finale di $\SI{50}{\cm}$.\\
+
+\subsection{Dati ed analisi}
+Le distanze relative tra trasmettitore ed emettitore in corrispondenza di un massimo sono riportate nella tabella seguente. Insieme, sono presenti le distanze tra un massimo ed il successivo.
+\begin{center}
+\begin{tabular}[h]{c|c}
+        %\multicolumn{2}{c}{Diametri} \\
+	Dist. relat. & Dist. massimi \\
+	$x_\text{rel} $/$\SI{}{\cm}$ & $\Delta x$/$\SI{}{\cm}$ \\\midrule
+	\SI{33.60(17)}{} & \SI{2.6(2)}{} \\
+	\SI{34.90(17)}{} & \SI{3.0(2)}{} \\
+	\SI{36.40(17)}{} & \SI{2.0(2)}{} \\
+	\SI{37.40(17)}{} & \SI{3.0(2)}{} \\
+	\SI{38.90(17)}{} & \SI{2.8(2)}{} \\
+	\SI{40.30(17)}{} & \SI{3.4(2)}{} \\
+	\SI{42.00(17)}{} & \SI{3.0(2)}{} \\
+	\SI{43.50(17)}{} & \SI{2.8(2)}{} \\
+	\SI{44.90(17)}{} & \SI{3.2(2)}{} \\
+	\SI{46.50(17)}{} & \SI{2.8(2)}{} \\
+	\SI{47.90(17)}{} & \SI{3.4(2)}{} \\
+	\SI{49.60(17)}{} & \SI{2.6(2)}{} \\
+	\SI{50.90(17)}{} & \\
+\end{tabular}
+\end{center}
+La distanza media tra un massimo ed il successivo, cioè la lunghezza d'onda, è $\lambda=\SI{2.88(7)}{\cm}$ che è compatibile al $64\%$ con il valore atteso di $\SI{2.85}{\cm}$.
+
+\subsection{Conclusioni}
+Durante le misurazioni, i multimetri oscillano notevolmente. I fattori che concorrono a creare queste oscillazioni sono legati ad effetti statistici e ad una sensibilità elevata degli strumenti. A causa di ciò, le misurazioni non sono pienamente riproducibili: le distanze per i massimi oscillano in modo marcato. Ciononostante, il valore ricavato della lunghezza d'onda è molto prossimo a quanto atteso.
+
+\clearpage
+\section{Parte seconda: riflessione}
+\subsection{Obiettivi}
+Verificare la legge di Cartesio.
+
+\subsection{Metodo}
+Sul goniometro tra emettitore e ricevitore si pone una lastra metallica rettangolare riflettente. Inizialmente si posiziona il riflettore ad un angolo di \SI[]{30}{\degree} rispetto alla direzione di propagazione delle microonde. Si aumenta l'angolo fino a \SI[]{70}{\degree} con un passo di \SI[]{10}{\degree}.\\
+Per misurare l'angolo di incidenza, $ \theta_i $, rispetto alla normale si è misurato  il suo complementare, cioè l'angolo segnato sul goniometro, $ \theta_1 $, tra il riflettore e la direzione di propagazione delle onde. Grazie al braccio collegato al goniometro, per ogni angolo del riflettore si sposta il ricevitore in modo da rilevare un massimo. L'angolo di riflessione è
+\[
+	\theta_r = \SI[]{180}{\degree} - \theta_2 - (\SI[]{90}{\degree} - \theta_1)
+\]
+Dove $ \theta_2 $ è l'angolo del ricevitore rispetto allo zero del goniometro.\\
+Se emettitore e ricevitore si avvicinano troppo, è possibile che si osservino fenomeni legati alla non idealità della sorgente.
+
+\subsection{Dati ed analisi}
+Le misure dell'angolo incidente e dell'angolo riflesso sono:
+\begin{center}
+\begin{tabular}[h]{c|c}
+        %\multicolumn{2}{c}{Diametri} \\
+	$\theta_i$/$\SI{}{\deg}$ & $\theta_r$/$\SI{}{\deg}$ \\\midrule
+	\SI{30.0(17)}{} & \SI{29(2)}{} \\
+	\SI{40.0(17)}{} & \SI{42(2)}{} \\
+	\SI{50.0(17)}{} & \SI{50(2)}{} \\
+	\SI{60.0(17)}{} & \SI{57(2)}{} \\
+	\SI{70.0(17)}{} & \SI{62(2)}{} \\
+\end{tabular}
+\end{center}
+Agli angoli misurati si è attribuito una incertezza maggiore della sensibilità del goniometro per tenere conto del gioco meccanico dell'apparecchiatura e dell'errore umano nella lettura dei dati.\\
+La legge di Cartesio prevede $\theta_r = \theta_i$. Si interpolano i dati secondo la funzione lineare $ \theta_r = B\cdot\theta_i $ e si ottiene $ B = \SI{0.95(3)}{} $ ($\chi^2 = 4.9$, DoF$=\SI{4}{}$,  $p$-value $=29.7\%$).
+\begin{figure}[ht]
+	\centering
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=1 by 1}]
+    	\nextgroupplot[
+        	title={Legge di Cartesio},
+        	width=0.8\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$\theta_i$/$\SI{}{\deg}$},
+		ylabel={$\theta_r$/$\SI{}{\deg}$},
+        	%ylabel style={rotate=-90},
+        	xmin=20, xmax=80,
+        	ymin=20, ymax=80,
+        	%xtick={0,0.1,...,0.5},
+        	minor x tick num=4,
+        	%ytick={0,0.5,...,2},
+		%y tick label style={/pgf/number format/.cd, fixed, fixed zerofill, precision=3, /tikz/.cd},
+        	minor y tick num=3,
+        	legend pos=north west,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 2, x error=xerr 2, y=y 2, y error=yerr 2, col sep=comma] {../Dati.csv};
+	\addplot[red, samples=200, thick, domain=10:90, restrict y to domain*=10:90, opacity=0.5]
+        	plot (\x, { 0.949924241968657*x });
+        	\legend{Data, Fit}
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption[Legge di Cartesio]{Grafico angolo riflesso-angolo incidente per la verifica della legge di Cartesio.}
+\end{figure}
+
+\subsection{Conclusione}
+Il valore di $B$ è compatibile al $4.9\%$ con l'unità. Questo potrebbe essere indicatore della non idealità del trasmettitore e della presenza di altri fenomeni oltre la riflessione, soprattutto per grandi angoli di incidenza.
+
+\clearpage
+\section{Parte terza: rifrazione}
+\subsection{Obiettivi}
+Misurare l'indice di rifrazione dello styrene in un prisma di Ethafoam tramite la legge di Snell.
+
+\subsection{Metodo}
+Si posiziona il prisma a base triangolare in modo che il cateto maggiore sia perpendicolare alla direzione di propagazione delle onde. Si osserva la rifrazione quando l'onda trapassa l'interfaccia tra l'interno del prisma e l'aria all'esterno. Si riempie il prisma di styrene e si sposta il ricevitore fino a rilevare un massimo.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.7]{./Immagini/styrene.png}
+    \caption[Prisma]{Geometria del prisma.}
+\end{figure}
+L'angolo $ \theta_1 $ è pari all'angolo formato dal cateto maggiore e dall'ipotenusa.\\
+Considerato l'indice di rifrazione dell'aria $n_2=1$, per la legge di Snell si ricava l'indice di rifrazione dello styrene $n_1$ come:
+\[
+n_1 \sin \theta_1=\sin \theta_2 \implies n_1=\frac{\sin \theta_2}{\sin \theta_1}
+\] 
+dove $\theta_2=\theta+\theta_1$ e $\theta\equiv \SI{180}{\degree}-\theta_\text{ricev} $. Si suppone che l'indice di rifrazione del prisma sia $n=1$.
+
+\subsection{Dati ed analisi}
+Le misure dell'angolo del ricevitore sono:
+\begin{center}
+\begin{tabular}[h]{c}
+        %\multicolumn{2}{c}{Diametri} \\
+	$\theta_\text{ricev} $/$\SI{}{\deg}$ \\\midrule
+	\SI{167}{} \\
+	\SI{168}{} \\
+	\SI{167}{} \\
+\end{tabular}
+\end{center}
+La loro media è $\theta_\text{ricev}=\SI{167.3(3)}{\deg}$. Inoltre, $\theta_1=\SI{22}{\degree}$. Applicando le formule riportate sopra, si ottiene $n_1 = \SI{1.518(13)}{}$.
+
+\subsection{Conclusione}
+Quanto misurato risulta essere compatibile con i valori in letteratura. % n = 1.48??
+
+\clearpage
+\section{Parte quarta: polarizzazione}
+I diodi emettono onde linearmente polarizzate: in posizione verticale, cioè a \SI[]{0}{\degree}, il campo elettrico oscilla verticalmente.\\
+Per mostrare sperimentalmente la polarizzazione del campo, si pongono i diodi ad una distanza fissa con medesima orientazione. Successivamente si modifica gradualmente l'inclinazione dell'emettitore con passo di $\SI{10}{\degree}$ fino a $\SI{180}{\degree}$.
+\begin{figure}[ht]
+	\centering
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=1 by 1}]
+    	\nextgroupplot[
+        	title={Polarizzazione},
+        	width=0.8\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$\theta$/$\SI{}{\deg}$},
+		ylabel={Intensità relativa di corrente},
+        	%ylabel style={rotate=-90},
+        	xmin=-10, xmax=190,
+        	ymin=-.1, ymax=1.1,
+        	%xtick={0,0.1,...,0.5},
+        	minor x tick num=3,
+        	%ytick={0,0.5,...,2},
+		%y tick label style={/pgf/number format/.cd, fixed, fixed zerofill, precision=3, /tikz/.cd},
+        	minor y tick num=3,
+        	legend pos=south east,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 7, y=y 7, col sep=comma] {../Dati.csv};
+		\addplot[red, samples=200, thick, domain=0:190, restrict y to domain*=-.2:1.2, opacity=0.5]
+        	plot (\x, { abs(cos(x)) });
+        	\legend{Data, $\abs{\cos \theta}$}
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption[Polarizzazione]{Grafico intensità-angolo relativo. Si nota la somiglianza dei dati alla funzione $\abs{\cos \theta}$.}
+\end{figure}
+Come si può osservare dai dati, la componente dell'onda trasmessa è massima per angoli uguali a meno di $\SI{180}{\degree}$. Man mano che il trasmettitore si avvicina all'orientazione orizzontale, l'amperaggio ed il voltaggio diminuiscono fino a diventare approssimativamente nulli.\\
+Un interessante metodo per osservare la polarizzazione consiste nell'utilizzare una griglia conduttrice che agisce come polarizzatore.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.5]{./Immagini/griglia.png}
+    \caption[Polarizzatore]{Schema della griglia utilizzata per studiare la polarizzazione.}
+\end{figure}
+Si dispongono l'emettitore ed il ricevitore con orientazione verticale mentre si pone la griglia orizzontalmente: il segnale passa completamente. Mettendo la griglia verticalmente, il segnale è quasi nullo. Infatti, gli elettroni del polarizzatore sono messi in moto dal campo affinché lo possano bilanciare: il sistema si evolve in modo da mantenere nullo il campo elettrico all'interno di, e oltre, il conduttore. D'altra parte, nella prima configurazione, le cariche non hanno abbastanza spazio per muoversi. Esse non riescono a bilanciare il segnale con cui vengono colpite.\\
+Infine, un altro interessante effetto lo si può osservare ponendo trasmettitore e ricevitore sfasati di $\SI{90}{\degree}$. Senza griglia tra i due non si ha segnale. Ponendo ed orientando, invece, il polarizzatore ad angolo di $\SI{45}{\degree}$ si nota che il campo elettrico è rilevabile. Infatti, il polarizzatore estrae una componente dal campo iniziale e tale componente non è più perpendicolare al ricevitore: l'intensità misurata dal ricevitore non è nulla.
+
+
+\clearpage
+\section{Parte quinta: angolo di Brewster}
+\subsection{Obiettivi}
+Misurare l'angolo di Brewster.
+\subsection{Metodo}
+L'angolo di Brewster corrisponde all'angolo per cui un'onda polarizzata nel piano di incidenza non viene riflessa, ma solamente trasmessa. Si orientano il trasmettitore ed il ricevitore orizzontalmente. Si posiziona una lastra di polietilene sul goniometro tra i due componenti.\\
+Si inizia da un angolo di incidenza di $\SI{20}{\degree}$ fino a $\SI{60}{\degree}$ con un passo di $\SI{5}{\degree}$. Per ogni angolo, si cerca il segale massimo riflesso con il ricevitore. Si ripete per la polarizzazione verticale.
+
+\subsection{Dati ed analisi}
+Per ricavare l'angolo di Brewster si osservano in un grafico i dati raccolti per polarizzazione orizzontale e verticale. Si cerca l'angolo per cui l'onda polarizzata orizzontalmente non viene riflessa: $\theta_B =\SI{45}{\degree}$.
+\begin{figure}[ht]
+	\centering
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=1 by 1}]
+    	\nextgroupplot[
+        	title={Angolo di Brewster},
+        	width=0.8\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$\theta$/$\SI{}{\deg}$},
+		ylabel={d.d.p./$\SI{}{\V}$},
+        	%ylabel style={rotate=-90},
+        	xmin=15, xmax=65,
+        	ymin=0, ymax=50,
+        	%xtick={0,0.1,...,0.5},
+        	minor x tick num=4,
+        	%ytick={0,0.5,...,2},
+		%y tick label style={/pgf/number format/.cd, fixed, fixed zerofill, precision=3, /tikz/.cd},
+        	minor y tick num=3,
+        	legend pos=north east,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=blue,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 8, y=y 8, col sep=comma] {../Dati.csv};
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=o,
+        	mark size=2pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 9, y=y 9, col sep=comma] {../Dati.csv};
+        	\legend{Vert, Oriz}
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption[Angolo di Brewster]{Grafico tensione-angolo.}
+\end{figure}
+
+\subsection{Conclusioni}
+Da una analisi qualitativa, l'angolo di Brewster ottenuto non è coerente con quanto riportato in letteratura $\theta_B=\SI{56}{\degree}$. Non si può sperare di misurare efficacemente tale angolo a causa della presenza di un fenomeno di interferenza delle microonde tra la superficie frontale e posteriore della lastra di polietilene.
+
+\clearpage
+\section{Parte sesta: doppia fenditura}
+\subsection{Obiettivi}
+Studiare il fenomeno dell'interferenza per la doppia fenditura.
+
+\subsection{Metodo}
+Si posizionano, tra l'emettitore ed il ricevitore, delle lastre metalliche di differenti larghezze come in figura. Tali lastre distano $W=\SI{1.5}{\cm}$ tra loro, mentre la spaziatura tra due le fenditure è di $S=\SI{7.6}{\cm}$.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.7]{./Immagini/doppiafenditura.png}
+    \caption[Schema doppia fenditura]{Disposizione per l'interferenza a doppia fenditura.}
+\end{figure}
+Si utilizza la polarizzazione verticale. Si cercano i massimi partendo da una posizione frontale. Si misura l'angolo $\theta$ del ricevitore rispetto l'orizzontale.\\
+I massimi di diffrazione seguono la legge:
+\[
+	S\sin\theta = n\lambda
+\]
+dove $n$ è un numero intero associato all'ordine del massimo.
+
+\subsection{Dati ed analisi}
+Gli angoli misurati sono:
+\begin{center}
+\begin{tabular}[h]{c|c}
+        %\multicolumn{2}{c}{Diametri} \\
+	$\theta_\text{ricevitore} $/$\SI{}{\deg}$ & $I$/$\SI{}{\mA}$ \\\midrule
+	\SI{5.0(12)}{} & \SI{5.00(12)}{} \\
+	\SI{7.0(12)}{} & \SI{3.60(12)}{} \\
+	\SI{10.0(12)}{} & \SI{1.80(12)}{} \\
+	\SI{15.0(12)}{} & \SI{1.00(12)}{} \\
+	\SI{17.0(12)}{} & \SI{2.40(12)}{} \\
+	\SI{20.0(12)}{} & \SI{4.80(12)}{} \\
+	\SI{22.0(12)}{} & \SI{5.20(12)}{} \\
+	\SI{25.0(12)}{} & \SI{4.80(12)}{} \\
+	\SI{30.0(12)}{} & \SI{2.80(12)}{} \\
+	\SI{32.0(12)}{} & \SI{1.20(3)}{} \\
+	\SI{35.0(12)}{} & \SI{0.110(12)}{} \\
+	\SI{37.0(12)}{} & \SI{0.24(3)}{} \\
+	\SI{40.0(12)}{} & \SI{1.26(3)}{} \\
+	\SI{45.0(12)}{} & \SI{2.58(3)}{} \\
+	\SI{48.0(12)}{} & \SI{3.20(12)}{} \\
+	\SI{50.0(12)}{} & \SI{2.94(3)}{} \\
+	\SI{55.0(12)}{} & \SI{2.40(3)}{} \\
+	\SI{60.0(12)}{} & \SI{1.50(3)}{} \\
+\end{tabular}
+\end{center}
+Dai dati risulta evidente che è presente un massimo a $\SI{22}{\degree}$ ($n=1$) ed un altro a $\SI{48}{\degree}$ ($n=2$). Dalla relazione sopra riportata si ottengono due lunghezze d'onda
+\[
+\lambda_1=\SI{2.85(7)}{\cm},\quad \lambda_2=\SI{2.82(3)}{\cm}
+\] 
+compatibili con il valore atteso al $97\%$ ed al $31\%$ rispettivamente.
+
+\begin{figure}[ht]
+	\centering
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=1 by 1}]
+    	\nextgroupplot[
+        	title={Doppia fenditura},
+        	width=0.8\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$\theta$/$\SI{}{\radian}$},
+		ylabel={$I$/$\SI{}{\mA}$},
+        	%ylabel style={rotate=-90},
+        	xmin=0, xmax=1.2,
+        	ymin=0, ymax=6,
+        	%xtick={0,0.1,...,0.5},
+        	minor x tick num=4,
+        	%ytick={0,0.5,...,2},
+		%y tick label style={/pgf/number format/.cd, fixed, fixed zerofill, precision=3, /tikz/.cd},
+        	minor y tick num=3,
+        	legend pos=north east,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 3, x error=xerr 3, y=y 3, y error=yerr 3, col sep=comma] {../Dati.csv};
+	\addplot[red, samples=200, thick, domain=0:2, restrict y to domain*=0:6, opacity=0.5]
+	plot (\x, { 0.0720404961162491 + 2.96785216246115*sin(deg(0.476843477624418*3.141592653*sin(deg(1.12064453359432*\x - 0.0627677430479228)) + 0.264678732884209))^2*cos(deg(2.41600695329705*3.141592653*sin(deg(1.12064453359432*\x - 0.0627677430479228)) + 0.231081253297862))^2/(sin(deg(1.12064453359432*\x - 0.0627677430479228)) + 0.176682415285129)^2 });
+        	\legend{Data, Fit}
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption[Grafico doppia fenditura]{Grafico corrente-angolo.}
+\end{figure}
+Si interpolano i dati con l'equazione per la diffrazione di Fraunhofer:
+\[
+	I(\theta)=A \cos^2 \left[ \frac{\pi S \sin (C \theta+D)}{\lambda}+E \right] \cdot \operatorname{sinc}^2\left[ \frac{\pi W \sin (C\theta+D)}{\lambda}+F \right] +B
+\] 
+dove $\operatorname{sinc}x\equiv \frac{\sin x}{x}$. Si ottiene ($\chi^2 = 6.2$, DoF $= 11$, $p$-value $=86\%$):
+\begin{center}
+\begin{tabular}[t]{c|c|c}
+	Parametro & Valore & Unità \\\midrule
+	$\lambda$ & $\SI{3.1(3)}{}$ & $\SI{}{\cm}$ \\
+	$A$ & $\SI{6.7(6)}{}$ & $\SI{}{\mA}$ \\
+	$B$ & $\SI{0.07(5)}{}$ & $\SI{}{\mA}$ \\
+	$C$ & $\SI{1.12(8)}{}$ & \\
+	$D$ & $\SI{-0.06(7)}{}$ & \\
+	$E$ & $\SI{0.2(6)}{}$ & \\
+	$F$ & $\SI{0.26(13)}{}$ &
+\end{tabular}
+\end{center}
+Il valore di lunghezza d'onda è compatibile al $29\%$ con quanto atteso. Come ci si aspetta dalla teoria, si nota che i parametri additivi (i.e. $B$, $D$, $E$, $F$) sono compatibili con zero ed il parametro moltiplicativo $C$ è compatibile con l'unità.
+
+\subsection{Conclusioni}
+Le tre misure sono compatibili tra loro e, pertanto, ne si può fare la media pesata. Si ottiene $\lambda=\SI{2.83(2)}{\cm}$ compatibile al $38\%$ con il valore atteso di $\SI{2.85}{\cm}$.
+
+\clearpage
+\section{Parte settima: specchio di Lloyd}
+\subsection{Obiettivi}
+Misurare la lunghezza d'onda del microonde.
+
+\subsection{Metodo}
+Con riferimento alla figura, si posizionano trasmettitore ($A$) e ricevitore ($C$) uno davanti all'altro equidistanti dal goniometro. Si pone lo specchio in $B$, sulla perpendicolare al segmento $\overline{AC}$.
+\begin{figure}[h]
+    	\centering
+    	\includegraphics[scale = 0.5]{./Immagini/lloyd.png}
+	\caption[Specchio di Lloyd]{Disposizione dello specchio di Lloyd.}
+\end{figure}
+Si posiziona lo specchio alla distanza $h_1$ più piccola per cui si rileva un minimo di interferenza. Lo specchio viene allontanato fino a trovare un altro minimo ad $h_2$. La differenza di cammino ottico $\overline{AB}+\overline{BC}$ nei due casi corrisponde alla lunghezza d'onda.
+
+\subsection{Dati ed analisi}
+Si ripetono le misure della distanza per il primo minimo $h_1$ e per il secondo minimo $h_2$. Di seguito sono riportate le posizioni verticali assolute dello specchio e non le distanze relative $h$:
+\begin{center}
+\begin{tabular}[h]{c|c}
+        %\multicolumn{2}{c}{Diametri} \\
+	$y_1$/$\SI{}{\cm}$ & $y_2$/$\SI{}{\cm}$ \\\midrule
+	\SI{78.3}{} & \SI{82}{} \\
+	\SI{77.7}{} & \SI{82.5}{} \\
+	\SI{78.1}{} & \SI{82.2}{} \\
+	\SI{78.2}{} & \SI{82.2}{} \\
+	\SI{78}{} & \SI{81.8}{}
+\end{tabular}
+\end{center}
+Le cui medie sono $y_1=\SI{78.06(10)}{\cm}$ e $y_2=\SI{82.14(12)}{\cm}$. La posizione orizzontale dello specchio è $x=\SI{63.960(6)}{\cm}$.\\
+La posizione orizzontale del trasmettitore è $x_t=\SI{12.00(6)}{\cm}$ e del ricevitore è $x_r=\SI{144.21(10)}{\cm}$. La posizione verticale di entrambi è $y=\SI{61.74(6)}{\cm}$.\\
+Tramite Pitagora si ottengono i percorsi ottici nei due casi:
+\[
+	(\overline{AB}+\overline{BC})_1 = \SI{107.29(10)}{\cm},\qquad (\overline{AB}+\overline{BC})_2=\SI{110.05(12)}{\cm}
+\] 
+La loro differenza fornisce la lunghezza d'onda:
+\[
+\lambda=\SI{2.76(15)}{\cm}
+\] 
+
+\subsection{Conclusioni}
+Il risultato ottenuto è compatibile al $54\%$ con il valore atteso.
+
+
+\clearpage
+\section{Parte ottava: diffrazione di Bragg}
+\subsection{Obiettivi}
+Studiare la diffrazione di Bragg.
+
+\subsection{Metodo}
+Si usa un cubo che simula un reticolo cristallino. Il cubo è composto da Ethafoam e da sfere metalliche. Esso viene posizionato al centro del goniometro con una faccia perpendicolare alle onde. Viene girato fino ad un angolo di incidenza $\theta$ di $\SI{50}{\degree}$ rispetto la coppia di piani $(100)$. Per ogni grado per cui si sposta il cubo, ne si gira il ricevitore di due e si misura l'amperaggio e il voltaggio. Trovati i massimi, si utilizza la legge di Bragg
+\[
+	2d\sin\theta = n\lambda \implies d=\frac{n\lambda}{2 \sin \theta}
+\]
+da cui si ricava la distanza $d$ tra i piani.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale = 0.7]{./Immagini/bragg.png}
+    \caption[Piani cristallini]{Lo schema mostra varie coppie di piani cristallini.}
+\end{figure}
+
+\subsection{Dati ed analisi}
+Gli angoli e le intensità di corrente misurati sono:
+\begin{center}
+\begin{tabular}[h]{c|c}
+        %\multicolumn{2}{c}{Diametri} \\
+	$\theta$/$\SI{}{\deg}$ & $I$/$\SI{}{\mA}$ \\\midrule
+	\SI{0}{} & \SI{7.4}{} \\
+	\SI{1}{} & \SI{7.4}{} \\
+	\SI{2}{} & \SI{7.0}{} \\
+	\SI{3}{} & \SI{6.0}{} \\
+	\SI{4}{} & \SI{5.4}{} \\
+	\SI{5}{} & \SI{5.2}{} \\
+	\SI{6}{} & \SI{5.0}{} \\
+	\SI{7}{} & \SI{4.6}{} \\
+	\SI{8}{} & \SI{4.2}{} \\
+	\SI{9}{} & \SI{3.8}{} \\
+	\SI{10}{} & \SI{2.4}{} \\
+	\SI{11}{} & \SI{1.0}{} \\
+	\SI{12}{} & \SI{0.54}{} \\
+	\SI{13}{} & \SI{1.14}{} \\
+\end{tabular}\quad
+\begin{tabular}[h]{c|c}
+        %\multicolumn{2}{c}{Diametri} \\
+	$\theta$/$\SI{}{\deg}$ & $I$/$\SI{}{\mA}$ \\\midrule
+	\SI{14}{} & \SI{2.04}{} \\
+	\SI{15}{} & \SI{2.64}{} \\
+	\SI{16}{} & \SI{2.58}{} \\
+	\SI{17}{} & \SI{1.86}{} \\
+	\SI{18}{} & \SI{1.14}{} \\
+	\SI{19}{} & \SI{1.08}{} \\
+	\SI{20}{} & \SI{1.8}{} \\
+	\SI{21}{} & \SI{2.58}{} \\
+	\SI{22}{} & \SI{3.4}{} \\
+	\SI{23}{} & \SI{3.2}{} \\
+	\SI{24}{} & \SI{2.6}{} \\
+	\SI{25}{} & \SI{2.0}{} \\
+	\SI{26}{} & \SI{1.6}{} \\
+	\SI{27}{} & \SI{1.6}{} \\
+\end{tabular}\quad
+\begin{tabular}[h]{c|c}
+        %\multicolumn{2}{c}{Diametri} \\
+	$\theta$/$\SI{}{\deg}$ & $I$/$\SI{}{\mA}$ \\\midrule
+	\SI{28}{} & \SI{1.8}{} \\
+	\SI{29}{} & \SI{2.0}{} \\
+	\SI{30}{} & \SI{1.8}{} \\
+	\SI{40}{} & \SI{0.84}{} \\
+	\SI{41}{} & \SI{1.32}{} \\
+	\SI{42}{} & \SI{1.98}{} \\
+	\SI{43}{} & \SI{2.1}{} \\
+	\SI{44}{} & \SI{2.22}{} \\
+	\SI{45}{} & \SI{2.34}{} \\
+	\SI{46}{} & \SI{2.52}{} \\
+	\SI{47}{} & \SI{2.52}{} \\
+	\SI{48}{} & \SI{2.4}{} \\
+	\SI{49}{} & \SI{2.28}{} \\
+	\SI{50}{} & \SI{2.16}{} \\
+\end{tabular}
+\end{center}
+Si notano i massimi ad angoli $\theta=\SI{22.0(6)}{\deg}$, $n=1$, e $\theta=\SI{47.0(6)}{\deg}$, $n=2$. Da essi si calcolano le distanze
+\[
+d_1=\SI{3.80(9)}{\cm},\quad d_2=\SI{3.90(4)}{\cm}
+\] 
+La cui media ponderata è $d=\SI{3.88(3)}{\cm}$.
+
+\begin{figure}[ht]
+	\centering
+    	\begin{tikzpicture}
+    	\begin{groupplot}[group style={group size=1 by 1}]
+    	\nextgroupplot[
+        	title={Diffrazione di Bragg},
+        	width=0.8\textwidth,
+        	height=0.4\textwidth,
+        	xlabel={$\theta$/$\SI{}{\deg}$},
+		ylabel={$I$/$\SI{}{\mA}$},
+        	%ylabel style={rotate=-90},
+        	xmin=-5, xmax=55,
+        	ymin=0, ymax=8,
+        	%xtick={0,0.1,...,0.5},
+        	minor x tick num=4,
+        	%ytick={0,0.5,...,2},
+		%y tick label style={/pgf/number format/.cd, fixed, fixed zerofill, precision=3, /tikz/.cd},
+        	minor y tick num=3,
+        	legend pos=north east,
+        	ymajorgrids=true,
+        	grid style=dashed,
+        	]
+        	
+        	\addplot+[
+        	color=red,
+        	only marks,
+        	mark=x,
+        	mark size=3pt,
+        	error bars/.cd,
+        	x fixed,
+        	y fixed,
+        	x dir=both,x explicit,
+        	y dir=both,y explicit,
+        	]
+		table [x=x 11, y=y 11, col sep=comma] {../Dati.csv};
+        	\legend{Data}
+    	\end{groupplot}
+    	\end{tikzpicture}
+	\caption[Bragg]{Grafico corrente-angolo cubo.}
+\end{figure}
+\subsection{Conclusioni}
+Il valore ottenuto è compatibile al $93\%$ con il valore misurato direttamente $\SI{3.80(6)}{\cm}$.\\
+Si ipotizza che i picchi a $\theta=\SI{15}{\degree}$ e $\theta=\SI{29}{\degree}$ siano causati dalla diffrazione di coppie di piani diverse da quella in esame.
+
+
+
+
+
+
+\end{document}

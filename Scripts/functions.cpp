@@ -2,12 +2,14 @@
 
 // nfit = 0
 Double_t func_lin (Double_t *x, Double_t *par) {
-    return par[0]+x[0]*par[1];
+    return par[0]+x[0]*par[1]/2.;
+    // par 0 = A,   par 1 = B
 }
 
 // nfit = 1
 Double_t func_lin_B (Double_t *x, Double_t *par) {
     return x[0]*par[0];
+    // par 0 = B
 }
 
 // nfit = 2
@@ -163,4 +165,21 @@ Double_t func_righello (Double_t *x, Double_t *par) {
     const double d = 1e-3, costhinc = 0.997321142928116;
     return costhinc-x[0]*par[0]/d;
     // par 0 = lambda
+}
+
+// nfit = 24
+Double_t func_Fraunhofer (Double_t *x, Double_t *par) {
+    const double S = 7.6, W = 1.5;
+    x[0] = par[3]*x[0]+par[4];
+    double argsin = M_PI*sin(x[0])/par[0];
+    //return par[1]*(cos(S*argsin)*sin(W*argsin)/(W*argsin))*(cos(S*argsin)*sin(W*argsin)/(W*argsin))+par[2];
+    return par[1]*(cos(S*argsin+par[5])*sin(W*argsin+par[6])/(W*argsin+par[6]))*(cos(S*argsin+par[5])*sin(W*argsin+par[6])/(W*argsin+par[6]))+par[2];
+    // par 0 = lambda,  par 1 = A,  par 2 = B,  par 3 = C,  par 4 = D
+    // par 5 = E,  par 6 = F
+}
+
+// nfit = 25
+Double_t func_Cauchy (Double_t *x, Double_t *par) {
+    return par[0]+par[1]/(x[0]*x[0]);
+    // par 0 = A,   par 1 = B
 }
